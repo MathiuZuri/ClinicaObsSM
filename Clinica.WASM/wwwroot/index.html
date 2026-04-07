@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clinica.WASM</title>
+    <base href="/" />
+    <!-- <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" /> -->
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link href="Clinica.WASM.styles.css" rel="stylesheet" />
+</head>
+
+<body>
+<div id="app">
+    <style>
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f6f8fc; /* var(--bg) */
+            font-family: "Inter", system-ui, sans-serif;
+            color: #1e2430; /* var(--ink) */
+        }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 6px solid #eaf0ff; /* var(--blue-soft) */
+            border-top: 6px solid #3f65ff; /* var(--blue) */
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .loading-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+        .loading-subtext {
+            color: #6b7280; /* var(--muted) */
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+    </style>
+
+    <div class="loading-container">
+        <div class="spinner"></div>
+        <div class="loading-text">Cargando Sistema...</div>
+        <div class="loading-subtext">Clínica Obstétrica</div>
+    </div>
+</div>
+
+    <div id="blazor-error-ui" style="display:none;">
+        An unhandled error has occurred.
+        <a href="." class="reload">Reload</a>
+        <span class="dismiss">🗙</span>
+    </div>
+    <script src="_framework/blazor.webassembly.js"></script>
+</body>
+
+</html>

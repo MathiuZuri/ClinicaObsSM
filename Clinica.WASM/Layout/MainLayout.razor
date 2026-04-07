@@ -1,0 +1,33 @@
+﻿@inherits LayoutComponentBase
+
+<div class="page" style="display: flex; flex-direction: column; min-height: 100vh;">
+    <header class="header">
+        <div class="brand">
+            <div class="logo">SM</div>
+            <div>
+                <div class="brand-title">Clínica Santa Mónica</div>
+                <span class="brand-sub">Centro Materno Perinatal</span>
+            </div>
+        </div>
+        
+        <NavMenu />
+
+    </header>
+
+    <main class="container grow" style="padding-top: 24px; padding-bottom: 40px; width: 100%;">
+        @Body
+    </main>
+
+    <footer style="margin-top: auto;">
+        <div class="container foot-grid">
+            <div>
+                <strong>Clínica Santa Mónica</strong><br>
+                <span class="muted">Centro Materno Perinatal · Juliaca – Puno</span>
+            </div>
+            <div style="text-align: right;">
+                <div>© @DateTime.Now.Year Santa Mónica</div>
+                <span class="muted">Todos los derechos reservados</span>
+            </div>
+        </div>
+    </footer>
+</div>

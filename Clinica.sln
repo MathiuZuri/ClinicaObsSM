@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinica.Domain", "Clinica.Domain\Clinica.Domain.csproj", "{7BE14034-4AFC-427D-85AC-E105A5B59BD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinica.Infrastructure", "Clinica.Infrastructure\Clinica.Infrastructure.csproj", "{704DF00C-B6B1-4D2A-8D0D-4245FD52AC81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinica.API", "Clinica.API\Clinica.API.csproj", "{D0877029-0883-4697-95CE-1E11263DAA09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinica.WASM", "Clinica.WASM\Clinica.WASM.csproj", "{92F44722-C15F-4271-AC68-831A6DCE0C7E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BE14034-4AFC-427D-85AC-E105A5B59BD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BE14034-4AFC-427D-85AC-E105A5B59BD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BE14034-4AFC-427D-85AC-E105A5B59BD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BE14034-4AFC-427D-85AC-E105A5B59BD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{704DF00C-B6B1-4D2A-8D0D-4245FD52AC81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{704DF00C-B6B1-4D2A-8D0D-4245FD52AC81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{704DF00C-B6B1-4D2A-8D0D-4245FD52AC81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{704DF00C-B6B1-4D2A-8D0D-4245FD52AC81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0877029-0883-4697-95CE-1E11263DAA09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0877029-0883-4697-95CE-1E11263DAA09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0877029-0883-4697-95CE-1E11263DAA09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0877029-0883-4697-95CE-1E11263DAA09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92F44722-C15F-4271-AC68-831A6DCE0C7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92F44722-C15F-4271-AC68-831A6DCE0C7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92F44722-C15F-4271-AC68-831A6DCE0C7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92F44722-C15F-4271-AC68-831A6DCE0C7E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
