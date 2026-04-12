@@ -7,7 +7,7 @@ public class Paciente
     public string DNI { get; set; } = string.Empty;
     public string NumeroHC { get; set; } = string.Empty;
     
-    public string Nombres sssssssssssss { get; set; } = string.Empty;
+    public string Nombres { get; set; } = string.Empty;
     public string Apellidos { get; set; } = string.Empty;
     public DateTime FechaNacimiento { get; set; }
     public string Sexo { get; set; } = string.Empty;
