@@ -12,8 +12,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName>ScopedCss</AssetTraitName>
       <AssetTraitValue>ApplicationBundle</AssetTraitValue>
-      <Fingerprint>wm5vztvrzp</Fingerprint>
-      <Integrity>uIrJrKe5C03rOrl+I4rWyoLn1Ktfiw1nW+f9qZASC5U=</Integrity>
+      <Fingerprint>u7t0g0spfc</Fingerprint>
+      <Integrity>6qOzy+ydpox8T31t0U24c6P8WozvLR5EqUvpj2l1+DU=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Clinica.WASM.styles.css'))</OriginalItemSpec>
@@ -30,8 +30,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>bkx3oqhcs8</Fingerprint>
-      <Integrity>q5w1QhUiexFCABB9FDe+IwOFtH3TtJ2E2Uj15teCeBo=</Integrity>
+      <Fingerprint>f7vrljfm23</Fingerprint>
+      <Integrity>u6dBW0UTA4ZXpNL1XqTKOBsatDpqmtsUPFRt87E4MMA=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\app.css'))</OriginalItemSpec>

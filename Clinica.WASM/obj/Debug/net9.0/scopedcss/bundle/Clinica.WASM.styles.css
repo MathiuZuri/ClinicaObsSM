@@ -1,3 +1,103 @@
-/* /Layout/MainLayout.razor.rz.scp.css */
-/* /Layout/NavMenu.razor.rz.scp.css */
+/* /Pages/forms/FormularioPaciente.razor.rz.scp.css */
+/* Títulos de sección para organizar los datos */
+.section-header[b-snr0fjv4b4] {
+    border-left: 4px solid var(--blue);
+    padding-left: 12px;
+    margin: 24px 0 16px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 
+/* Contenedor del formulario con efecto de papel */
+.form-sheet[b-snr0fjv4b4] {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* Estilo para los campos deshabilitados (lectura en edición) */
+input:disabled[b-snr0fjv4b4], select:disabled[b-snr0fjv4b4] {
+    background-color: #f1f5f9;
+    color: #64748b;
+    cursor: not-allowed;
+    border-style: dashed;
+}
+
+/* Indicador de campo obligatorio */
+.required[b-snr0fjv4b4]::after {
+    content: " *";
+    color: var(--red);
+}
+/* /Pages/pages/Citas.razor.rz.scp.css */
+/* Contenedor del formulario con efecto de papel */
+.form-sheet[b-qhkdgmlp8s] {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* Títulos de sección para organizar los datos */
+.section-header[b-qhkdgmlp8s] {
+    border-left: 4px solid var(--blue);
+    padding-left: 12px;
+    margin: 24px 0 16px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Estado vacío de la tabla */
+.empty-state[b-qhkdgmlp8s] {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    background: #ffffff;
+    border: 1px dashed #cbd5e1;
+    border-radius: var(--radius-sm);
+}
+
+/* Efecto hover en la tabla */
+.table-hover tbody tr:hover[b-qhkdgmlp8s] {
+    background-color: var(--bg);
+}
+/* /Pages/pages/ListadoPacientes.razor.rz.scp.css */
+/* Contenedor específico para la barra de búsqueda superior */
+.search-bar-container[b-1qlgwdhvim] {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(30, 36, 48, 0.02);
+}
+
+/* Efecto hover suave solo para las filas de pacientes */
+.table-hover tbody tr:hover[b-1qlgwdhvim] {
+    background-color: var(--bg);
+    transition: background-color 0.2s ease;
+}
+
+/* Diseño para cuando no hay resultados */
+.empty-state[b-1qlgwdhvim] {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    background: #ffffff;
+    border: 1px dashed #cbd5e1;
+    border-radius: var(--radius-sm);
+}
+.empty-state h3[b-1qlgwdhvim] {
+    margin: 8px 0 4px;
+    color: var(--ink);
+}

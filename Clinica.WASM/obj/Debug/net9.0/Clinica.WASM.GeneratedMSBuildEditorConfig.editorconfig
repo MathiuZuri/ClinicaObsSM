@@ -28,8 +28,12 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/proyectC\#/ClinicaObst/Clinica.WASM/Pages/Citas.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2l0YXMucmF6b3I=
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/proyectC\#/ClinicaObst/Clinica.WASM/Pages/HistoriaClinica.razor]
@@ -40,14 +44,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Pages/util/DialogoConfirmacion.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcdXRpbFxEaWFsb2dvQ29uZmlybWFjaW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/proyectC\#/ClinicaObst/Clinica.WASM/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/proyectC\#/ClinicaObst/Clinica.WASM/Layout/MainLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-98p2eraplv
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Pages/forms/FormularioPaciente.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcZm9ybXNcRm9ybXVsYXJpb1BhY2llbnRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-snr0fjv4b4
 
-[F:/proyectC\#/ClinicaObst/Clinica.WASM/Layout/NavMenu.razor]
-build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-autxrnx0a8
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Pages/pages/Citas.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccGFnZXNcQ2l0YXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-qhkdgmlp8s
+
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Pages/pages/ListadoPacientes.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccGFnZXNcTGlzdGFkb1BhY2llbnRlcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-1qlgwdhvim

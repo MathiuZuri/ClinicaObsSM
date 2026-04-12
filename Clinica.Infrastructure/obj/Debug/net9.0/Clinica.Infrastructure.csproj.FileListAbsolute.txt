@@ -13,3 +13,4 @@ F:\proyectC#\ClinicaObst\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrast
 F:\proyectC#\ClinicaObst\Clinica.Infrastructure\obj\Debug\net9.0\refint\Clinica.Infrastructure.dll
 F:\proyectC#\ClinicaObst\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.pdb
 F:\proyectC#\ClinicaObst\Clinica.Infrastructure\obj\Debug\net9.0\ref\Clinica.Infrastructure.dll
+F:\proyectC#\ClinicaObst\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.sourcelink.json

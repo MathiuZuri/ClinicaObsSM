@@ -9,7 +9,7 @@
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.013513513514"
+          "Quality": "0.001148105626"
         }
       ],
       "ResponseHeaders": [
@@ -27,7 +27,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "73"
+          "Value": "870"
         },
         {
           "Name": "Content-Type",
@@ -35,15 +35,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"XPJE5DlQ0Bk0Eu6VmtyFZNclxcWco2wI9i2t2g+RV84=\""
+          "Value": "\"4yv+6jfuZ7ezFxoiHhQ3DuHDq4ndcT7+hWkBjpAwC4A=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"uIrJrKe5C03rOrl+I4rWyoLn1Ktfiw1nW+f9qZASC5U=\""
+          "Value": "W/\"6qOzy+ydpox8T31t0U24c6P8WozvLR5EqUvpj2l1+DU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:15:01 GMT"
+          "Value": "Sun, 12 Apr 2026 02:18:35 GMT"
         },
         {
           "Name": "Vary",
@@ -53,7 +53,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-uIrJrKe5C03rOrl+I4rWyoLn1Ktfiw1nW+f9qZASC5U="
+          "Value": "sha256-6qOzy+ydpox8T31t0U24c6P8WozvLR5EqUvpj2l1+DU="
         }
       ]
     },
@@ -72,7 +72,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "85"
+          "Value": "2834"
         },
         {
           "Name": "Content-Type",
@@ -80,17 +80,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"uIrJrKe5C03rOrl+I4rWyoLn1Ktfiw1nW+f9qZASC5U=\""
+          "Value": "\"6qOzy+ydpox8T31t0U24c6P8WozvLR5EqUvpj2l1+DU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:15:01 GMT"
+          "Value": "Sun, 12 Apr 2026 02:18:35 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-uIrJrKe5C03rOrl+I4rWyoLn1Ktfiw1nW+f9qZASC5U="
+          "Value": "sha256-6qOzy+ydpox8T31t0U24c6P8WozvLR5EqUvpj2l1+DU="
         }
       ]
     },
@@ -113,7 +113,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "73"
+          "Value": "870"
         },
         {
           "Name": "Content-Type",
@@ -121,11 +121,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"XPJE5DlQ0Bk0Eu6VmtyFZNclxcWco2wI9i2t2g+RV84=\""
+          "Value": "\"4yv+6jfuZ7ezFxoiHhQ3DuHDq4ndcT7+hWkBjpAwC4A=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:15:01 GMT"
+          "Value": "Sun, 12 Apr 2026 02:18:35 GMT"
         },
         {
           "Name": "Vary",
@@ -135,18 +135,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-XPJE5DlQ0Bk0Eu6VmtyFZNclxcWco2wI9i2t2g+RV84="
+          "Value": "sha256-4yv+6jfuZ7ezFxoiHhQ3DuHDq4ndcT7+hWkBjpAwC4A="
         }
       ]
     },
     {
-      "Route": "Clinica.WASM.wm5vztvrzp.styles.css",
+      "Route": "Clinica.WASM.u7t0g0spfc.styles.css",
       "AssetFile": "Clinica.WASM.styles.css.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.013513513514"
+          "Quality": "0.001148105626"
         }
       ],
       "ResponseHeaders": [
@@ -164,7 +164,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "73"
+          "Value": "870"
         },
         {
           "Name": "Content-Type",
@@ -172,15 +172,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"XPJE5DlQ0Bk0Eu6VmtyFZNclxcWco2wI9i2t2g+RV84=\""
+          "Value": "\"4yv+6jfuZ7ezFxoiHhQ3DuHDq4ndcT7+hWkBjpAwC4A=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"uIrJrKe5C03rOrl+I4rWyoLn1Ktfiw1nW+f9qZASC5U=\""
+          "Value": "W/\"6qOzy+ydpox8T31t0U24c6P8WozvLR5EqUvpj2l1+DU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:15:01 GMT"
+          "Value": "Sun, 12 Apr 2026 02:18:35 GMT"
         },
         {
           "Name": "Vary",
@@ -190,11 +190,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "wm5vztvrzp"
+          "Value": "u7t0g0spfc"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-uIrJrKe5C03rOrl+I4rWyoLn1Ktfiw1nW+f9qZASC5U="
+          "Value": "sha256-6qOzy+ydpox8T31t0U24c6P8WozvLR5EqUvpj2l1+DU="
         },
         {
           "Name": "label",
@@ -203,7 +203,7 @@
       ]
     },
     {
-      "Route": "Clinica.WASM.wm5vztvrzp.styles.css",
+      "Route": "Clinica.WASM.u7t0g0spfc.styles.css",
       "AssetFile": "Clinica.WASM.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -217,7 +217,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "85"
+          "Value": "2834"
         },
         {
           "Name": "Content-Type",
@@ -225,21 +225,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"uIrJrKe5C03rOrl+I4rWyoLn1Ktfiw1nW+f9qZASC5U=\""
+          "Value": "\"6qOzy+ydpox8T31t0U24c6P8WozvLR5EqUvpj2l1+DU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:15:01 GMT"
+          "Value": "Sun, 12 Apr 2026 02:18:35 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "wm5vztvrzp"
+          "Value": "u7t0g0spfc"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-uIrJrKe5C03rOrl+I4rWyoLn1Ktfiw1nW+f9qZASC5U="
+          "Value": "sha256-6qOzy+ydpox8T31t0U24c6P8WozvLR5EqUvpj2l1+DU="
         },
         {
           "Name": "label",
@@ -248,7 +248,7 @@
       ]
     },
     {
-      "Route": "Clinica.WASM.wm5vztvrzp.styles.css.gz",
+      "Route": "Clinica.WASM.u7t0g0spfc.styles.css.gz",
       "AssetFile": "Clinica.WASM.styles.css.gz",
       "Selectors": [],
       "ResponseHeaders": [
@@ -266,7 +266,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "73"
+          "Value": "870"
         },
         {
           "Name": "Content-Type",
@@ -274,11 +274,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"XPJE5DlQ0Bk0Eu6VmtyFZNclxcWco2wI9i2t2g+RV84=\""
+          "Value": "\"4yv+6jfuZ7ezFxoiHhQ3DuHDq4ndcT7+hWkBjpAwC4A=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:15:01 GMT"
+          "Value": "Sun, 12 Apr 2026 02:18:35 GMT"
         },
         {
           "Name": "Vary",
@@ -288,11 +288,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "wm5vztvrzp"
+          "Value": "u7t0g0spfc"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-XPJE5DlQ0Bk0Eu6VmtyFZNclxcWco2wI9i2t2g+RV84="
+          "Value": "sha256-4yv+6jfuZ7ezFxoiHhQ3DuHDq4ndcT7+hWkBjpAwC4A="
         },
         {
           "Name": "label",
@@ -301,8 +301,8 @@
       ]
     },
     {
-      "Route": "_framework/Clinica.Domain.dcltwujjzy.pdb",
-      "AssetFile": "_framework/Clinica.Domain.dcltwujjzy.pdb",
+      "Route": "_framework/Clinica.Domain.40atl9rux6.pdb",
+      "AssetFile": "_framework/Clinica.Domain.40atl9rux6.pdb",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -315,7 +315,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "15560"
+          "Value": "17136"
         },
         {
           "Name": "Content-Type",
@@ -323,21 +323,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"TVmwV0FptcFvPciNfl/uqahc4wc+03bI/a5J3ftmiQg=\""
+          "Value": "\"HP/lRxVJBqSATII0v1quMzkLgLwwkj/G3xhjBZEsl24=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 13:15:56 GMT"
+          "Value": "Sun, 12 Apr 2026 16:14:58 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "dcltwujjzy"
+          "Value": "40atl9rux6"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-TVmwV0FptcFvPciNfl/uqahc4wc+03bI/a5J3ftmiQg="
+          "Value": "sha256-HP/lRxVJBqSATII0v1quMzkLgLwwkj/G3xhjBZEsl24="
         },
         {
           "Name": "label",
@@ -346,13 +346,13 @@
       ]
     },
     {
-      "Route": "_framework/Clinica.Domain.dcltwujjzy.pdb",
-      "AssetFile": "_framework/Clinica.Domain.dcltwujjzy.pdb.gz",
+      "Route": "_framework/Clinica.Domain.40atl9rux6.pdb",
+      "AssetFile": "_framework/Clinica.Domain.40atl9rux6.pdb.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000117041199"
+          "Quality": "0.000108660219"
         }
       ],
       "ResponseHeaders": [
@@ -370,7 +370,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8543"
+          "Value": "9202"
         },
         {
           "Name": "Content-Type",
@@ -378,15 +378,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"6zzGKIPdFxPld9oU74/HonyRBuJDFJFZLRibjuelkug=\""
+          "Value": "\"sQ9Sk1JdUTxoVrtSdLl8EExlqDAnGuE0g3P/IQEm+D0=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"TVmwV0FptcFvPciNfl/uqahc4wc+03bI/a5J3ftmiQg=\""
+          "Value": "W/\"HP/lRxVJBqSATII0v1quMzkLgLwwkj/G3xhjBZEsl24=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 13:22:27 GMT"
+          "Value": "Sun, 12 Apr 2026 20:21:33 GMT"
         },
         {
           "Name": "Vary",
@@ -396,11 +396,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "dcltwujjzy"
+          "Value": "40atl9rux6"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-TVmwV0FptcFvPciNfl/uqahc4wc+03bI/a5J3ftmiQg="
+          "Value": "sha256-HP/lRxVJBqSATII0v1quMzkLgLwwkj/G3xhjBZEsl24="
         },
         {
           "Name": "label",
@@ -409,8 +409,8 @@
       ]
     },
     {
-      "Route": "_framework/Clinica.Domain.dcltwujjzy.pdb.gz",
-      "AssetFile": "_framework/Clinica.Domain.dcltwujjzy.pdb.gz",
+      "Route": "_framework/Clinica.Domain.40atl9rux6.pdb.gz",
+      "AssetFile": "_framework/Clinica.Domain.40atl9rux6.pdb.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -427,7 +427,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8543"
+          "Value": "9202"
         },
         {
           "Name": "Content-Type",
@@ -435,11 +435,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"6zzGKIPdFxPld9oU74/HonyRBuJDFJFZLRibjuelkug=\""
+          "Value": "\"sQ9Sk1JdUTxoVrtSdLl8EExlqDAnGuE0g3P/IQEm+D0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 13:22:27 GMT"
+          "Value": "Sun, 12 Apr 2026 20:21:33 GMT"
         },
         {
           "Name": "Vary",
@@ -449,11 +449,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "dcltwujjzy"
+          "Value": "40atl9rux6"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-6zzGKIPdFxPld9oU74/HonyRBuJDFJFZLRibjuelkug="
+          "Value": "sha256-sQ9Sk1JdUTxoVrtSdLl8EExlqDAnGuE0g3P/IQEm+D0="
         },
         {
           "Name": "label",
@@ -462,145 +462,8 @@
       ]
     },
     {
-      "Route": "_framework/Clinica.Domain.pdb",
-      "AssetFile": "_framework/Clinica.Domain.dcltwujjzy.pdb",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "15560"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"TVmwV0FptcFvPciNfl/uqahc4wc+03bI/a5J3ftmiQg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 13:15:56 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-TVmwV0FptcFvPciNfl/uqahc4wc+03bI/a5J3ftmiQg="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/Clinica.Domain.pdb",
-      "AssetFile": "_framework/Clinica.Domain.dcltwujjzy.pdb.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000117041199"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "8543"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"6zzGKIPdFxPld9oU74/HonyRBuJDFJFZLRibjuelkug=\""
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"TVmwV0FptcFvPciNfl/uqahc4wc+03bI/a5J3ftmiQg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 13:22:27 GMT"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-TVmwV0FptcFvPciNfl/uqahc4wc+03bI/a5J3ftmiQg="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/Clinica.Domain.pdb.gz",
-      "AssetFile": "_framework/Clinica.Domain.dcltwujjzy.pdb.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "8543"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"6zzGKIPdFxPld9oU74/HonyRBuJDFJFZLRibjuelkug=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 13:22:27 GMT"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-6zzGKIPdFxPld9oU74/HonyRBuJDFJFZLRibjuelkug="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/Clinica.Domain.rwpnd9r2tx.wasm",
-      "AssetFile": "_framework/Clinica.Domain.rwpnd9r2tx.wasm",
+      "Route": "_framework/Clinica.Domain.6llpagw47a.wasm",
+      "AssetFile": "_framework/Clinica.Domain.6llpagw47a.wasm",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -613,7 +476,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "15637"
+          "Value": "20245"
         },
         {
           "Name": "Content-Type",
@@ -621,21 +484,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"FfzNe9Q9YGe/Dn5UhLzxjnak60ZjKLH0OaOkR0BpkOI=\""
+          "Value": "\"djwJ0XQunsHHnPRDNz/VkvfD09zzcCscOH8mgZ7T4+s=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 13:22:27 GMT"
+          "Value": "Sun, 12 Apr 2026 20:21:32 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "rwpnd9r2tx"
+          "Value": "6llpagw47a"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-FfzNe9Q9YGe/Dn5UhLzxjnak60ZjKLH0OaOkR0BpkOI="
+          "Value": "sha256-djwJ0XQunsHHnPRDNz/VkvfD09zzcCscOH8mgZ7T4+s="
         },
         {
           "Name": "label",
@@ -644,13 +507,13 @@
       ]
     },
     {
-      "Route": "_framework/Clinica.Domain.rwpnd9r2tx.wasm",
-      "AssetFile": "_framework/Clinica.Domain.rwpnd9r2tx.wasm.gz",
+      "Route": "_framework/Clinica.Domain.6llpagw47a.wasm",
+      "AssetFile": "_framework/Clinica.Domain.6llpagw47a.wasm.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000146498682"
+          "Quality": "0.000116279070"
         }
       ],
       "ResponseHeaders": [
@@ -668,7 +531,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6825"
+          "Value": "8599"
         },
         {
           "Name": "Content-Type",
@@ -676,15 +539,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"+/VxS9NRAYSo4Xao5zUF/FY0U82UCBZpyFjIgETTamE=\""
+          "Value": "\"FM/0hg9fl4iXGTu1PzQBb7FDX0ul3Ktv166bawDmFKM=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"FfzNe9Q9YGe/Dn5UhLzxjnak60ZjKLH0OaOkR0BpkOI=\""
+          "Value": "W/\"djwJ0XQunsHHnPRDNz/VkvfD09zzcCscOH8mgZ7T4+s=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 13:22:27 GMT"
+          "Value": "Sun, 12 Apr 2026 20:21:33 GMT"
         },
         {
           "Name": "Vary",
@@ -694,11 +557,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "rwpnd9r2tx"
+          "Value": "6llpagw47a"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-FfzNe9Q9YGe/Dn5UhLzxjnak60ZjKLH0OaOkR0BpkOI="
+          "Value": "sha256-djwJ0XQunsHHnPRDNz/VkvfD09zzcCscOH8mgZ7T4+s="
         },
         {
           "Name": "label",
@@ -707,8 +570,8 @@
       ]
     },
     {
-      "Route": "_framework/Clinica.Domain.rwpnd9r2tx.wasm.gz",
-      "AssetFile": "_framework/Clinica.Domain.rwpnd9r2tx.wasm.gz",
+      "Route": "_framework/Clinica.Domain.6llpagw47a.wasm.gz",
+      "AssetFile": "_framework/Clinica.Domain.6llpagw47a.wasm.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -725,7 +588,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6825"
+          "Value": "8599"
         },
         {
           "Name": "Content-Type",
@@ -733,11 +596,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"+/VxS9NRAYSo4Xao5zUF/FY0U82UCBZpyFjIgETTamE=\""
+          "Value": "\"FM/0hg9fl4iXGTu1PzQBb7FDX0ul3Ktv166bawDmFKM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 13:22:27 GMT"
+          "Value": "Sun, 12 Apr 2026 20:21:33 GMT"
         },
         {
           "Name": "Vary",
@@ -747,11 +610,11 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "rwpnd9r2tx"
+          "Value": "6llpagw47a"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-+/VxS9NRAYSo4Xao5zUF/FY0U82UCBZpyFjIgETTamE="
+          "Value": "sha256-FM/0hg9fl4iXGTu1PzQBb7FDX0ul3Ktv166bawDmFKM="
         },
         {
           "Name": "label",
@@ -760,8 +623,8 @@
       ]
     },
     {
-      "Route": "_framework/Clinica.Domain.wasm",
-      "AssetFile": "_framework/Clinica.Domain.rwpnd9r2tx.wasm",
+      "Route": "_framework/Clinica.Domain.pdb",
+      "AssetFile": "_framework/Clinica.Domain.40atl9rux6.pdb",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -774,36 +637,36 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "15637"
+          "Value": "17136"
         },
         {
           "Name": "Content-Type",
-          "Value": "application/wasm"
+          "Value": "application/octet-stream"
         },
         {
           "Name": "ETag",
-          "Value": "\"FfzNe9Q9YGe/Dn5UhLzxjnak60ZjKLH0OaOkR0BpkOI=\""
+          "Value": "\"HP/lRxVJBqSATII0v1quMzkLgLwwkj/G3xhjBZEsl24=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 13:22:27 GMT"
+          "Value": "Sun, 12 Apr 2026 16:14:58 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-FfzNe9Q9YGe/Dn5UhLzxjnak60ZjKLH0OaOkR0BpkOI="
+          "Value": "sha256-HP/lRxVJBqSATII0v1quMzkLgLwwkj/G3xhjBZEsl24="
         }
       ]
     },
     {
-      "Route": "_framework/Clinica.Domain.wasm",
-      "AssetFile": "_framework/Clinica.Domain.rwpnd9r2tx.wasm.gz",
+      "Route": "_framework/Clinica.Domain.pdb",
+      "AssetFile": "_framework/Clinica.Domain.40atl9rux6.pdb.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000146498682"
+          "Quality": "0.000108660219"
         }
       ],
       "ResponseHeaders": [
@@ -821,23 +684,23 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6825"
+          "Value": "9202"
         },
         {
           "Name": "Content-Type",
-          "Value": "application/wasm"
+          "Value": "application/octet-stream"
         },
         {
           "Name": "ETag",
-          "Value": "\"+/VxS9NRAYSo4Xao5zUF/FY0U82UCBZpyFjIgETTamE=\""
+          "Value": "\"sQ9Sk1JdUTxoVrtSdLl8EExlqDAnGuE0g3P/IQEm+D0=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"FfzNe9Q9YGe/Dn5UhLzxjnak60ZjKLH0OaOkR0BpkOI=\""
+          "Value": "W/\"HP/lRxVJBqSATII0v1quMzkLgLwwkj/G3xhjBZEsl24=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 13:22:27 GMT"
+          "Value": "Sun, 12 Apr 2026 20:21:33 GMT"
         },
         {
           "Name": "Vary",
@@ -847,13 +710,150 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-FfzNe9Q9YGe/Dn5UhLzxjnak60ZjKLH0OaOkR0BpkOI="
+          "Value": "sha256-HP/lRxVJBqSATII0v1quMzkLgLwwkj/G3xhjBZEsl24="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/Clinica.Domain.pdb.gz",
+      "AssetFile": "_framework/Clinica.Domain.40atl9rux6.pdb.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9202"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sQ9Sk1JdUTxoVrtSdLl8EExlqDAnGuE0g3P/IQEm+D0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 12 Apr 2026 20:21:33 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-sQ9Sk1JdUTxoVrtSdLl8EExlqDAnGuE0g3P/IQEm+D0="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/Clinica.Domain.wasm",
+      "AssetFile": "_framework/Clinica.Domain.6llpagw47a.wasm",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "20245"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"djwJ0XQunsHHnPRDNz/VkvfD09zzcCscOH8mgZ7T4+s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 12 Apr 2026 20:21:32 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-djwJ0XQunsHHnPRDNz/VkvfD09zzcCscOH8mgZ7T4+s="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/Clinica.Domain.wasm",
+      "AssetFile": "_framework/Clinica.Domain.6llpagw47a.wasm.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000116279070"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8599"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FM/0hg9fl4iXGTu1PzQBb7FDX0ul3Ktv166bawDmFKM=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"djwJ0XQunsHHnPRDNz/VkvfD09zzcCscOH8mgZ7T4+s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 12 Apr 2026 20:21:33 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-djwJ0XQunsHHnPRDNz/VkvfD09zzcCscOH8mgZ7T4+s="
         }
       ]
     },
     {
       "Route": "_framework/Clinica.Domain.wasm.gz",
-      "AssetFile": "_framework/Clinica.Domain.rwpnd9r2tx.wasm.gz",
+      "AssetFile": "_framework/Clinica.Domain.6llpagw47a.wasm.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -870,7 +870,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6825"
+          "Value": "8599"
         },
         {
           "Name": "Content-Type",
@@ -878,11 +878,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"+/VxS9NRAYSo4Xao5zUF/FY0U82UCBZpyFjIgETTamE=\""
+          "Value": "\"FM/0hg9fl4iXGTu1PzQBb7FDX0ul3Ktv166bawDmFKM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 13:22:27 GMT"
+          "Value": "Sun, 12 Apr 2026 20:21:33 GMT"
         },
         {
           "Name": "Vary",
@@ -892,13 +892,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-+/VxS9NRAYSo4Xao5zUF/FY0U82UCBZpyFjIgETTamE="
+          "Value": "sha256-FM/0hg9fl4iXGTu1PzQBb7FDX0ul3Ktv166bawDmFKM="
         }
       ]
     },
     {
-      "Route": "_framework/Clinica.WASM.g9f74uky3o.pdb",
-      "AssetFile": "_framework/Clinica.WASM.g9f74uky3o.pdb",
+      "Route": "_framework/Clinica.WASM.35rn9f8g9c.wasm",
+      "AssetFile": "_framework/Clinica.WASM.35rn9f8g9c.wasm",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -911,44 +911,44 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "29420"
+          "Value": "75029"
         },
         {
           "Name": "Content-Type",
-          "Value": "application/octet-stream"
+          "Value": "application/wasm"
         },
         {
           "Name": "ETag",
-          "Value": "\"BMW/K1aOlf4V4lnRPqOeXqVUafyWiPywQEocidAPYhI=\""
+          "Value": "\"J65MjdWPgpMaZYqKzp29EbHfbjuyKAbyY0Drl5o4tCw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:27:28 GMT"
+          "Value": "Sun, 12 Apr 2026 20:21:32 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "g9f74uky3o"
+          "Value": "35rn9f8g9c"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-BMW/K1aOlf4V4lnRPqOeXqVUafyWiPywQEocidAPYhI="
+          "Value": "sha256-J65MjdWPgpMaZYqKzp29EbHfbjuyKAbyY0Drl5o4tCw="
         },
         {
           "Name": "label",
-          "Value": "_framework/Clinica.WASM.pdb"
+          "Value": "_framework/Clinica.WASM.wasm"
         }
       ]
     },
     {
-      "Route": "_framework/Clinica.WASM.g9f74uky3o.pdb",
-      "AssetFile": "_framework/Clinica.WASM.g9f74uky3o.pdb.gz",
+      "Route": "_framework/Clinica.WASM.35rn9f8g9c.wasm",
+      "AssetFile": "_framework/Clinica.WASM.35rn9f8g9c.wasm.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000045903144"
+          "Quality": "0.000036682440"
         }
       ],
       "ResponseHeaders": [
@@ -966,23 +966,23 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "21784"
+          "Value": "27260"
         },
         {
           "Name": "Content-Type",
-          "Value": "application/octet-stream"
+          "Value": "application/wasm"
         },
         {
           "Name": "ETag",
-          "Value": "\"c+127oAPqB0BIolyVLNEtyl5MFvAxnUZRU1AevRSCng=\""
+          "Value": "\"miuy4Jje1OhYdHXSczF1M6nJ/DuS1zEzNSVVGaVFROQ=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"BMW/K1aOlf4V4lnRPqOeXqVUafyWiPywQEocidAPYhI=\""
+          "Value": "W/\"J65MjdWPgpMaZYqKzp29EbHfbjuyKAbyY0Drl5o4tCw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:27:29 GMT"
+          "Value": "Sun, 12 Apr 2026 20:21:33 GMT"
         },
         {
           "Name": "Vary",
@@ -992,21 +992,21 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "g9f74uky3o"
+          "Value": "35rn9f8g9c"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-BMW/K1aOlf4V4lnRPqOeXqVUafyWiPywQEocidAPYhI="
+          "Value": "sha256-J65MjdWPgpMaZYqKzp29EbHfbjuyKAbyY0Drl5o4tCw="
         },
         {
           "Name": "label",
-          "Value": "_framework/Clinica.WASM.pdb"
+          "Value": "_framework/Clinica.WASM.wasm"
         }
       ]
     },
     {
-      "Route": "_framework/Clinica.WASM.g9f74uky3o.pdb.gz",
-      "AssetFile": "_framework/Clinica.WASM.g9f74uky3o.pdb.gz",
+      "Route": "_framework/Clinica.WASM.35rn9f8g9c.wasm.gz",
+      "AssetFile": "_framework/Clinica.WASM.35rn9f8g9c.wasm.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1023,19 +1023,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "21784"
+          "Value": "27260"
         },
         {
           "Name": "Content-Type",
-          "Value": "application/octet-stream"
+          "Value": "application/wasm"
         },
         {
           "Name": "ETag",
-          "Value": "\"c+127oAPqB0BIolyVLNEtyl5MFvAxnUZRU1AevRSCng=\""
+          "Value": "\"miuy4Jje1OhYdHXSczF1M6nJ/DuS1zEzNSVVGaVFROQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:27:29 GMT"
+          "Value": "Sun, 12 Apr 2026 20:21:33 GMT"
         },
         {
           "Name": "Vary",
@@ -1045,11 +1045,172 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "g9f74uky3o"
+          "Value": "35rn9f8g9c"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-c+127oAPqB0BIolyVLNEtyl5MFvAxnUZRU1AevRSCng="
+          "Value": "sha256-miuy4Jje1OhYdHXSczF1M6nJ/DuS1zEzNSVVGaVFROQ="
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/Clinica.WASM.wasm.gz"
+        }
+      ]
+    },
+    {
+      "Route": "_framework/Clinica.WASM.ggbxggjn7n.pdb",
+      "AssetFile": "_framework/Clinica.WASM.ggbxggjn7n.pdb",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "47208"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wAfrCmDX5t+OdoI/04giFq7ZMtHLRUI1Oir4tD59gY0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 12 Apr 2026 20:21:32 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ggbxggjn7n"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wAfrCmDX5t+OdoI/04giFq7ZMtHLRUI1Oir4tD59gY0="
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/Clinica.WASM.pdb"
+        }
+      ]
+    },
+    {
+      "Route": "_framework/Clinica.WASM.ggbxggjn7n.pdb",
+      "AssetFile": "_framework/Clinica.WASM.ggbxggjn7n.pdb.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000028081999"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "35609"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"W3wkbYQmGzXu0aIMvB+nVlEVltNxAl8YPbuTQzNuVuY=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"wAfrCmDX5t+OdoI/04giFq7ZMtHLRUI1Oir4tD59gY0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 12 Apr 2026 20:21:33 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ggbxggjn7n"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wAfrCmDX5t+OdoI/04giFq7ZMtHLRUI1Oir4tD59gY0="
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/Clinica.WASM.pdb"
+        }
+      ]
+    },
+    {
+      "Route": "_framework/Clinica.WASM.ggbxggjn7n.pdb.gz",
+      "AssetFile": "_framework/Clinica.WASM.ggbxggjn7n.pdb.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "35609"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"W3wkbYQmGzXu0aIMvB+nVlEVltNxAl8YPbuTQzNuVuY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 12 Apr 2026 20:21:33 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ggbxggjn7n"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-W3wkbYQmGzXu0aIMvB+nVlEVltNxAl8YPbuTQzNuVuY="
         },
         {
           "Name": "label",
@@ -1059,7 +1220,7 @@
     },
     {
       "Route": "_framework/Clinica.WASM.pdb",
-      "AssetFile": "_framework/Clinica.WASM.g9f74uky3o.pdb",
+      "AssetFile": "_framework/Clinica.WASM.ggbxggjn7n.pdb",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1072,7 +1233,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "29420"
+          "Value": "47208"
         },
         {
           "Name": "Content-Type",
@@ -1080,28 +1241,28 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"BMW/K1aOlf4V4lnRPqOeXqVUafyWiPywQEocidAPYhI=\""
+          "Value": "\"wAfrCmDX5t+OdoI/04giFq7ZMtHLRUI1Oir4tD59gY0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:27:28 GMT"
+          "Value": "Sun, 12 Apr 2026 20:21:32 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-BMW/K1aOlf4V4lnRPqOeXqVUafyWiPywQEocidAPYhI="
+          "Value": "sha256-wAfrCmDX5t+OdoI/04giFq7ZMtHLRUI1Oir4tD59gY0="
         }
       ]
     },
     {
       "Route": "_framework/Clinica.WASM.pdb",
-      "AssetFile": "_framework/Clinica.WASM.g9f74uky3o.pdb.gz",
+      "AssetFile": "_framework/Clinica.WASM.ggbxggjn7n.pdb.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000045903144"
+          "Quality": "0.000028081999"
         }
       ],
       "ResponseHeaders": [
@@ -1119,7 +1280,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "21784"
+          "Value": "35609"
         },
         {
           "Name": "Content-Type",
@@ -1127,15 +1288,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"c+127oAPqB0BIolyVLNEtyl5MFvAxnUZRU1AevRSCng=\""
+          "Value": "\"W3wkbYQmGzXu0aIMvB+nVlEVltNxAl8YPbuTQzNuVuY=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"BMW/K1aOlf4V4lnRPqOeXqVUafyWiPywQEocidAPYhI=\""
+          "Value": "W/\"wAfrCmDX5t+OdoI/04giFq7ZMtHLRUI1Oir4tD59gY0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:27:29 GMT"
+          "Value": "Sun, 12 Apr 2026 20:21:33 GMT"
         },
         {
           "Name": "Vary",
@@ -1145,13 +1306,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-BMW/K1aOlf4V4lnRPqOeXqVUafyWiPywQEocidAPYhI="
+          "Value": "sha256-wAfrCmDX5t+OdoI/04giFq7ZMtHLRUI1Oir4tD59gY0="
         }
       ]
     },
     {
       "Route": "_framework/Clinica.WASM.pdb.gz",
-      "AssetFile": "_framework/Clinica.WASM.g9f74uky3o.pdb.gz",
+      "AssetFile": "_framework/Clinica.WASM.ggbxggjn7n.pdb.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1168,7 +1329,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "21784"
+          "Value": "35609"
         },
         {
           "Name": "Content-Type",
@@ -1176,11 +1337,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"c+127oAPqB0BIolyVLNEtyl5MFvAxnUZRU1AevRSCng=\""
+          "Value": "\"W3wkbYQmGzXu0aIMvB+nVlEVltNxAl8YPbuTQzNuVuY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:27:29 GMT"
+          "Value": "Sun, 12 Apr 2026 20:21:33 GMT"
         },
         {
           "Name": "Vary",
@@ -1190,13 +1351,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-c+127oAPqB0BIolyVLNEtyl5MFvAxnUZRU1AevRSCng="
+          "Value": "sha256-W3wkbYQmGzXu0aIMvB+nVlEVltNxAl8YPbuTQzNuVuY="
         }
       ]
     },
     {
       "Route": "_framework/Clinica.WASM.wasm",
-      "AssetFile": "_framework/Clinica.WASM.zvp13516gi.wasm",
+      "AssetFile": "_framework/Clinica.WASM.35rn9f8g9c.wasm",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1209,7 +1370,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "36117"
+          "Value": "75029"
         },
         {
           "Name": "Content-Type",
@@ -1217,28 +1378,28 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"T+DPWos2co1zjg2x3TpXJ/mgctLDLGGO6yGAM6KX7U8=\""
+          "Value": "\"J65MjdWPgpMaZYqKzp29EbHfbjuyKAbyY0Drl5o4tCw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:27:29 GMT"
+          "Value": "Sun, 12 Apr 2026 20:21:32 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-T+DPWos2co1zjg2x3TpXJ/mgctLDLGGO6yGAM6KX7U8="
+          "Value": "sha256-J65MjdWPgpMaZYqKzp29EbHfbjuyKAbyY0Drl5o4tCw="
         }
       ]
     },
     {
       "Route": "_framework/Clinica.WASM.wasm",
-      "AssetFile": "_framework/Clinica.WASM.zvp13516gi.wasm.gz",
+      "AssetFile": "_framework/Clinica.WASM.35rn9f8g9c.wasm.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000069920291"
+          "Quality": "0.000036682440"
         }
       ],
       "ResponseHeaders": [
@@ -1256,7 +1417,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "14301"
+          "Value": "27260"
         },
         {
           "Name": "Content-Type",
@@ -1264,15 +1425,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"plzCf4GYTEDy49rcXhNzggkNsSdbbWUq9adsXImZRWw=\""
+          "Value": "\"miuy4Jje1OhYdHXSczF1M6nJ/DuS1zEzNSVVGaVFROQ=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"T+DPWos2co1zjg2x3TpXJ/mgctLDLGGO6yGAM6KX7U8=\""
+          "Value": "W/\"J65MjdWPgpMaZYqKzp29EbHfbjuyKAbyY0Drl5o4tCw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:27:29 GMT"
+          "Value": "Sun, 12 Apr 2026 20:21:33 GMT"
         },
         {
           "Name": "Vary",
@@ -1282,13 +1443,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-T+DPWos2co1zjg2x3TpXJ/mgctLDLGGO6yGAM6KX7U8="
+          "Value": "sha256-J65MjdWPgpMaZYqKzp29EbHfbjuyKAbyY0Drl5o4tCw="
         }
       ]
     },
     {
       "Route": "_framework/Clinica.WASM.wasm.gz",
-      "AssetFile": "_framework/Clinica.WASM.zvp13516gi.wasm.gz",
+      "AssetFile": "_framework/Clinica.WASM.35rn9f8g9c.wasm.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1305,7 +1466,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "14301"
+          "Value": "27260"
         },
         {
           "Name": "Content-Type",
@@ -1313,11 +1474,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"plzCf4GYTEDy49rcXhNzggkNsSdbbWUq9adsXImZRWw=\""
+          "Value": "\"miuy4Jje1OhYdHXSczF1M6nJ/DuS1zEzNSVVGaVFROQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:27:29 GMT"
+          "Value": "Sun, 12 Apr 2026 20:21:33 GMT"
         },
         {
           "Name": "Vary",
@@ -1327,168 +1488,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-plzCf4GYTEDy49rcXhNzggkNsSdbbWUq9adsXImZRWw="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/Clinica.WASM.zvp13516gi.wasm",
-      "AssetFile": "_framework/Clinica.WASM.zvp13516gi.wasm",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "36117"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/wasm"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"T+DPWos2co1zjg2x3TpXJ/mgctLDLGGO6yGAM6KX7U8=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:27:29 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "zvp13516gi"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-T+DPWos2co1zjg2x3TpXJ/mgctLDLGGO6yGAM6KX7U8="
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/Clinica.WASM.wasm"
-        }
-      ]
-    },
-    {
-      "Route": "_framework/Clinica.WASM.zvp13516gi.wasm",
-      "AssetFile": "_framework/Clinica.WASM.zvp13516gi.wasm.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000069920291"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "14301"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/wasm"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"plzCf4GYTEDy49rcXhNzggkNsSdbbWUq9adsXImZRWw=\""
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"T+DPWos2co1zjg2x3TpXJ/mgctLDLGGO6yGAM6KX7U8=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:27:29 GMT"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "zvp13516gi"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-T+DPWos2co1zjg2x3TpXJ/mgctLDLGGO6yGAM6KX7U8="
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/Clinica.WASM.wasm"
-        }
-      ]
-    },
-    {
-      "Route": "_framework/Clinica.WASM.zvp13516gi.wasm.gz",
-      "AssetFile": "_framework/Clinica.WASM.zvp13516gi.wasm.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "14301"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/wasm"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"plzCf4GYTEDy49rcXhNzggkNsSdbbWUq9adsXImZRWw=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:27:29 GMT"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "zvp13516gi"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-plzCf4GYTEDy49rcXhNzggkNsSdbbWUq9adsXImZRWw="
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/Clinica.WASM.wasm.gz"
+          "Value": "sha256-miuy4Jje1OhYdHXSczF1M6nJ/DuS1zEzNSVVGaVFROQ="
         }
       ]
     },
@@ -59923,17 +59923,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"1LCSJtPIHWLcWloxmo94IkkArmwYmaAYI6Z1qZid4gc=\""
+          "Value": "\"EE77TgLyDODPNV7V3L17/JBI9zlSjTsH5UdT123pC1U=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:27:29 GMT"
+          "Value": "Sun, 12 Apr 2026 21:24:18 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-1LCSJtPIHWLcWloxmo94IkkArmwYmaAYI6Z1qZid4gc="
+          "Value": "sha256-EE77TgLyDODPNV7V3L17/JBI9zlSjTsH5UdT123pC1U="
         }
       ]
     },
@@ -59944,7 +59944,7 @@
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000077736318"
+          "Quality": "0.000077712154"
         }
       ],
       "ResponseHeaders": [
@@ -59962,7 +59962,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12863"
+          "Value": "12867"
         },
         {
           "Name": "Content-Type",
@@ -59970,15 +59970,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"VlNp37GWXZHrQcwi9udWv9vc7O9hUvTWjuShSwKQrNY=\""
+          "Value": "\"JJzVIz/NAalNZRuwr/ClgJBqGuuzPr9lRwkwOD53iZ4=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"1LCSJtPIHWLcWloxmo94IkkArmwYmaAYI6Z1qZid4gc=\""
+          "Value": "W/\"EE77TgLyDODPNV7V3L17/JBI9zlSjTsH5UdT123pC1U=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:20:21 GMT"
+          "Value": "Sun, 12 Apr 2026 20:21:33 GMT"
         },
         {
           "Name": "Vary",
@@ -59988,7 +59988,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-1LCSJtPIHWLcWloxmo94IkkArmwYmaAYI6Z1qZid4gc="
+          "Value": "sha256-EE77TgLyDODPNV7V3L17/JBI9zlSjTsH5UdT123pC1U="
         }
       ]
     },
@@ -60011,7 +60011,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12863"
+          "Value": "12867"
         },
         {
           "Name": "Content-Type",
@@ -60019,11 +60019,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"VlNp37GWXZHrQcwi9udWv9vc7O9hUvTWjuShSwKQrNY=\""
+          "Value": "\"JJzVIz/NAalNZRuwr/ClgJBqGuuzPr9lRwkwOD53iZ4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:20:21 GMT"
+          "Value": "Sun, 12 Apr 2026 20:21:33 GMT"
         },
         {
           "Name": "Vary",
@@ -60033,7 +60033,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-VlNp37GWXZHrQcwi9udWv9vc7O9hUvTWjuShSwKQrNY="
+          "Value": "sha256-JJzVIz/NAalNZRuwr/ClgJBqGuuzPr9lRwkwOD53iZ4="
         }
       ]
     },
@@ -63453,174 +63453,13 @@
       ]
     },
     {
-      "Route": "css/app.bkx3oqhcs8.css",
-      "AssetFile": "css/app.css.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000406338887"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2460"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"zKq+U3UQVN638AxO/946R0UtyxZLzPuj5K9EwtAEpTk=\""
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"q5w1QhUiexFCABB9FDe+IwOFtH3TtJ2E2Uj15teCeBo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:19:56 GMT"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "bkx3oqhcs8"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-q5w1QhUiexFCABB9FDe+IwOFtH3TtJ2E2Uj15teCeBo="
-        },
-        {
-          "Name": "label",
-          "Value": "css/app.css"
-        }
-      ]
-    },
-    {
-      "Route": "css/app.bkx3oqhcs8.css",
-      "AssetFile": "css/app.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "7940"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"q5w1QhUiexFCABB9FDe+IwOFtH3TtJ2E2Uj15teCeBo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:19:56 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "bkx3oqhcs8"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-q5w1QhUiexFCABB9FDe+IwOFtH3TtJ2E2Uj15teCeBo="
-        },
-        {
-          "Name": "label",
-          "Value": "css/app.css"
-        }
-      ]
-    },
-    {
-      "Route": "css/app.bkx3oqhcs8.css.gz",
-      "AssetFile": "css/app.css.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2460"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"zKq+U3UQVN638AxO/946R0UtyxZLzPuj5K9EwtAEpTk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:19:56 GMT"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "bkx3oqhcs8"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-zKq+U3UQVN638AxO/946R0UtyxZLzPuj5K9EwtAEpTk="
-        },
-        {
-          "Name": "label",
-          "Value": "css/app.css.gz"
-        }
-      ]
-    },
-    {
       "Route": "css/app.css",
       "AssetFile": "css/app.css.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000406338887"
+          "Quality": "0.000404367165"
         }
       ],
       "ResponseHeaders": [
@@ -63638,7 +63477,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2460"
+          "Value": "2472"
         },
         {
           "Name": "Content-Type",
@@ -63646,15 +63485,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"zKq+U3UQVN638AxO/946R0UtyxZLzPuj5K9EwtAEpTk=\""
+          "Value": "\"MBWR5i07kmGvJn6bJpfyncHU3fxHUlaVrK6eG24iLR4=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"q5w1QhUiexFCABB9FDe+IwOFtH3TtJ2E2Uj15teCeBo=\""
+          "Value": "W/\"u6dBW0UTA4ZXpNL1XqTKOBsatDpqmtsUPFRt87E4MMA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:19:56 GMT"
+          "Value": "Tue, 07 Apr 2026 16:13:40 GMT"
         },
         {
           "Name": "Vary",
@@ -63664,7 +63503,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-q5w1QhUiexFCABB9FDe+IwOFtH3TtJ2E2Uj15teCeBo="
+          "Value": "sha256-u6dBW0UTA4ZXpNL1XqTKOBsatDpqmtsUPFRt87E4MMA="
         }
       ]
     },
@@ -63683,7 +63522,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "7940"
+          "Value": "7960"
         },
         {
           "Name": "Content-Type",
@@ -63691,17 +63530,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"q5w1QhUiexFCABB9FDe+IwOFtH3TtJ2E2Uj15teCeBo=\""
+          "Value": "\"u6dBW0UTA4ZXpNL1XqTKOBsatDpqmtsUPFRt87E4MMA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:19:56 GMT"
+          "Value": "Tue, 07 Apr 2026 16:13:40 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-q5w1QhUiexFCABB9FDe+IwOFtH3TtJ2E2Uj15teCeBo="
+          "Value": "sha256-u6dBW0UTA4ZXpNL1XqTKOBsatDpqmtsUPFRt87E4MMA="
         }
       ]
     },
@@ -63724,7 +63563,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2460"
+          "Value": "2472"
         },
         {
           "Name": "Content-Type",
@@ -63732,11 +63571,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"zKq+U3UQVN638AxO/946R0UtyxZLzPuj5K9EwtAEpTk=\""
+          "Value": "\"MBWR5i07kmGvJn6bJpfyncHU3fxHUlaVrK6eG24iLR4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:19:56 GMT"
+          "Value": "Tue, 07 Apr 2026 16:13:40 GMT"
         },
         {
           "Name": "Vary",
@@ -63746,7 +63585,168 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-zKq+U3UQVN638AxO/946R0UtyxZLzPuj5K9EwtAEpTk="
+          "Value": "sha256-MBWR5i07kmGvJn6bJpfyncHU3fxHUlaVrK6eG24iLR4="
+        }
+      ]
+    },
+    {
+      "Route": "css/app.f7vrljfm23.css",
+      "AssetFile": "css/app.css.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000404367165"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2472"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MBWR5i07kmGvJn6bJpfyncHU3fxHUlaVrK6eG24iLR4=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"u6dBW0UTA4ZXpNL1XqTKOBsatDpqmtsUPFRt87E4MMA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Apr 2026 16:13:40 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "f7vrljfm23"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-u6dBW0UTA4ZXpNL1XqTKOBsatDpqmtsUPFRt87E4MMA="
+        },
+        {
+          "Name": "label",
+          "Value": "css/app.css"
+        }
+      ]
+    },
+    {
+      "Route": "css/app.f7vrljfm23.css",
+      "AssetFile": "css/app.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7960"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"u6dBW0UTA4ZXpNL1XqTKOBsatDpqmtsUPFRt87E4MMA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Apr 2026 16:13:40 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "f7vrljfm23"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-u6dBW0UTA4ZXpNL1XqTKOBsatDpqmtsUPFRt87E4MMA="
+        },
+        {
+          "Name": "label",
+          "Value": "css/app.css"
+        }
+      ]
+    },
+    {
+      "Route": "css/app.f7vrljfm23.css.gz",
+      "AssetFile": "css/app.css.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2472"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MBWR5i07kmGvJn6bJpfyncHU3fxHUlaVrK6eG24iLR4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Apr 2026 16:13:40 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "f7vrljfm23"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-MBWR5i07kmGvJn6bJpfyncHU3fxHUlaVrK6eG24iLR4="
+        },
+        {
+          "Name": "label",
+          "Value": "css/app.css.gz"
         }
       ]
     },
@@ -63955,7 +63955,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:27:13 GMT"
+          "Value": "Sun, 12 Apr 2026 02:16:27 GMT"
         },
         {
           "Name": "Vary",
@@ -64004,7 +64004,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:27:13 GMT"
+          "Value": "Sun, 12 Apr 2026 02:16:27 GMT"
         }
       ],
       "EndpointProperties": [
@@ -64053,7 +64053,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:27:13 GMT"
+          "Value": "Sun, 12 Apr 2026 02:16:27 GMT"
         },
         {
           "Name": "Vary",
@@ -64116,7 +64116,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:27:13 GMT"
+          "Value": "Sun, 12 Apr 2026 02:16:27 GMT"
         },
         {
           "Name": "Vary",
@@ -64157,7 +64157,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:27:13 GMT"
+          "Value": "Sun, 12 Apr 2026 02:16:27 GMT"
         }
       ],
       "EndpointProperties": [
@@ -64198,7 +64198,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Apr 2026 14:27:13 GMT"
+          "Value": "Sun, 12 Apr 2026 02:16:27 GMT"
         },
         {
           "Name": "Vary",

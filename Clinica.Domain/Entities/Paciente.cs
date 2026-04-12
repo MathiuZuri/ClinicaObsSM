@@ -16,6 +16,8 @@ public class Paciente
     public string? CorreoSecundario { get; set; }
     public string? LugarNacimiento { get; set; }
     public string? Direccion { get; set; }
+    
+    public DateTime FechaCreacion { get; private set ; }
 
     protected Paciente() { }
 
@@ -29,6 +31,7 @@ public class Paciente
         Apellidos = apellidos.ToUpper().Trim();
         FechaNacimiento = fechaNacimiento;
         Sexo = sexo.ToUpper();
+        FechaCreacion = DateTime.UtcNow;
     }
 
     // Método para actualizar datos de contacto sin tocar datos sensibles como DNI o HC

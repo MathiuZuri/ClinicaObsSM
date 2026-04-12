@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Clinica.WASM",
   "resources": {
-    "hash": "sha256-5tEcJte7VAKXnqvK9EVc3+dJyjeBlKFrS0VsxO0nbK8=",
+    "hash": "sha256-Y7/rk9GyNntS642638MUbFjqG+FJeEf67plzVCJawsA=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Authorization.gf26ou9jj9.wasm": "Microsoft.AspNetCore.Authorization.wasm",
       "Microsoft.AspNetCore.Components.v3fd2n5hlr.wasm": "Microsoft.AspNetCore.Components.wasm",
@@ -208,10 +208,10 @@
       "icudt_CJK.tjcz0u77k5.dat": "icudt_CJK.dat",
       "icudt_EFIGS.tptq2av103.dat": "icudt_EFIGS.dat",
       "icudt_no_CJK.lfu7j35m59.dat": "icudt_no_CJK.dat",
-      "Clinica.Domain.rwpnd9r2tx.wasm": "Clinica.Domain.wasm",
-      "Clinica.Domain.dcltwujjzy.pdb": "Clinica.Domain.pdb",
-      "Clinica.WASM.zvp13516gi.wasm": "Clinica.WASM.wasm",
-      "Clinica.WASM.g9f74uky3o.pdb": "Clinica.WASM.pdb"
+      "Clinica.Domain.6llpagw47a.wasm": "Clinica.Domain.wasm",
+      "Clinica.Domain.40atl9rux6.pdb": "Clinica.Domain.pdb",
+      "Clinica.WASM.35rn9f8g9c.wasm": "Clinica.WASM.wasm",
+      "Clinica.WASM.ggbxggjn7n.pdb": "Clinica.WASM.pdb"
     },
     "jsModuleNative": {
       "dotnet.native.hvg7u8bimp.js": "sha256-LX9rFEWGVxhkOkAVPG0w5RxPwzPBlEUz6dQNjWS7M+M="
@@ -428,12 +428,12 @@
       "WindowsBase.5lai2eowco.wasm": "sha256-GcDi5293y2A7oSiFYTbBTUe0d+ISbvgeel4ZNd8KkPM=",
       "mscorlib.wzkfrp7u5k.wasm": "sha256-9PjsU0gaxxz5Vyw++p9DeYUWLsaXbaMS2RbX6wmTUmk=",
       "netstandard.d82br99ghv.wasm": "sha256-DS8keXxU4eQpa1kIoiFxOA2Ii2g9hoNWSaVi8F8AnIE=",
-      "Clinica.Domain.rwpnd9r2tx.wasm": "sha256-FfzNe9Q9YGe/Dn5UhLzxjnak60ZjKLH0OaOkR0BpkOI=",
-      "Clinica.WASM.zvp13516gi.wasm": "sha256-T+DPWos2co1zjg2x3TpXJ/mgctLDLGGO6yGAM6KX7U8="
+      "Clinica.Domain.6llpagw47a.wasm": "sha256-djwJ0XQunsHHnPRDNz/VkvfD09zzcCscOH8mgZ7T4+s=",
+      "Clinica.WASM.35rn9f8g9c.wasm": "sha256-J65MjdWPgpMaZYqKzp29EbHfbjuyKAbyY0Drl5o4tCw="
     },
     "pdb": {
-      "Clinica.Domain.dcltwujjzy.pdb": "sha256-TVmwV0FptcFvPciNfl/uqahc4wc+03bI/a5J3ftmiQg=",
-      "Clinica.WASM.g9f74uky3o.pdb": "sha256-BMW/K1aOlf4V4lnRPqOeXqVUafyWiPywQEocidAPYhI="
+      "Clinica.Domain.40atl9rux6.pdb": "sha256-HP/lRxVJBqSATII0v1quMzkLgLwwkj/G3xhjBZEsl24=",
+      "Clinica.WASM.ggbxggjn7n.pdb": "sha256-wAfrCmDX5t+OdoI/04giFq7ZMtHLRUI1Oir4tD59gY0="
     }
   },
   "cacheBootResources": true,

@@ -1,0 +1,35 @@
+﻿/* Títulos de sección para organizar los datos */
+.section-header {
+    border-left: 4px solid var(--blue);
+    padding-left: 12px;
+    margin: 24px 0 16px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Contenedor del formulario con efecto de papel */
+.form-sheet {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* Estilo para los campos deshabilitados (lectura en edición) */
+input:disabled, select:disabled {
+    background-color: #f1f5f9;
+    color: #64748b;
+    cursor: not-allowed;
+    border-style: dashed;
+}
+
+/* Indicador de campo obligatorio */
+.required::after {
+    content: " *";
+    color: var(--red);
+}

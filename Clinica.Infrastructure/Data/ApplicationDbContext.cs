@@ -39,12 +39,18 @@ public class ApplicationDbContext : DbContext
             entity.HasIndex(e => e.DNI).IsUnique();
             entity.HasIndex(e => e.NumeroHC).IsUnique();
             
-            // Relación: Un Paciente está vinculado a un Usuario
-            // Usamos Restrict para evitar que borrar un usuario borre al paciente por accidente
+            entity.Property(e => e.DNI).IsRequired().HasMaxLength(8);
+            entity.Property(e => e.NumeroHC).IsRequired().HasMaxLength(20);
+            entity.Property(e => e.Nombres).IsRequired().HasMaxLength(100);
+            entity.Property(e => e.Apellidos).IsRequired().HasMaxLength(100);
+            entity.Property(e => e.Sexo).IsRequired().HasMaxLength(1); // 'M' o 'F'
+            entity.Property(e => e.Celular).HasMaxLength(15);
+            
+            // Relación: Un Paciente está vinculado a un Usuario (Quien lo registró)
             entity.HasOne<Usuario>()
-                  .WithMany()
-                  .HasForeignKey(e => e.UsuarioId)
-                  .OnDelete(DeleteBehavior.Restrict);
+                .WithMany()
+                .HasForeignKey(e => e.UsuarioId)
+                .OnDelete(DeleteBehavior.Restrict);
         });
 
         // Configuración de la tabla PersonalMedico
