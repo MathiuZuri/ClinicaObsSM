@@ -2207,19 +2207,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PC\\.nuget\\packages\\": {}
+    "C:\\Users\\paric\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\proyectC#\\ClinicaObst\\Clinica.WASM\\Clinica.WASM.csproj",
+      "projectUniqueName": "K:\\CLINICA SANTA MONICA DEV\\ClinicaObsSM\\Clinica.WASM\\Clinica.WASM.csproj",
       "projectName": "Clinica.WASM",
-      "projectPath": "F:\\proyectC#\\ClinicaObst\\Clinica.WASM\\Clinica.WASM.csproj",
-      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "F:\\proyectC#\\ClinicaObst\\Clinica.WASM\\obj\\",
+      "projectPath": "K:\\CLINICA SANTA MONICA DEV\\ClinicaObsSM\\Clinica.WASM\\Clinica.WASM.csproj",
+      "packagesPath": "C:\\Users\\paric\\.nuget\\packages\\",
+      "outputPath": "K:\\CLINICA SANTA MONICA DEV\\ClinicaObsSM\\Clinica.WASM\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\paric\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -2231,8 +2231,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "F:\\proyectC#\\ClinicaObst\\Clinica.Domain\\Clinica.Domain.csproj": {
-              "projectPath": "F:\\proyectC#\\ClinicaObst\\Clinica.Domain\\Clinica.Domain.csproj"
+            "K:\\CLINICA SANTA MONICA DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj": {
+              "projectPath": "K:\\CLINICA SANTA MONICA DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj"
             }
           }
         }
