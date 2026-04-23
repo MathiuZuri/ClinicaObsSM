@@ -9,79 +9,28 @@ public class ApplicationDbContext : DbContext
     {
     }
 
-    // Estas propiedades representan las tablas en PostgreSQL
     public DbSet<Usuario> Usuarios => Set<Usuario>();
+    public DbSet<Rol> Roles => Set<Rol>();
+    public DbSet<Permiso> Permisos => Set<Permiso>();
+    public DbSet<UsuarioRol> UsuarioRoles => Set<UsuarioRol>();
+    public DbSet<RolPermiso> RolPermisos => Set<RolPermiso>();
+    public DbSet<Auditoria> Auditorias => Set<Auditoria>();
+
     public DbSet<Paciente> Pacientes => Set<Paciente>();
-    public DbSet<PersonalMedico> PersonalMedico => Set<PersonalMedico>();
+    public DbSet<Doctor> Doctores => Set<Doctor>();
+    public DbSet<HorarioDoctor> HorariosDoctor => Set<HorarioDoctor>();
     public DbSet<Cita> Citas => Set<Cita>();
+
+    public DbSet<ServicioClinico> ServiciosClinicos => Set<ServicioClinico>();
+    public DbSet<HistorialClinico> HistorialesClinicos => Set<HistorialClinico>();
+    public DbSet<HistorialDetalle> HistorialDetalles => Set<HistorialDetalle>();
+    public DbSet<Atencion> Atenciones => Set<Atencion>();
+    public DbSet<Pago> Pagos => Set<Pago>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
-        // Configuración de la tabla Usuarios
-        modelBuilder.Entity<Usuario>(entity =>
-        {
-            entity.ToTable("Usuarios");
-            entity.HasKey(e => e.Id);
-            
-            // Garantiza que no existan dos correos iguales a nivel de base de datos
-            entity.HasIndex(e => e.Correo).IsUnique(); 
-        });
-
-        // Configuración de la tabla Pacientes
-        modelBuilder.Entity<Paciente>(entity =>
-        {
-            entity.ToTable("Pacientes");
-            entity.HasKey(e => e.Id);
-            
-            // Índices únicos para evitar duplicados críticos
-            entity.HasIndex(e => e.DNI).IsUnique();
-            entity.HasIndex(e => e.NumeroHC).IsUnique();
-            
-            entity.Property(e => e.DNI).IsRequired().HasMaxLength(8);
-            entity.Property(e => e.NumeroHC).IsRequired().HasMaxLength(20);
-            entity.Property(e => e.Nombres).IsRequired().HasMaxLength(100);
-            entity.Property(e => e.Apellidos).IsRequired().HasMaxLength(100);
-            entity.Property(e => e.Sexo).IsRequired().HasMaxLength(1); // 'M' o 'F'
-            entity.Property(e => e.Celular).HasMaxLength(15);
-            
-            // Relación: Un Paciente está vinculado a un Usuario (Quien lo registró)
-            entity.HasOne<Usuario>()
-                .WithMany()
-                .HasForeignKey(e => e.UsuarioId)
-                .OnDelete(DeleteBehavior.Restrict);
-        });
-
-        // Configuración de la tabla PersonalMedico
-        modelBuilder.Entity<PersonalMedico>(entity =>
-        {
-            entity.ToTable("PersonalMedico");
-            entity.HasKey(e => e.Id);
-            
-            entity.HasOne<Usuario>()
-                  .WithMany()
-                  .HasForeignKey(e => e.UsuarioId)
-                  .OnDelete(DeleteBehavior.Restrict);
-        });
-
-        // Configuración de la tabla Citas
-        modelBuilder.Entity<Cita>(entity =>
-        {
-            entity.ToTable("Citas");
-            entity.HasKey(e => e.Id);
-
-            // Relación con el paciente
-            entity.HasOne<Paciente>()
-                  .WithMany()
-                  .HasForeignKey(e => e.PacienteId)
-                  .OnDelete(DeleteBehavior.Restrict);
-
-            // Relación con el médico (es opcional, por lo que acepta nulos si no se ha asignado)
-            entity.HasOne<PersonalMedico>()
-                  .WithMany()
-                  .HasForeignKey(e => e.PersonalMedicoId)
-                  .OnDelete(DeleteBehavior.Restrict);
-        });
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
     }
 }

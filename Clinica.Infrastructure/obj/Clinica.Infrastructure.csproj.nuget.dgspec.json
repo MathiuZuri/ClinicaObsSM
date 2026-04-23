@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "K:\\CLINICA SANTA MONICA DEV\\ClinicaObsSM\\Clinica.Infrastructure\\Clinica.Infrastructure.csproj": {}
+    "C:\\KEVINRAF\\ClinicaObsSM\\Clinica.Infrastructure\\Clinica.Infrastructure.csproj": {}
   },
   "projects": {
-    "K:\\CLINICA SANTA MONICA DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj": {
+    "C:\\KEVINRAF\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "K:\\CLINICA SANTA MONICA DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj",
+        "projectUniqueName": "C:\\KEVINRAF\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj",
         "projectName": "Clinica.Domain",
-        "projectPath": "K:\\CLINICA SANTA MONICA DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj",
-        "packagesPath": "C:\\Users\\paric\\.nuget\\packages\\",
-        "outputPath": "K:\\CLINICA SANTA MONICA DEV\\ClinicaObsSM\\Clinica.Domain\\obj\\",
+        "projectPath": "C:\\KEVINRAF\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj",
+        "packagesPath": "C:\\Users\\CRAI\\.nuget\\packages\\",
+        "outputPath": "C:\\KEVINRAF\\ClinicaObsSM\\Clinica.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\paric\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\CRAI\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -38,7 +38,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
@@ -69,21 +69,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\CRAI\\.dotnet\\sdk\\9.0.313/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "K:\\CLINICA SANTA MONICA DEV\\ClinicaObsSM\\Clinica.Infrastructure\\Clinica.Infrastructure.csproj": {
+    "C:\\KEVINRAF\\ClinicaObsSM\\Clinica.Infrastructure\\Clinica.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "K:\\CLINICA SANTA MONICA DEV\\ClinicaObsSM\\Clinica.Infrastructure\\Clinica.Infrastructure.csproj",
+        "projectUniqueName": "C:\\KEVINRAF\\ClinicaObsSM\\Clinica.Infrastructure\\Clinica.Infrastructure.csproj",
         "projectName": "Clinica.Infrastructure",
-        "projectPath": "K:\\CLINICA SANTA MONICA DEV\\ClinicaObsSM\\Clinica.Infrastructure\\Clinica.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\paric\\.nuget\\packages\\",
-        "outputPath": "K:\\CLINICA SANTA MONICA DEV\\ClinicaObsSM\\Clinica.Infrastructure\\obj\\",
+        "projectPath": "C:\\KEVINRAF\\ClinicaObsSM\\Clinica.Infrastructure\\Clinica.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\CRAI\\.nuget\\packages\\",
+        "outputPath": "C:\\KEVINRAF\\ClinicaObsSM\\Clinica.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\paric\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\CRAI\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -95,8 +95,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "K:\\CLINICA SANTA MONICA DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj": {
-                "projectPath": "K:\\CLINICA SANTA MONICA DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj"
+              "C:\\KEVINRAF\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj": {
+                "projectPath": "C:\\KEVINRAF\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj"
               }
             }
           }
@@ -111,7 +111,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
@@ -142,7 +142,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\CRAI\\.dotnet\\sdk\\9.0.313/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

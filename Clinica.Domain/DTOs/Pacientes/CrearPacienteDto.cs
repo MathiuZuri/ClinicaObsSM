@@ -16,11 +16,3 @@ public class CrearPacienteDto
     public string? CorreoSecundario { get; set; }
     public string? Direccion { get; set; }
 }
-
-// DTO estricto para editar (evita que le cambien el DNI a alguien por error)
-public class ActualizarContactoPacienteDto
-{
-    public string? Celular { get; set; }
-    public string? CorreoSecundario { get; set; }
-    public string? Direccion { get; set; }
-}
