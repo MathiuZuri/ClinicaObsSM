@@ -1,6 +1,8 @@
-﻿namespace Clinica.Domain.Interfaces;
+﻿using Clinica.Domain.Entities;
 
-public class IRolRepository
+namespace Clinica.Domain.Interfaces;
+
+public interface IRolRepository : IGenericRepository<Rol>
 {
-    
+    Task<Rol?> ObtenerPorNombreAsync(string nombre);
 }
