@@ -4,6 +4,7 @@ using Clinica.Domain.Interfaces;
 using Clinica.Infrastructure.Data;
 using Clinica.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Clinica.Infrastructure.Data.Seeds;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -74,5 +75,11 @@ app.UseCors("PermitirBlazor");
 app.UseAuthorization();
 
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    await DataSeeder.SeedAsync(context);
+}
 
 app.Run(); // NOSONAR
