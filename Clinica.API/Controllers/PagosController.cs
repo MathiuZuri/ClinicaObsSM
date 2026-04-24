@@ -17,24 +17,28 @@ public class PagosController : ControllerBase
         _pagoService = pagoService;
     }
 
+    [Authorize(Policy = PermisosPolicies.PagoVer)]
     [HttpGet("paciente/{pacienteId:guid}")]
     public async Task<IActionResult> GetByPaciente(Guid pacienteId)
     {
         return Ok(await _pagoService.ObtenerPorPacienteAsync(pacienteId));
     }
 
+    [Authorize(Policy = PermisosPolicies.PagoVer)]
     [HttpGet("cita/{citaId:guid}")]
     public async Task<IActionResult> GetByCita(Guid citaId)
     {
         return Ok(await _pagoService.ObtenerPorCitaAsync(citaId));
     }
 
+    [Authorize(Policy = PermisosPolicies.PagoVer)]
     [HttpGet("atencion/{atencionId:guid}")]
     public async Task<IActionResult> GetByAtencion(Guid atencionId)
     {
         return Ok(await _pagoService.ObtenerPorAtencionAsync(atencionId));
     }
 
+    [Authorize(Policy = PermisosPolicies.PagoRegistrar)]
     [HttpPost]
     public async Task<IActionResult> Registrar([FromBody] RegistrarPagoDto dto)
     {

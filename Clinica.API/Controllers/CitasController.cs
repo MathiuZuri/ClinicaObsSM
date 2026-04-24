@@ -17,12 +17,14 @@ public class CitasController : ControllerBase
         _citaService = citaService;
     }
 
+    [Authorize(Policy = PermisosPolicies.CitaVer)]
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
         return Ok(await _citaService.ObtenerTodasAsync());
     }
-
+    
+    [Authorize(Policy = PermisosPolicies.CitaVer)]
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetById(Guid id)
     {
@@ -30,18 +32,21 @@ public class CitasController : ControllerBase
         return cita == null ? NotFound(new { mensaje = "Cita no encontrada." }) : Ok(cita);
     }
 
+    [Authorize(Policy = PermisosPolicies.CitaVer)]
     [HttpGet("paciente/{pacienteId:guid}")]
     public async Task<IActionResult> GetByPaciente(Guid pacienteId)
     {
         return Ok(await _citaService.ObtenerPorPacienteAsync(pacienteId));
     }
 
+    [Authorize(Policy = PermisosPolicies.CitaVer)]
     [HttpGet("doctor/{doctorId:guid}")]
     public async Task<IActionResult> GetByDoctor(Guid doctorId)
     {
         return Ok(await _citaService.ObtenerPorDoctorAsync(doctorId));
     }
 
+    [Authorize(Policy = PermisosPolicies.CitaProgramar)]
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CrearCitaDto dto)
     {
@@ -60,6 +65,7 @@ public class CitasController : ControllerBase
         }
     }
 
+    [Authorize(Policy = PermisosPolicies.CitaReprogramar)]
     [HttpPut("{id:guid}/reprogramar")]
     public async Task<IActionResult> Reprogramar(Guid id, [FromBody] ReprogramarCitaDto dto)
     {
@@ -78,6 +84,7 @@ public class CitasController : ControllerBase
         }
     }
 
+    [Authorize(Policy = PermisosPolicies.CitaCancelar)]
     [HttpPut("{id:guid}/cancelar")]
     public async Task<IActionResult> Cancelar(Guid id, [FromBody] CancelarCitaDto dto)
     {

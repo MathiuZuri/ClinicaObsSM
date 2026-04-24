@@ -17,12 +17,14 @@ public class AtencionesController : ControllerBase
         _atencionService = atencionService;
     }
 
+    [Authorize(Policy = PermisosPolicies.AtencionVer)]
     [HttpGet("paciente/{pacienteId:guid}")]
     public async Task<IActionResult> GetByPaciente(Guid pacienteId)
     {
         return Ok(await _atencionService.ObtenerPorPacienteAsync(pacienteId));
     }
 
+    [Authorize(Policy = PermisosPolicies.AtencionVer)]
     [HttpGet("cita/{citaId:guid}")]
     public async Task<IActionResult> GetByCita(Guid citaId)
     {
@@ -30,6 +32,7 @@ public class AtencionesController : ControllerBase
         return atencion == null ? NotFound(new { mensaje = "Atención no encontrada." }) : Ok(atencion);
     }
 
+    [Authorize(Policy = PermisosPolicies.AtencionRegistrar)]
     [HttpPost]
     public async Task<IActionResult> Registrar([FromBody] RegistrarAtencionDto dto)
     {
@@ -48,6 +51,7 @@ public class AtencionesController : ControllerBase
         }
     }
 
+    [Authorize(Policy = PermisosPolicies.AtencionCerrar)]
     [HttpPut("{id:guid}/cerrar")]
     public async Task<IActionResult> Cerrar(Guid id, [FromBody] CerrarAtencionDto dto)
     {

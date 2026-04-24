@@ -17,12 +17,14 @@ public class RolesController : ControllerBase
         _rolService = rolService;
     }
 
+    [Authorize(Policy = PermisosPolicies.RolVer)]
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
         return Ok(await _rolService.ObtenerTodosAsync());
     }
 
+    [Authorize(Policy = PermisosPolicies.RolVer)]
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetById(Guid id)
     {
@@ -30,6 +32,7 @@ public class RolesController : ControllerBase
         return rol == null ? NotFound(new { mensaje = "Rol no encontrado." }) : Ok(rol);
     }
 
+    [Authorize(Policy = PermisosPolicies.RolCrear)]
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CrearRolDto dto)
     {
@@ -44,6 +47,7 @@ public class RolesController : ControllerBase
         }
     }
 
+    [Authorize(Policy = PermisosPolicies.RolEditar)]
     [HttpPut("{id:guid}")]
     public async Task<IActionResult> Update(Guid id, [FromBody] EditarRolDto dto)
     {
@@ -62,6 +66,7 @@ public class RolesController : ControllerBase
         }
     }
 
+    [Authorize(Policy = PermisosPolicies.RolAsignarPermisos)]
     [HttpPost("asignar-permisos")]
     public async Task<IActionResult> AssignPermissions([FromBody] AsignarPermisosRolDto dto)
     {

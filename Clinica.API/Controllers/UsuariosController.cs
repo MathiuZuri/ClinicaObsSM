@@ -18,12 +18,14 @@ public class UsuariosController : ControllerBase
         _usuarioService = usuarioService;
     }
 
+    [Authorize(Policy = PermisosPolicies.UsuarioVer)]
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
         return Ok(await _usuarioService.ObtenerTodosAsync());
     }
 
+    [Authorize(Policy = PermisosPolicies.UsuarioVer)]
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetById(Guid id)
     {
@@ -31,6 +33,7 @@ public class UsuariosController : ControllerBase
         return usuario == null ? NotFound(new { mensaje = "Usuario no encontrado." }) : Ok(usuario);
     }
 
+    [Authorize(Policy = PermisosPolicies.UsuarioCrear)]
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CrearUsuarioDto dto)
     {
@@ -45,6 +48,7 @@ public class UsuariosController : ControllerBase
         }
     }
 
+    [Authorize(Policy = PermisosPolicies.UsuarioEditar)]
     [HttpPut("{id:guid}")]
     public async Task<IActionResult> Update(Guid id, [FromBody] EditarUsuarioDto dto)
     {
@@ -59,6 +63,7 @@ public class UsuariosController : ControllerBase
         }
     }
 
+    [Authorize(Policy = PermisosPolicies.UsuarioAsignarRol)]
     [HttpPost("asignar-rol")]
     public async Task<IActionResult> AssignRole([FromBody] AsignarRolUsuarioDto dto)
     {

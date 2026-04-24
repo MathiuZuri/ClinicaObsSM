@@ -16,6 +16,7 @@ public class HistorialesController : ControllerBase
         _historialService = historialService;
     }
 
+    [Authorize(Policy = PermisosPolicies.HistorialVer)]
     [HttpGet("paciente/{pacienteId:guid}")]
     public async Task<IActionResult> GetByPaciente(Guid pacienteId)
     {
@@ -23,6 +24,7 @@ public class HistorialesController : ControllerBase
         return historial == null ? NotFound(new { mensaje = "Historial clínico no encontrado." }) : Ok(historial);
     }
 
+    [Authorize(Policy = PermisosPolicies.HistorialVer)]
     [HttpGet("{historialId:guid}/detalles")]
     public async Task<IActionResult> GetConDetalles(Guid historialId)
     {

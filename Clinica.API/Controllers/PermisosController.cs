@@ -16,6 +16,7 @@ public class PermisosController : ControllerBase
         _permisoService = permisoService;
     }
 
+    [Authorize(Policy = PermisosPolicies.PermisoVer)]
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {

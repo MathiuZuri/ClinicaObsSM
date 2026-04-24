@@ -16,12 +16,14 @@ public class AuditoriaController : ControllerBase
         _auditoriaService = auditoriaService;
     }
 
+    [Authorize(Policy = PermisosPolicies.AuditoriaVer)]
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
         return Ok(await _auditoriaService.ObtenerTodosAsync());
     }
 
+    [Authorize(Policy = PermisosPolicies.AuditoriaVer)]
     [HttpGet("usuario/{usuarioId:guid}")]
     public async Task<IActionResult> GetByUsuario(Guid usuarioId)
     {

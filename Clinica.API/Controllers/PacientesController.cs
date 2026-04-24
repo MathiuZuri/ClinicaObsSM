@@ -17,12 +17,14 @@ public class PacientesController : ControllerBase
         _pacienteService = pacienteService;
     }
 
+    [Authorize(Policy = PermisosPolicies.PacienteVer)]
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
         return Ok(await _pacienteService.ObtenerTodosAsync());
     }
 
+    [Authorize(Policy = PermisosPolicies.PacienteVer)]
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetById(Guid id)
     {
@@ -30,6 +32,7 @@ public class PacientesController : ControllerBase
         return paciente == null ? NotFound(new { mensaje = "Paciente no encontrado." }) : Ok(paciente);
     }
 
+    [Authorize(Policy = PermisosPolicies.PacienteVer)]
     [HttpGet("dni/{dni}")]
     public async Task<IActionResult> GetByDni(string dni)
     {
@@ -37,6 +40,7 @@ public class PacientesController : ControllerBase
         return paciente == null ? NotFound(new { mensaje = "Paciente no encontrado." }) : Ok(paciente);
     }
 
+    [Authorize(Policy = PermisosPolicies.PacienteCrear)]
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CrearPacienteDto dto)
     {
@@ -51,6 +55,7 @@ public class PacientesController : ControllerBase
         }
     }
 
+    [Authorize(Policy = PermisosPolicies.PacienteEditar)]
     [HttpPut("{id:guid}/contacto")]
     public async Task<IActionResult> UpdateContact(Guid id, [FromBody] ActualizarContactoPacienteDto dto)
     {

@@ -17,18 +17,21 @@ public class HorariosController : ControllerBase
         _horarioService = horarioService;
     }
 
+    [Authorize(Policy = PermisosPolicies.HorarioVer)]
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
         return Ok(await _horarioService.ObtenerTodosAsync());
     }
 
+    [Authorize(Policy = PermisosPolicies.HorarioVer)]
     [HttpGet("doctor/{doctorId:guid}")]
     public async Task<IActionResult> GetByDoctor(Guid doctorId)
     {
         return Ok(await _horarioService.ObtenerPorDoctorAsync(doctorId));
     }
 
+    [Authorize(Policy = PermisosPolicies.HorarioCrear)]
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CrearHorarioDoctorDto dto)
     {
@@ -47,6 +50,7 @@ public class HorariosController : ControllerBase
         }
     }
 
+    [Authorize(Policy = PermisosPolicies.HorarioEditar)]
     [HttpPut("{id:guid}")]
     public async Task<IActionResult> Update(Guid id, [FromBody] EditarHorarioDoctorDto dto)
     {

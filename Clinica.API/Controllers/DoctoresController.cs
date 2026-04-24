@@ -17,18 +17,21 @@ public class DoctoresController : ControllerBase
         _doctorService = doctorService;
     }
 
+    [Authorize(Policy = PermisosPolicies.DoctorVer)]
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
         return Ok(await _doctorService.ObtenerTodosAsync());
     }
 
+    [Authorize(Policy = PermisosPolicies.DoctorVer)]
     [HttpGet("activos")]
     public async Task<IActionResult> GetActivos()
     {
         return Ok(await _doctorService.ObtenerActivosAsync());
     }
 
+    [Authorize(Policy = PermisosPolicies.DoctorVer)]
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetById(Guid id)
     {
@@ -36,6 +39,7 @@ public class DoctoresController : ControllerBase
         return doctor == null ? NotFound(new { mensaje = "Doctor no encontrado." }) : Ok(doctor);
     }
 
+    [Authorize(Policy = PermisosPolicies.DoctorCrear)]
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CrearDoctorDto dto)
     {
@@ -50,6 +54,7 @@ public class DoctoresController : ControllerBase
         }
     }
 
+    [Authorize(Policy = PermisosPolicies.DoctorEditar)]
     [HttpPut("{id:guid}")]
     public async Task<IActionResult> Update(Guid id, [FromBody] EditarDoctorDto dto)
     {
