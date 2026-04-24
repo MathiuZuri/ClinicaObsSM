@@ -1,6 +1,8 @@
-﻿namespace Clinica.Domain.Interfaces;
+﻿using Clinica.Domain.Entities;
 
-public class IPermisoRepository
+namespace Clinica.Domain.Interfaces;
+
+public interface IPermisoRepository : IGenericRepository<Permiso>
 {
-    
+    Task<Permiso?> ObtenerPorCodigoAsync(string codigo);
 }
