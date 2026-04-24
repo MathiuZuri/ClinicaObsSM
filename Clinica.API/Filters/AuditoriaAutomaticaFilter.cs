@@ -21,6 +21,8 @@ public class AuditoriaAutomaticaFilter : IAsyncActionFilter
     {
         var ejecutado = await next();
 
+        var usuarioIdDesdeRespuesta = ObtenerUsuarioIdDesdeResultado(ejecutado);
+
         var http = context.HttpContext;
         var endpoint = context.ActionDescriptor as ControllerActionDescriptor;
 
@@ -33,7 +35,7 @@ public class AuditoriaAutomaticaFilter : IAsyncActionFilter
 
         Guid? usuarioId = Guid.TryParse(usuarioIdClaim, out var idUsuario)
             ? idUsuario
-            : null;
+            : usuarioIdDesdeRespuesta;
 
         var statusCode = http.Response.StatusCode;
 
@@ -95,6 +97,31 @@ public class AuditoriaAutomaticaFilter : IAsyncActionFilter
         };
     }
 
+    private static Guid? ObtenerUsuarioIdDesdeResultado(ActionExecutedContext ejecutado)
+    {
+        if (ejecutado.Result is not Microsoft.AspNetCore.Mvc.ObjectResult objectResult)
+            return null;
+
+        var value = objectResult.Value;
+
+        if (value == null)
+            return null;
+
+        var propiedadUsuarioId = value.GetType().GetProperty("UsuarioId");
+
+        if (propiedadUsuarioId == null)
+            return null;
+
+        var valorUsuarioId = propiedadUsuarioId.GetValue(value);
+
+        if (valorUsuarioId is Guid guid)
+            return guid;
+
+        return Guid.TryParse(valorUsuarioId?.ToString(), out var guidParseado)
+            ? guidParseado
+            : null;
+    }
+    
     private static Guid? ObtenerEntidadId(ActionExecutingContext context)
     {
         string? valor = null;
