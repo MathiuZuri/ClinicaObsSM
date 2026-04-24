@@ -4,49 +4,37 @@ namespace Clinica.Domain.Entities;
 
 public class Cita
 {
-    public Guid Id { get; set; }
+    public Guid Id { get; set; } = Guid.NewGuid();
+
+    public string CodigoCita { get; set; } = string.Empty;
+
     public Guid PacienteId { get; set; }
-    public Guid? PersonalMedicoId { get; set; }
-    
-    public DateTime? FechaHoraProgramada { get; set; }
-    public int DuracionMinutos { get; set; }
-    
-    public string Servicio { get; set; } = string.Empty;
-    public string? MotivoConsulta { get; set; }
-    public string? Notas { get; set; }
-    
-    public EstadoCita Estado { get; set; }
-    public DateTime FechaRegistro { get; set; }
-    
-    protected Cita() { }
+    public Paciente Paciente { get; set; } = null!;
 
-    // Constructor para cuando un paciente SOLICITA una cita desde la web
-    public Cita(Guid pacienteId, string servicio, string? motivoConsulta)
-    {
-        Id = Guid.NewGuid();
-        PacienteId = pacienteId;
-        Servicio = servicio;
-        MotivoConsulta = motivoConsulta;
-        Estado = EstadoCita.Solicitada;
-        FechaRegistro = DateTime.UtcNow;
-        DuracionMinutos = 30; // Duración por defecto
-    }
+    public Guid DoctorId { get; set; }
+    public Doctor Doctor { get; set; } = null!;
 
-    // Recepción AGENDA la cita
-    public void Agendar(Guid personalMedicoId, DateTime fechaHora, int duracionMinutos = 30)
-    {
-        // No se puede agendar en el pasado
-        if (fechaHora < DateTime.UtcNow)
-            throw new ArgumentException("La fecha programada no puede estar en el pasado.");
+    public Guid ServicioClinicoId { get; set; }
+    public ServicioClinico ServicioClinico { get; set; } = null!;
 
-        PersonalMedicoId = personalMedicoId;
-        FechaHoraProgramada = fechaHora;
-        DuracionMinutos = duracionMinutos;
-        Estado = EstadoCita.Agendada;
-    }
+    public Guid? HorarioDoctorId { get; set; }
+    public HorarioDoctor? HorarioDoctor { get; set; }
 
-    // Métodos para avanzar el flujo
-    public void MarcarComoEnEspera() => Estado = EstadoCita.EnEspera;
-    public void MarcarComoAtendida() => Estado = EstadoCita.Atendida;
-    public void Cancelar() => Estado = EstadoCita.Cancelada;
+    public DateOnly Fecha { get; set; }
+    public TimeOnly HoraInicio { get; set; }
+    public TimeOnly HoraFin { get; set; }
+
+    public string Motivo { get; set; } = string.Empty;
+    public string? Observaciones { get; set; }
+
+    public EstadoCita Estado { get; set; } = EstadoCita.Pendiente;
+
+    public DateTime FechaRegistro { get; set; } = DateTime.UtcNow;
+
+    public Guid? UsuarioRegistroId { get; set; }
+    public Usuario? UsuarioRegistro { get; set; }
+
+    public Atencion? Atencion { get; set; }
+    public ICollection<Pago> Pagos { get; set; } = new List<Pago>();
+    public ICollection<HistorialDetalle> HistorialDetalles { get; set; } = new List<HistorialDetalle>();
 }
