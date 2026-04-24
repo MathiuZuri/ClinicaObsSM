@@ -1,6 +1,10 @@
-﻿namespace Clinica.Domain.Interfaces;
+﻿using Clinica.Domain.Entities;
 
-public class IPagoRepository
+namespace Clinica.Domain.Interfaces;
+
+public interface IPagoRepository : IGenericRepository<Pago>
 {
-    
+    Task<IEnumerable<Pago>> ObtenerPorPacienteAsync(Guid pacienteId);
+    Task<IEnumerable<Pago>> ObtenerPorCitaAsync(Guid citaId);
+    Task<IEnumerable<Pago>> ObtenerPorAtencionAsync(Guid atencionId);
 }
