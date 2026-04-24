@@ -1,6 +1,9 @@
 ﻿namespace Clinica.Domain.Enums;
 
-public class EstadoUsuario
+public enum EstadoUsuario
 {
-    
+    Activo = 1,
+    Inactivo = 2,
+    Bloqueado = 3,
+    Eliminado = 4
 }
