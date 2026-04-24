@@ -1,4 +1,5 @@
-﻿using Clinica.Domain.DTOs.Auth;
+﻿using Clinica.API.Helpers;
+using Clinica.Domain.DTOs.Auth;
 using Clinica.Domain.Interfaces;
 
 namespace Clinica.API.Services.Imp;
@@ -6,10 +7,12 @@ namespace Clinica.API.Services.Imp;
 public class AuthService : IAuthService
 {
     private readonly IUsuarioRepository _usuarioRepository;
+    private readonly JwtHelper _jwtHelper;
 
-    public AuthService(IUsuarioRepository usuarioRepository)
+    public AuthService(IUsuarioRepository usuarioRepository, JwtHelper jwtHelper)
     {
         _usuarioRepository = usuarioRepository;
+        _jwtHelper = jwtHelper;
     }
 
     public async Task<RespuestaInicioSesionDto> IniciarSesionAsync(IniciarSesionDto dto)
@@ -20,14 +23,24 @@ public class AuthService : IAuthService
         if (usuario == null)
             throw new InvalidOperationException("Usuario o contraseña incorrectos.");
 
-        // Temporal: luego reemplazamos por BCrypt/JWT real.
+        // Temporal: luego reemplazaremos comparación directa por BCrypt.
         if (usuario.PasswordHash != dto.Password)
             throw new InvalidOperationException("Usuario o contraseña incorrectos.");
 
         var roles = usuario.UsuarioRoles
             .Where(x => x.Activo)
             .Select(x => x.Rol.Nombre)
+            .Distinct()
             .ToList();
+
+        var permisos = usuario.UsuarioRoles
+            .Where(x => x.Activo)
+            .SelectMany(x => x.Rol.RolPermisos)
+            .Select(x => x.Permiso.Codigo)
+            .Distinct()
+            .ToList();
+
+        var token = _jwtHelper.GenerarToken(usuario, roles, permisos);
 
         return new RespuestaInicioSesionDto
         {
@@ -35,9 +48,9 @@ public class AuthService : IAuthService
             CodigoUsuario = usuario.CodigoUsuario,
             NombreCompleto = $"{usuario.Nombres} {usuario.Apellidos}",
             Correo = usuario.Correo,
-            Token = "TOKEN_TEMPORAL",
+            Token = token,
             Roles = roles,
-            Permisos = new List<string>()
+            Permisos = permisos
         };
     }
 }

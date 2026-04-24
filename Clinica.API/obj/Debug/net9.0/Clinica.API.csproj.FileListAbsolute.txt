@@ -268,3 +268,11 @@ K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\obj\Debug\net9.0\refint
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\obj\Debug\net9.0\Clinica.API.pdb
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\obj\Debug\net9.0\Clinica.API.genruntimeconfig.cache
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\obj\Debug\net9.0\ref\Clinica.API.dll
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll

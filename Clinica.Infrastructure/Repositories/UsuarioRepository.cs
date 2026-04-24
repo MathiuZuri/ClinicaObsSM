@@ -16,6 +16,8 @@ public class UsuarioRepository : GenericRepository<Usuario>, IUsuarioRepository
         return await Context.Usuarios
             .Include(x => x.UsuarioRoles)
             .ThenInclude(x => x.Rol)
+            .ThenInclude(x => x.RolPermisos)
+            .ThenInclude(x => x.Permiso)
             .FirstOrDefaultAsync(x => x.Correo == correo);
     }
 
@@ -24,6 +26,8 @@ public class UsuarioRepository : GenericRepository<Usuario>, IUsuarioRepository
         return await Context.Usuarios
             .Include(x => x.UsuarioRoles)
             .ThenInclude(x => x.Rol)
+            .ThenInclude(x => x.RolPermisos)
+            .ThenInclude(x => x.Permiso)
             .FirstOrDefaultAsync(x => x.UserName == userName);
     }
 }
