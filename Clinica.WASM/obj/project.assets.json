@@ -519,13 +519,13 @@
           }
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.15": {
+      "Microsoft.NET.ILLink.Tasks/9.0.4": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
-      "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.15": {
+      "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.4": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.Sdk.WebAssembly.Pack.props": {},
@@ -1099,13 +1099,13 @@
           }
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.15": {
+      "Microsoft.NET.ILLink.Tasks/9.0.4": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
-      "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.15": {
+      "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.4": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.Sdk.WebAssembly.Pack.props": {},
@@ -2064,10 +2064,10 @@
         "microsoft.jsinterop.webassembly.nuspec"
       ]
     },
-    "Microsoft.NET.ILLink.Tasks/9.0.15": {
-      "sha512": "EejcbfCMR77Dthy77qxRbEShmzLApHZUPqXMBVQK+A0pNrRThkaHoGGMGvbq/gTkC/waKcDEgjBkbaejB58Wtw==",
+    "Microsoft.NET.ILLink.Tasks/9.0.4": {
+      "sha512": "xUdlUxiFwXhTYhB4VxKg/IA0+jlZXJPo70LYuMryWbJHdonIpZjw+7DO2B0pWwpXIOs6MlH5WVXPEtfrGEcVZA==",
       "type": "package",
-      "path": "microsoft.net.illink.tasks/9.0.15",
+      "path": "microsoft.net.illink.tasks/9.0.4",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -2081,7 +2081,7 @@
         "build/Microsoft.NET.ILLink.Analyzers.props",
         "build/Microsoft.NET.ILLink.Tasks.props",
         "build/Microsoft.NET.ILLink.targets",
-        "microsoft.net.illink.tasks.9.0.15.nupkg.sha512",
+        "microsoft.net.illink.tasks.9.0.4.nupkg.sha512",
         "microsoft.net.illink.tasks.nuspec",
         "tools/net472/ILLink.Tasks.dll",
         "tools/net472/ILLink.Tasks.dll.config",
@@ -2115,10 +2115,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.15": {
-      "sha512": "DE4Z/tttKeJp6fXwgbeqcidI7FHKBBFYIC2gCXtm9Aa7FjDYmWKFlAPVXhWK0250DRNlhJwtkq9ziim1QRViyw==",
+    "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.4": {
+      "sha512": "SbawDIBdWK+7UTkiIXquadlWAUPxV88+jytBdVsIFzvJXkxGGQKrufO4KPyYdS4shFtXLZyCuCckNt0YN5hZKw==",
       "type": "package",
-      "path": "microsoft.net.sdk.webassembly.pack/9.0.15",
+      "path": "microsoft.net.sdk.webassembly.pack/9.0.4",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -2149,7 +2149,7 @@
         "build/Microsoft.NET.Sdk.WebAssembly.Pack.targets",
         "build/Wasm.web.config",
         "build/browser.runtimeconfig.template.json",
-        "microsoft.net.sdk.webassembly.pack.9.0.15.nupkg.sha512",
+        "microsoft.net.sdk.webassembly.pack.9.0.4.nupkg.sha512",
         "microsoft.net.sdk.webassembly.pack.nuspec",
         "tools/net472/Microsoft.NET.Sdk.WebAssembly.Pack.Tasks.dll",
         "tools/net472/Microsoft.NET.WebAssembly.Webcil.dll",
@@ -2201,25 +2201,25 @@
       "Microsoft.AspNetCore.Components.WebAssembly >= 9.0.4",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 9.0.4",
       "Microsoft.EntityFrameworkCore >= 9.0.14",
-      "Microsoft.NET.ILLink.Tasks >= 9.0.15",
-      "Microsoft.NET.Sdk.WebAssembly.Pack >= 9.0.15",
+      "Microsoft.NET.ILLink.Tasks >= 9.0.4",
+      "Microsoft.NET.Sdk.WebAssembly.Pack >= 9.0.4",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 9.0.4"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\CRAI\\.nuget\\packages\\": {}
+    "C:\\Users\\paric\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\KEVINRAF\\ClinicaObsSM\\Clinica.WASM\\Clinica.WASM.csproj",
+      "projectUniqueName": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.WASM\\Clinica.WASM.csproj",
       "projectName": "Clinica.WASM",
-      "projectPath": "C:\\KEVINRAF\\ClinicaObsSM\\Clinica.WASM\\Clinica.WASM.csproj",
-      "packagesPath": "C:\\Users\\CRAI\\.nuget\\packages\\",
-      "outputPath": "C:\\KEVINRAF\\ClinicaObsSM\\Clinica.WASM\\obj\\",
+      "projectPath": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.WASM\\Clinica.WASM.csproj",
+      "packagesPath": "C:\\Users\\paric\\.nuget\\packages\\",
+      "outputPath": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.WASM\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\CRAI\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\paric\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -2231,8 +2231,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\KEVINRAF\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj": {
-              "projectPath": "C:\\KEVINRAF\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj"
+            "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj": {
+              "projectPath": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj"
             }
           }
         }
@@ -2247,7 +2247,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net9.0": {
@@ -2269,13 +2269,13 @@
           "Microsoft.NET.ILLink.Tasks": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[9.0.15, )",
+            "version": "[9.0.4, )",
             "autoReferenced": true
           },
           "Microsoft.NET.Sdk.WebAssembly.Pack": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[9.0.15, )",
+            "version": "[9.0.4, )",
             "autoReferenced": true
           },
           "Npgsql.EntityFrameworkCore.PostgreSQL": {
@@ -2297,7 +2297,7 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-            "version": "[9.0.15, 9.0.15]"
+            "version": "[9.0.4, 9.0.4]"
           }
         ],
         "frameworkReferences": {
@@ -2305,7 +2305,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\CRAI\\.dotnet\\sdk\\9.0.313/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {
