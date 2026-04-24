@@ -1,6 +1,24 @@
-﻿namespace Clinica.Domain.Entities;
+﻿using Clinica.Domain.Enums;
+
+namespace Clinica.Domain.Entities;
 
 public class ServicioClinico
 {
-    
+    public Guid Id { get; set; } = Guid.NewGuid();
+
+    public string CodigoServicio { get; set; } = string.Empty;
+    public string Nombre { get; set; } = string.Empty;
+    public string? Descripcion { get; set; }
+
+    public decimal CostoBase { get; set; }
+    public int DuracionMinutos { get; set; }
+
+    public bool RequiereCita { get; set; } = true;
+    public bool GeneraHistorial { get; set; } = true;
+
+    public bool Activo { get; set; } = true;
+
+    public ICollection<Cita> Citas { get; set; } = new List<Cita>();
+    public ICollection<Atencion> Atenciones { get; set; } = new List<Atencion>();
+    public ICollection<Pago> Pagos { get; set; } = new List<Pago>();
 }
