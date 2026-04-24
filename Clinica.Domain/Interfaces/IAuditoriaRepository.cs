@@ -1,6 +1,8 @@
-﻿namespace Clinica.Domain.Interfaces;
+﻿using Clinica.Domain.Entities;
 
-public class IAuditoriaRepository
+namespace Clinica.Domain.Interfaces;
+
+public interface IAuditoriaRepository : IGenericRepository<Auditoria>
 {
-    
+    Task<IEnumerable<Auditoria>> ObtenerPorUsuarioAsync(Guid usuarioId);
 }
