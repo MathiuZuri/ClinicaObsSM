@@ -1,6 +1,9 @@
-﻿namespace Clinica.Domain.Interfaces;
+﻿using Clinica.Domain.Entities;
 
-public class IServicioClinicoRepository
+namespace Clinica.Domain.Interfaces;
+
+public interface IServicioClinicoRepository : IGenericRepository<ServicioClinico>
 {
-    
+    Task<ServicioClinico?> ObtenerPorCodigoAsync(string codigoServicio);
+    Task<IEnumerable<ServicioClinico>> ObtenerActivosAsync();
 }
