@@ -1,11 +1,18 @@
-﻿namespace Clinica.Domain.DTOs;
+﻿namespace Clinica.Domain.DTOs.Citas;
 
 public class CrearCitaDto
 {
     public Guid PacienteId { get; set; }
-    public Guid? PersonalMedicoId { get; set; }
-    public DateTime FechaHoraProgramada { get; set; } = DateTime.Now.AddDays(1);
-    public string Servicio { get; set; } = string.Empty;
-    public string? MotivoConsulta { get; set; }
-    public string? Notas { get; set; }
+    public Guid DoctorId { get; set; }
+    public Guid ServicioClinicoId { get; set; }
+    public Guid? HorarioDoctorId { get; set; }
+
+    public DateOnly Fecha { get; set; }
+    public TimeOnly HoraInicio { get; set; }
+    public TimeOnly HoraFin { get; set; }
+
+    public string Motivo { get; set; } = string.Empty;
+    public string? Observaciones { get; set; }
+
+    public Guid? UsuarioRegistroId { get; set; }
 }
