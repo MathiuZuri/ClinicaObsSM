@@ -1127,3 +1127,13 @@ F:\proyectC#\ClinicaObst\Clinica.WASM\obj\Debug\net9.0\compressed\jmbujblpru-40a
 F:\proyectC#\ClinicaObst\Clinica.WASM\obj\Debug\net9.0\compressed\q2psv0ztsx-35rn9f8g9c.gz
 F:\proyectC#\ClinicaObst\Clinica.WASM\obj\Debug\net9.0\compressed\z0kspfv6x8-ggbxggjn7n.gz
 F:\proyectC#\ClinicaObst\Clinica.WASM\obj\Debug\net9.0\compressed\4t6pkie2fp-g0yfk9cxqd.gz
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.WASM\obj\Debug\net9.0\Clinica.WASM.csproj.AssemblyReference.cache
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.WASM\obj\Debug\net9.0\Clinica.WASM.GeneratedMSBuildEditorConfig.editorconfig
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.WASM\obj\Debug\net9.0\Clinica.WASM.AssemblyInfoInputs.cache
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.WASM\obj\Debug\net9.0\Clinica.WASM.AssemblyInfo.cs
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.WASM\obj\Debug\net9.0\Clinica.WASM.csproj.CoreCompileInputs.cache
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.WASM\obj\Debug\net9.0\Clinica.WASM.MvcApplicationPartsAssemblyInfo.cache
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.WASM\obj\Debug\net9.0\Clinica.WASM.sourcelink.json
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.WASM\obj\Debug\net9.0\Clinica.WASM.dll
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.WASM\obj\Debug\net9.0\refint\Clinica.WASM.dll
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.WASM\obj\Debug\net9.0\Clinica.WASM.pdb
