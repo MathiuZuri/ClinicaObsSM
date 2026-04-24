@@ -19,7 +19,7 @@ public class Paciente
     public string? Correo { get; set; }
     public string? Direccion { get; set; }
 
-    public EstadoUsuario Estado { get; set; } = EstadoUsuario.Activo;
+    public EstadoPaciente Estado { get; set; } = EstadoPaciente.Activo;
 
     public Guid UsuarioId { get; set; }
     public Usuario Usuario { get; set; } = null!;
