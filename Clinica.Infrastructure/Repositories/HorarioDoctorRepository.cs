@@ -1,6 +1,23 @@
-﻿namespace Clinica.Infrastructure.Repositories;
+﻿using Clinica.Domain.Entities;
+using Clinica.Domain.Interfaces;
+using Clinica.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
-public class HorarioDoctorRepository
+namespace Clinica.Infrastructure.Repositories;
+
+public class HorarioDoctorRepository : GenericRepository<HorarioDoctor>, IHorarioDoctorRepository
 {
-    
+    public HorarioDoctorRepository(ApplicationDbContext context) : base(context)
+    {
+    }
+
+    public async Task<IEnumerable<HorarioDoctor>> ObtenerPorDoctorAsync(Guid doctorId)
+    {
+        return await Context.HorariosDoctor
+            .Include(x => x.Doctor)
+            .Where(x => x.DoctorId == doctorId)
+            .OrderBy(x => x.DiaSemana)
+            .ThenBy(x => x.HoraInicio)
+            .ToListAsync();
+    }
 }
