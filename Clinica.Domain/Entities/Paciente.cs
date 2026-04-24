@@ -1,44 +1,34 @@
-﻿namespace Clinica.Domain.Entities;
+﻿using Clinica.Domain.Enums;
+
+namespace Clinica.Domain.Entities;
 
 public class Paciente
 {
-    public Guid Id { get; set; }
-    public Guid UsuarioId { get; set; } 
+    public Guid Id { get; set; } = Guid.NewGuid();
+
+    public string CodigoPaciente { get; set; } = string.Empty;
     public string DNI { get; set; } = string.Empty;
-    public string NumeroHC { get; set; } = string.Empty;
-    
+
     public string Nombres { get; set; } = string.Empty;
     public string Apellidos { get; set; } = string.Empty;
+
     public DateTime FechaNacimiento { get; set; }
     public string Sexo { get; set; } = string.Empty;
-    
+
     public string? Celular { get; set; }
-    public string? CorreoSecundario { get; set; }
-    public string? LugarNacimiento { get; set; }
+    public string? Correo { get; set; }
     public string? Direccion { get; set; }
-    
-    public DateTime FechaCreacion { get; private set ; }
 
-    protected Paciente() { }
+    public EstadoUsuario Estado { get; set; } = EstadoUsuario.Activo;
 
-    public Paciente(Guid usuarioId, string dni, string numeroHc, string nombres, string apellidos, DateTime fechaNacimiento, string sexo)
-    {
-        Id = Guid.NewGuid();
-        UsuarioId = usuarioId;
-        DNI = dni;
-        NumeroHC = numeroHc;
-        Nombres = nombres.ToUpper().Trim();
-        Apellidos = apellidos.ToUpper().Trim();
-        FechaNacimiento = fechaNacimiento;
-        Sexo = sexo.ToUpper();
-        FechaCreacion = DateTime.UtcNow;
-    }
+    public Guid UsuarioId { get; set; }
+    public Usuario Usuario { get; set; } = null!;
 
-    // Método para actualizar datos de contacto sin tocar datos sensibles como DNI o HC
-    public void ActualizarContacto(string? celular, string? correoSecundario, string? direccion)
-    {
-        Celular = celular;
-        CorreoSecundario = correoSecundario;
-        Direccion = direccion;
-    }
+    public DateTime FechaRegistro { get; set; } = DateTime.UtcNow;
+
+    public HistorialClinico? HistorialClinico { get; set; }
+
+    public ICollection<Cita> Citas { get; set; } = new List<Cita>();
+    public ICollection<Atencion> Atenciones { get; set; } = new List<Atencion>();
+    public ICollection<Pago> Pagos { get; set; } = new List<Pago>();
 }
