@@ -1,10 +1,9 @@
-﻿using Clinica.API.Services;
+﻿using Clinica.API.Filters;
+using Clinica.API.Models;
+using Clinica.API.Services;
 using Clinica.Domain.DTOs.Auth;
-using Microsoft.AspNetCore.Mvc;
-using Clinica.API.Authorization;
-using Microsoft.AspNetCore.Authorization;
-using Clinica.API.Filters;
 using Clinica.Domain.Enums;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Clinica.API.Controllers;
 
@@ -23,14 +22,11 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] IniciarSesionDto dto)
     {
-        try
-        {
-            var respuesta = await _authService.IniciarSesionAsync(dto);
-            return Ok(respuesta);
-        }
-        catch (InvalidOperationException ex)
-        {
-            return Unauthorized(new { mensaje = ex.Message });
-        }
+        var respuesta = await _authService.IniciarSesionAsync(dto);
+
+        return Ok(ApiResponse<object>.Ok(
+            respuesta,
+            "Inicio de sesión correcto."
+        ));
     }
 }

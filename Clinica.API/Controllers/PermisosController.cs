@@ -1,7 +1,8 @@
-﻿using Clinica.API.Services;
-using Microsoft.AspNetCore.Mvc;
-using Clinica.API.Authorization;
+﻿using Clinica.API.Authorization;
+using Clinica.API.Models;
+using Clinica.API.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Clinica.API.Controllers;
 
@@ -20,6 +21,7 @@ public class PermisosController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        return Ok(await _permisoService.ObtenerTodosAsync());
+        var permisos = await _permisoService.ObtenerTodosAsync();
+        return Ok(ApiResponse<object>.Ok(permisos, "Permisos obtenidos correctamente."));
     }
 }

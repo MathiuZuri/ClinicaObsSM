@@ -1,8 +1,8 @@
-﻿using Clinica.API.Services;
-using Microsoft.AspNetCore.Mvc;
-using Clinica.API.Authorization;
+﻿using Clinica.API.Authorization;
+using Clinica.API.Models;
+using Clinica.API.Services;
 using Microsoft.AspNetCore.Authorization;
-
+using Microsoft.AspNetCore.Mvc;
 
 namespace Clinica.API.Controllers;
 
@@ -21,14 +21,16 @@ public class ServiciosClinicosController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        return Ok(await _servicioService.ObtenerTodosAsync());
+        var servicios = await _servicioService.ObtenerTodosAsync();
+        return Ok(ApiResponse<object>.Ok(servicios, "Servicios clínicos obtenidos correctamente."));
     }
 
     [Authorize(Policy = PermisosPolicies.ServicioVer)]
     [HttpGet("activos")]
     public async Task<IActionResult> GetActivos()
     {
-        return Ok(await _servicioService.ObtenerActivosAsync());
+        var servicios = await _servicioService.ObtenerActivosAsync();
+        return Ok(ApiResponse<object>.Ok(servicios, "Servicios clínicos activos obtenidos correctamente."));
     }
 
     [Authorize(Policy = PermisosPolicies.ServicioVer)]
@@ -36,6 +38,10 @@ public class ServiciosClinicosController : ControllerBase
     public async Task<IActionResult> GetById(Guid id)
     {
         var servicio = await _servicioService.ObtenerPorIdAsync(id);
-        return servicio == null ? NotFound(new { mensaje = "Servicio clínico no encontrado." }) : Ok(servicio);
+
+        if (servicio == null)
+            throw new KeyNotFoundException("Servicio clínico no encontrado.");
+
+        return Ok(ApiResponse<object>.Ok(servicio, "Servicio clínico obtenido correctamente."));
     }
 }

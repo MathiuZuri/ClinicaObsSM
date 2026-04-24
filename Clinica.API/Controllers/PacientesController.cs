@@ -1,8 +1,9 @@
-﻿using Clinica.API.Services;
+﻿using Clinica.API.Authorization;
+using Clinica.API.Models;
+using Clinica.API.Services;
 using Clinica.Domain.DTOs.Pacientes;
-using Microsoft.AspNetCore.Mvc;
-using Clinica.API.Authorization;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Clinica.API.Controllers;
 
@@ -21,7 +22,8 @@ public class PacientesController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        return Ok(await _pacienteService.ObtenerTodosAsync());
+        var pacientes = await _pacienteService.ObtenerTodosAsync();
+        return Ok(ApiResponse<object>.Ok(pacientes, "Pacientes obtenidos correctamente."));
     }
 
     [Authorize(Policy = PermisosPolicies.PacienteVer)]
@@ -29,7 +31,11 @@ public class PacientesController : ControllerBase
     public async Task<IActionResult> GetById(Guid id)
     {
         var paciente = await _pacienteService.ObtenerPorIdAsync(id);
-        return paciente == null ? NotFound(new { mensaje = "Paciente no encontrado." }) : Ok(paciente);
+
+        if (paciente == null)
+            throw new KeyNotFoundException("Paciente no encontrado.");
+
+        return Ok(ApiResponse<object>.Ok(paciente, "Paciente obtenido correctamente."));
     }
 
     [Authorize(Policy = PermisosPolicies.PacienteVer)]
@@ -37,36 +43,32 @@ public class PacientesController : ControllerBase
     public async Task<IActionResult> GetByDni(string dni)
     {
         var paciente = await _pacienteService.ObtenerPorDniAsync(dni);
-        return paciente == null ? NotFound(new { mensaje = "Paciente no encontrado." }) : Ok(paciente);
+
+        if (paciente == null)
+            throw new KeyNotFoundException("Paciente no encontrado.");
+
+        return Ok(ApiResponse<object>.Ok(paciente, "Paciente obtenido correctamente."));
     }
 
     [Authorize(Policy = PermisosPolicies.PacienteCrear)]
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CrearPacienteDto dto)
     {
-        try
-        {
-            var id = await _pacienteService.CrearAsync(dto);
-            return CreatedAtAction(nameof(GetById), new { id }, new { mensaje = "Paciente registrado correctamente.", id });
-        }
-        catch (InvalidOperationException ex)
-        {
-            return BadRequest(new { mensaje = ex.Message });
-        }
+        var id = await _pacienteService.CrearAsync(dto);
+
+        return CreatedAtAction(
+            nameof(GetById),
+            new { id },
+            ApiResponse<object>.Ok(new { id }, "Paciente registrado correctamente.", 201)
+        );
     }
 
     [Authorize(Policy = PermisosPolicies.PacienteEditar)]
     [HttpPut("{id:guid}/contacto")]
     public async Task<IActionResult> UpdateContact(Guid id, [FromBody] ActualizarContactoPacienteDto dto)
     {
-        try
-        {
-            await _pacienteService.ActualizarContactoAsync(id, dto);
-            return NoContent();
-        }
-        catch (KeyNotFoundException ex)
-        {
-            return NotFound(new { mensaje = ex.Message });
-        }
+        await _pacienteService.ActualizarContactoAsync(id, dto);
+
+        return Ok(ApiResponse<object>.Ok(new { id }, "Contacto del paciente actualizado correctamente."));
     }
 }

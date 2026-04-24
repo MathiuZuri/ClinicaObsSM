@@ -1,8 +1,11 @@
-﻿using Clinica.API.Services;
+﻿using Clinica.API.Authorization;
+using Clinica.API.Filters;
+using Clinica.API.Models;
+using Clinica.API.Services;
 using Clinica.Domain.DTOs.Roles;
-using Microsoft.AspNetCore.Mvc;
-using Clinica.API.Authorization;
+using Clinica.Domain.Enums;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Clinica.API.Controllers;
 
@@ -21,7 +24,8 @@ public class RolesController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        return Ok(await _rolService.ObtenerTodosAsync());
+        var roles = await _rolService.ObtenerTodosAsync();
+        return Ok(ApiResponse<object>.Ok(roles, "Roles obtenidos correctamente."));
     }
 
     [Authorize(Policy = PermisosPolicies.RolVer)]
@@ -29,55 +33,42 @@ public class RolesController : ControllerBase
     public async Task<IActionResult> GetById(Guid id)
     {
         var rol = await _rolService.ObtenerPorIdAsync(id);
-        return rol == null ? NotFound(new { mensaje = "Rol no encontrado." }) : Ok(rol);
+
+        if (rol == null)
+            throw new KeyNotFoundException("Rol no encontrado.");
+
+        return Ok(ApiResponse<object>.Ok(rol, "Rol obtenido correctamente."));
     }
 
+    [Auditoria("Roles", "Rol", TipoAccionAuditoria.Creacion, NivelAuditoria.Critico)]
     [Authorize(Policy = PermisosPolicies.RolCrear)]
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CrearRolDto dto)
     {
-        try
-        {
-            var id = await _rolService.CrearAsync(dto);
-            return CreatedAtAction(nameof(GetById), new { id }, new { mensaje = "Rol creado correctamente.", id });
-        }
-        catch (InvalidOperationException ex)
-        {
-            return BadRequest(new { mensaje = ex.Message });
-        }
+        var id = await _rolService.CrearAsync(dto);
+
+        return CreatedAtAction(
+            nameof(GetById),
+            new { id },
+            ApiResponse<object>.Ok(new { id }, "Rol creado correctamente.", 201)
+        );
     }
 
+    [Auditoria("Roles", "Rol", TipoAccionAuditoria.Edicion, NivelAuditoria.Critico)]
     [Authorize(Policy = PermisosPolicies.RolEditar)]
     [HttpPut("{id:guid}")]
     public async Task<IActionResult> Update(Guid id, [FromBody] EditarRolDto dto)
     {
-        try
-        {
-            await _rolService.ActualizarAsync(id, dto);
-            return NoContent();
-        }
-        catch (KeyNotFoundException ex)
-        {
-            return NotFound(new { mensaje = ex.Message });
-        }
-        catch (InvalidOperationException ex)
-        {
-            return BadRequest(new { mensaje = ex.Message });
-        }
+        await _rolService.ActualizarAsync(id, dto);
+        return Ok(ApiResponse<object>.Ok(new { id }, "Rol actualizado correctamente."));
     }
 
+    [Auditoria("Roles", "RolPermiso", TipoAccionAuditoria.Asignacion, NivelAuditoria.Critico)]
     [Authorize(Policy = PermisosPolicies.RolAsignarPermisos)]
     [HttpPost("asignar-permisos")]
     public async Task<IActionResult> AssignPermissions([FromBody] AsignarPermisosRolDto dto)
     {
-        try
-        {
-            await _rolService.AsignarPermisosAsync(dto);
-            return Ok(new { mensaje = "Permisos asignados correctamente." });
-        }
-        catch (KeyNotFoundException ex)
-        {
-            return NotFound(new { mensaje = ex.Message });
-        }
+        await _rolService.AsignarPermisosAsync(dto);
+        return Ok(ApiResponse<object>.Ok(dto, "Permisos asignados correctamente."));
     }
 }

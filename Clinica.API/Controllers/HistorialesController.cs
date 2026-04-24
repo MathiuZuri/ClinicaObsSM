@@ -1,7 +1,8 @@
-﻿using Clinica.API.Services;
-using Microsoft.AspNetCore.Mvc;
-using Clinica.API.Authorization;
+﻿using Clinica.API.Authorization;
+using Clinica.API.Models;
+using Clinica.API.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Clinica.API.Controllers;
 
@@ -21,7 +22,11 @@ public class HistorialesController : ControllerBase
     public async Task<IActionResult> GetByPaciente(Guid pacienteId)
     {
         var historial = await _historialService.ObtenerPorPacienteAsync(pacienteId);
-        return historial == null ? NotFound(new { mensaje = "Historial clínico no encontrado." }) : Ok(historial);
+
+        if (historial == null)
+            throw new KeyNotFoundException("Historial clínico no encontrado.");
+
+        return Ok(ApiResponse<object>.Ok(historial, "Historial clínico obtenido correctamente."));
     }
 
     [Authorize(Policy = PermisosPolicies.HistorialVer)]
@@ -29,6 +34,10 @@ public class HistorialesController : ControllerBase
     public async Task<IActionResult> GetConDetalles(Guid historialId)
     {
         var historial = await _historialService.ObtenerConDetallesAsync(historialId);
-        return historial == null ? NotFound(new { mensaje = "Historial clínico no encontrado." }) : Ok(historial);
+
+        if (historial == null)
+            throw new KeyNotFoundException("Historial clínico no encontrado.");
+
+        return Ok(ApiResponse<object>.Ok(historial, "Historial clínico con detalles obtenido correctamente."));
     }
 }
