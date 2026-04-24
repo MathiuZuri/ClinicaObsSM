@@ -1,6 +1,22 @@
-﻿namespace Clinica.Infrastructure.Repositories;
+﻿using Clinica.Domain.Entities;
+using Clinica.Domain.Interfaces;
+using Clinica.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
-public class AuditoriaRepository
+namespace Clinica.Infrastructure.Repositories;
+
+public class AuditoriaRepository : GenericRepository<Auditoria>, IAuditoriaRepository
 {
-    
+    public AuditoriaRepository(ApplicationDbContext context) : base(context)
+    {
+    }
+
+    public async Task<IEnumerable<Auditoria>> ObtenerPorUsuarioAsync(Guid usuarioId)
+    {
+        return await Context.Auditorias
+            .Include(x => x.Usuario)
+            .Where(x => x.UsuarioId == usuarioId)
+            .OrderByDescending(x => x.FechaHora)
+            .ToListAsync();
+    }
 }
