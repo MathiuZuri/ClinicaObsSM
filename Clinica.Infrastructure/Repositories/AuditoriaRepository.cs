@@ -11,6 +11,14 @@ public class AuditoriaRepository : GenericRepository<Auditoria>, IAuditoriaRepos
     {
     }
 
+    public async Task<IEnumerable<Auditoria>> GetAllAsync()
+    {
+        return await Context.Auditorias
+            .Include(x => x.Usuario)
+            .OrderByDescending(x => x.FechaHora)
+            .ToListAsync();
+    }
+
     public async Task<IEnumerable<Auditoria>> ObtenerPorUsuarioAsync(Guid usuarioId)
     {
         return await Context.Auditorias

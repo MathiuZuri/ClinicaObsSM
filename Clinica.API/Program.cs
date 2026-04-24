@@ -10,10 +10,16 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Clinica.API.Authorization;
+using Clinica.API.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddScoped<AuditoriaAutomaticaFilter>();
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<AuditoriaAutomaticaFilter>();
+});
+
 builder.Services.AddOpenApi();
 
 builder.Services.AddScoped<JwtHelper>();

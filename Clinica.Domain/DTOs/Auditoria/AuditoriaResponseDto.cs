@@ -25,6 +25,8 @@ public class AuditoriaResponseDto
 
     public bool FueExitoso { get; set; }
     public string? DetalleError { get; set; }
+    
+    public NivelAuditoria Nivel { get; set; }
 
     public DateTime FechaHora { get; set; }
 }

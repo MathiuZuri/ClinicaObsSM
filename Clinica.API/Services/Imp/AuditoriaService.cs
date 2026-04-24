@@ -32,6 +32,7 @@ public class AuditoriaService : IAuditoriaService
             UserAgent = x.UserAgent,
             FueExitoso = x.FueExitoso,
             DetalleError = x.DetalleError,
+            Nivel = x.Nivel,
             FechaHora = x.FechaHora
         });
     }
@@ -56,6 +57,7 @@ public class AuditoriaService : IAuditoriaService
             UserAgent = x.UserAgent,
             FueExitoso = x.FueExitoso,
             DetalleError = x.DetalleError,
+            Nivel = x.Nivel,
             FechaHora = x.FechaHora
         });
     }

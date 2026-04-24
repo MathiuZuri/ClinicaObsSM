@@ -25,6 +25,8 @@ public class Auditoria
 
     public bool FueExitoso { get; set; } = true;
     public string? DetalleError { get; set; }
+    
+    public NivelAuditoria Nivel { get; set; } = NivelAuditoria.Normal;
 
     public DateTime FechaHora { get; set; } = DateTime.UtcNow;
 }
