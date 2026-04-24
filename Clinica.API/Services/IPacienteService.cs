@@ -1,13 +1,12 @@
-﻿using Clinica.Domain.DTOs;
+﻿using Clinica.Domain.DTOs.Pacientes;
 
 namespace Clinica.API.Services;
 
 public interface IPacienteService
 {
-    Task<IReadOnlyList<PacienteResponseDto>> ObtenerTodosAsync();
+    Task<IEnumerable<PacienteResponseDto>> ObtenerTodosAsync();
     Task<PacienteResponseDto?> ObtenerPorIdAsync(Guid id);
     Task<PacienteResponseDto?> ObtenerPorDniAsync(string dni);
     Task<Guid> CrearAsync(CrearPacienteDto dto);
     Task ActualizarContactoAsync(Guid id, ActualizarContactoPacienteDto dto);
-
 }
