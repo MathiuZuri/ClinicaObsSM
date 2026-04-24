@@ -1,6 +1,9 @@
-﻿namespace Clinica.Domain.Interfaces;
+﻿using Clinica.Domain.Entities;
 
-public class IUsuarioRepository
+namespace Clinica.Domain.Interfaces;
+
+public interface IUsuarioRepository : IGenericRepository<Usuario>
 {
-    
+    Task<Usuario?> ObtenerPorCorreoAsync(string correo);
+    Task<Usuario?> ObtenerPorUserNameAsync(string userName);
 }
