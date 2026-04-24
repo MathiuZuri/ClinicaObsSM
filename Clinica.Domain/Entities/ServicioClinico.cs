@@ -16,7 +16,7 @@ public class ServicioClinico
     public bool RequiereCita { get; set; } = true;
     public bool GeneraHistorial { get; set; } = true;
 
-    public bool Activo { get; set; } = true;
+    public EstadoServicioClinico Estado { get; set; } = EstadoServicioClinico.Activo;
 
     public ICollection<Cita> Citas { get; set; } = new List<Cita>();
     public ICollection<Atencion> Atenciones { get; set; } = new List<Atencion>();
