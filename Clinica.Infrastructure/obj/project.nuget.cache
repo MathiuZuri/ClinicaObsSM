@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "c4i3KfVWYyM=",
+  "dgSpecHash": "ECGbxxKUaKA=",
   "success": true,
   "projectFilePath": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Infrastructure\\Clinica.Infrastructure.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\paric\\.nuget\\packages\\bcrypt.net-next\\4.1.0\\bcrypt.net-next.4.1.0.nupkg.sha512",
     "C:\\Users\\paric\\.nuget\\packages\\microsoft.entityframeworkcore\\9.0.14\\microsoft.entityframeworkcore.9.0.14.nupkg.sha512",
     "C:\\Users\\paric\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\9.0.14\\microsoft.entityframeworkcore.abstractions.9.0.14.nupkg.sha512",
     "C:\\Users\\paric\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\9.0.14\\microsoft.entityframeworkcore.analyzers.9.0.14.nupkg.sha512",

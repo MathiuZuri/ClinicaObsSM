@@ -141,7 +141,9 @@ K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Clinic
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Clinica.API.runtimeconfig.json
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Clinica.API.dll
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Clinica.API.pdb
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\BCrypt.Net-Next.dll
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Humanizer.dll
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.Build.Locator.dll
@@ -165,6 +167,12 @@ K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Micros
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.OpenApi.dll
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Mono.TextTemplating.dll
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Npgsql.dll
@@ -175,6 +183,7 @@ K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\System
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\System.Composition.Hosting.dll
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\System.Composition.Runtime.dll
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\System.Composition.TypedParts.dll
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
@@ -268,11 +277,3 @@ K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\obj\Debug\net9.0\refint
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\obj\Debug\net9.0\Clinica.API.pdb
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\obj\Debug\net9.0\Clinica.API.genruntimeconfig.cache
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\obj\Debug\net9.0\ref\Clinica.API.dll
-K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
-K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
-K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
-K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
-K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
-K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.API\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll

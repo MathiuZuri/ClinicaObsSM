@@ -156,32 +156,47 @@ public static class DataSeeder
 
     private static async Task SeedUsuarioAdminAsync(ApplicationDbContext context)
     {
-        if (await context.Usuarios.AnyAsync()) return;
+        var admin = await context.Usuarios.FirstOrDefaultAsync(x => x.UserName == "admin");
 
-        var admin = new Usuario
+        if (admin == null)
         {
-            CodigoUsuario = $"USR-{DateTime.UtcNow:yyyy}-ADMIN",
-            Nombres = "Administrador",
-            Apellidos = "Sistema",
-            UserName = "admin",
-            Correo = "admin@clinica.com",
-            PasswordHash = "admin123",
-            Estado = EstadoUsuario.Activo,
-            FechaRegistro = DateTime.UtcNow
-        };
+            admin = new Usuario
+            {
+                CodigoUsuario = $"USR-{DateTime.UtcNow:yyyy}-ADMIN",
+                Nombres = "Administrador",
+                Apellidos = "Sistema",
+                UserName = "admin",
+                Correo = "admin@clinica.com",
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword("admin123"),
+                Estado = EstadoUsuario.Activo,
+                FechaRegistro = DateTime.UtcNow
+            };
 
-        await context.Usuarios.AddAsync(admin);
-        await context.SaveChangesAsync();
+            await context.Usuarios.AddAsync(admin);
+            await context.SaveChangesAsync();
+        }
+        else if (!admin.PasswordHash.StartsWith("$2"))
+        {
+            admin.PasswordHash = BCrypt.Net.BCrypt.HashPassword("admin123");
+            context.Usuarios.Update(admin);
+            await context.SaveChangesAsync();
+        }
 
         var rolAdmin = await context.Roles.FirstAsync(x => x.Nombre == "Administrador");
 
-        context.UsuarioRoles.Add(new UsuarioRol
+        var tieneRolAdmin = await context.UsuarioRoles
+            .AnyAsync(x => x.UsuarioId == admin.Id && x.RolId == rolAdmin.Id);
+
+        if (!tieneRolAdmin)
         {
-            UsuarioId = admin.Id,
-            RolId = rolAdmin.Id,
-            FechaAsignacion = DateTime.UtcNow,
-            Activo = true
-        });
+            context.UsuarioRoles.Add(new UsuarioRol
+            {
+                UsuarioId = admin.Id,
+                RolId = rolAdmin.Id,
+                FechaAsignacion = DateTime.UtcNow,
+                Activo = true
+            });
+        }
     }
 
     private static async Task SeedServiciosClinicosAsync(ApplicationDbContext context)

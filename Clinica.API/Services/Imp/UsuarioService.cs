@@ -71,7 +71,7 @@ public class UsuarioService : IUsuarioService
             Apellidos = dto.Apellidos,
             UserName = dto.UserName,
             Correo = dto.Correo,
-            PasswordHash = dto.Password,
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password),
             FechaRegistro = DateTime.UtcNow
         };
 

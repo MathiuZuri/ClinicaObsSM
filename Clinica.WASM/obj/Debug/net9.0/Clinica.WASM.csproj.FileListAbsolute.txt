@@ -1134,6 +1134,3 @@ K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.WASM\obj\Debug\net9.0\Clini
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.WASM\obj\Debug\net9.0\Clinica.WASM.csproj.CoreCompileInputs.cache
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.WASM\obj\Debug\net9.0\Clinica.WASM.MvcApplicationPartsAssemblyInfo.cache
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.WASM\obj\Debug\net9.0\Clinica.WASM.sourcelink.json
-K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.WASM\obj\Debug\net9.0\Clinica.WASM.dll
-K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.WASM\obj\Debug\net9.0\refint\Clinica.WASM.dll
-K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.WASM\obj\Debug\net9.0\Clinica.WASM.pdb

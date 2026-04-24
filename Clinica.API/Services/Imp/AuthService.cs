@@ -22,9 +22,10 @@ public class AuthService : IAuthService
 
         if (usuario == null)
             throw new InvalidOperationException("Usuario o contraseña incorrectos.");
+        
+        var passwordValido = BCrypt.Net.BCrypt.Verify(dto.Password, usuario.PasswordHash);
 
-        // Temporal: luego reemplazaremos comparación directa por BCrypt.
-        if (usuario.PasswordHash != dto.Password)
+        if (!passwordValido)
             throw new InvalidOperationException("Usuario o contraseña incorrectos.");
 
         var roles = usuario.UsuarioRoles
