@@ -1,13 +1,11 @@
-﻿using Clinica.Domain.DTOs;
-
-namespace Clinica.Domain.Interfaces;
+﻿namespace Clinica.Domain.Interfaces;
 
 public interface IGenericRepository<T> where T : class
 {
-    Task<T?> ObtenerPorIdAsync(Guid id);
-    Task<IReadOnlyList<T>> ListarTodosAsync();
-    Task AgregarAsync(T entity);
-    Task ActualizarAsync(T entity); 
-    Task EliminarAsync(T entity);
+    Task<IEnumerable<T>> GetAllAsync();
+    Task<T?> GetByIdAsync(Guid id);
+    Task AddAsync(T entity);
+    void Update(T entity);
+    void Delete(T entity);
     Task SaveChangesAsync();
 }
