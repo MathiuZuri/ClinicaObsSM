@@ -1,6 +1,9 @@
-﻿namespace Clinica.Domain.Interfaces;
+﻿using Clinica.Domain.Entities;
 
-public class IAtencionRepository
+namespace Clinica.Domain.Interfaces;
+
+public interface IAtencionRepository : IGenericRepository<Atencion>
 {
-    
+    Task<IEnumerable<Atencion>> ObtenerPorPacienteAsync(Guid pacienteId);
+    Task<Atencion?> ObtenerPorCitaAsync(Guid citaId);
 }
