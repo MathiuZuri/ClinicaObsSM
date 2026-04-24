@@ -4,29 +4,22 @@ namespace Clinica.Domain.Entities;
 
 public class Usuario
 {
-    public Guid Id { get; set; }
+    public Guid Id { get; set; } = Guid.NewGuid();
+
+    public string CodigoUsuario { get; set; } = string.Empty;
+
+    public string Nombres { get; set; } = string.Empty;
+    public string Apellidos { get; set; } = string.Empty;
+
+    public string UserName { get; set; } = string.Empty;
     public string Correo { get; set; } = string.Empty;
     public string PasswordHash { get; set; } = string.Empty;
-    public RolUsuario Rol { get; set; }
-    public bool Activo { get; set; }
-    
-    protected Usuario() { }
 
-    public Usuario(string correo, string passwordHash, RolUsuario rol)
-    {
-        Id = Guid.NewGuid();
-        Correo = correo.ToLower().Trim();
-        PasswordHash = passwordHash;
-        Rol = rol;
-        Activo = true;
-    }
+    public EstadoUsuario Estado { get; set; } = EstadoUsuario.Activo;
 
-    public void Desactivar() => Activo = false;
-    public void Activar() => Activo = true;
-    
-    // Método para cuando el usuario pide recuperar contraseña
-    public void ActualizarPassword(string nuevoHash)
-    {
-        PasswordHash = nuevoHash;
-    }
+    public DateTime FechaRegistro { get; set; } = DateTime.UtcNow;
+    public DateTime? UltimoAcceso { get; set; }
+
+    public ICollection<UsuarioRol> UsuarioRoles { get; set; } = new List<UsuarioRol>();
+    public ICollection<Auditoria> Auditorias { get; set; } = new List<Auditoria>();
 }
