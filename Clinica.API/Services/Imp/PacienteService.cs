@@ -1,6 +1,7 @@
 ﻿using Clinica.Domain.DTOs.Pacientes;
 using Clinica.Domain.Entities;
 using Clinica.Domain.Interfaces;
+using Clinica.API.Helpers;
 
 namespace Clinica.API.Services.Imp;
 
@@ -71,7 +72,7 @@ public class PacienteService : IPacienteService
             DNI = dto.DNI,
             Nombres = dto.Nombres,
             Apellidos = dto.Apellidos,
-            FechaNacimiento = dto.FechaNacimiento,
+            FechaNacimiento = FechaHelper.ToUtc(dto.FechaNacimiento),
             Sexo = dto.Sexo,
             Celular = dto.Celular,
             Correo = dto.Correo,

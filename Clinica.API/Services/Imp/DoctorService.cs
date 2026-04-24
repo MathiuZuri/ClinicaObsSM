@@ -1,6 +1,7 @@
 ﻿using Clinica.Domain.DTOs.Doctores;
 using Clinica.Domain.Entities;
 using Clinica.Domain.Interfaces;
+using Clinica.API.Helpers;
 
 namespace Clinica.API.Services.Imp;
 
@@ -51,8 +52,8 @@ public class DoctorService : IDoctorService
             Especialidad = dto.Especialidad,
             Celular = dto.Celular,
             Correo = dto.Correo,
-            FechaInicioContrato = dto.FechaInicioContrato,
-            FechaFinContrato = dto.FechaFinContrato,
+            FechaInicioContrato = FechaHelper.ToUtc(dto.FechaInicioContrato),
+            FechaFinContrato = FechaHelper.ToUtc(dto.FechaFinContrato),
             UsuarioId = dto.UsuarioId
         };
 
@@ -74,8 +75,8 @@ public class DoctorService : IDoctorService
         doctor.Especialidad = dto.Especialidad;
         doctor.Celular = dto.Celular;
         doctor.Correo = dto.Correo;
-        doctor.FechaInicioContrato = dto.FechaInicioContrato;
-        doctor.FechaFinContrato = dto.FechaFinContrato;
+        doctor.FechaInicioContrato = FechaHelper.ToUtc(dto.FechaInicioContrato);
+        doctor.FechaFinContrato = FechaHelper.ToUtc(dto.FechaFinContrato);
         doctor.Estado = dto.Estado;
 
         _doctorRepository.Update(doctor);
