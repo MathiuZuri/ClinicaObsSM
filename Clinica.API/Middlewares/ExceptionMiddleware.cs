@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Text.Json;
+using Clinica.API.Models;
 
 namespace Clinica.API.Middlewares;
 
@@ -47,13 +48,10 @@ public class ExceptionMiddleware
         context.Response.ContentType = "application/json";
         context.Response.StatusCode = (int)statusCode;
 
-        var respuesta = new
-        {
-            exitoso = false,
+        var respuesta = ApiResponse<object>.Error(
             mensaje,
-            codigo = context.Response.StatusCode,
-            fecha = DateTime.UtcNow
-        };
+            context.Response.StatusCode
+        );
 
         var json = JsonSerializer.Serialize(respuesta, new JsonSerializerOptions
         {
