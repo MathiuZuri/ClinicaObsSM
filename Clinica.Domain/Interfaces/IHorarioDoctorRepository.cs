@@ -1,6 +1,8 @@
-﻿namespace Clinica.Domain.Interfaces;
+﻿using Clinica.Domain.Entities;
 
-public class IHorarioDoctorRepository
+namespace Clinica.Domain.Interfaces;
+
+public interface IHorarioDoctorRepository : IGenericRepository<HorarioDoctor>
 {
-    
+    Task<IEnumerable<HorarioDoctor>> ObtenerPorDoctorAsync(Guid doctorId);
 }
