@@ -20,71 +20,131 @@ public static class DataSeeder
 
     private static async Task SeedPermisosAsync(ApplicationDbContext context)
     {
-        if (await context.Permisos.AnyAsync()) return;
-
-        var permisos = new List<Permiso>
+        var permisosBase = new List<Permiso>
         {
             new() { Codigo = "PACIENTE_VER", Nombre = "Ver pacientes", Modulo = "Pacientes", Activo = true },
             new() { Codigo = "PACIENTE_CREAR", Nombre = "Crear pacientes", Modulo = "Pacientes", Activo = true },
             new() { Codigo = "PACIENTE_EDITAR", Nombre = "Editar pacientes", Modulo = "Pacientes", Activo = true },
 
+            new() { Codigo = "CITA_VER", Nombre = "Ver citas", Modulo = "Citas", Activo = true },
             new() { Codigo = "CITA_PROGRAMAR", Nombre = "Programar citas", Modulo = "Citas", Activo = true },
+            new() { Codigo = "CITA_REPROGRAMAR", Nombre = "Reprogramar citas", Modulo = "Citas", Activo = true },
             new() { Codigo = "CITA_CANCELAR", Nombre = "Cancelar citas", Modulo = "Citas", Activo = true },
 
+            new() { Codigo = "ATENCION_VER", Nombre = "Ver atenciones", Modulo = "Atenciones", Activo = true },
             new() { Codigo = "ATENCION_REGISTRAR", Nombre = "Registrar atención", Modulo = "Atenciones", Activo = true },
-            new() { Codigo = "PAGO_REGISTRAR", Nombre = "Registrar pago", Modulo = "Pagos", Activo = true }
+            new() { Codigo = "ATENCION_CERRAR", Nombre = "Cerrar atención", Modulo = "Atenciones", Activo = true },
+
+            new() { Codigo = "PAGO_VER", Nombre = "Ver pagos", Modulo = "Pagos", Activo = true },
+            new() { Codigo = "PAGO_REGISTRAR", Nombre = "Registrar pago", Modulo = "Pagos", Activo = true },
+
+            new() { Codigo = "DOCTOR_VER", Nombre = "Ver doctores", Modulo = "Doctores", Activo = true },
+            new() { Codigo = "DOCTOR_CREAR", Nombre = "Crear doctores", Modulo = "Doctores", Activo = true },
+            new() { Codigo = "DOCTOR_EDITAR", Nombre = "Editar doctores", Modulo = "Doctores", Activo = true },
+
+            new() { Codigo = "HORARIO_VER", Nombre = "Ver horarios", Modulo = "Horarios", Activo = true },
+            new() { Codigo = "HORARIO_CREAR", Nombre = "Crear horarios", Modulo = "Horarios", Activo = true },
+            new() { Codigo = "HORARIO_EDITAR", Nombre = "Editar horarios", Modulo = "Horarios", Activo = true },
+
+            new() { Codigo = "SERVICIO_VER", Nombre = "Ver servicios clínicos", Modulo = "Servicios Clínicos", Activo = true },
+
+            new() { Codigo = "HISTORIAL_VER", Nombre = "Ver historial clínico", Modulo = "Historial Clínico", Activo = true },
+
+            new() { Codigo = "USUARIO_VER", Nombre = "Ver usuarios", Modulo = "Usuarios", Activo = true },
+            new() { Codigo = "USUARIO_CREAR", Nombre = "Crear usuarios", Modulo = "Usuarios", Activo = true },
+            new() { Codigo = "USUARIO_EDITAR", Nombre = "Editar usuarios", Modulo = "Usuarios", Activo = true },
+            new() { Codigo = "USUARIO_ASIGNAR_ROL", Nombre = "Asignar rol a usuario", Modulo = "Usuarios", Activo = true },
+
+            new() { Codigo = "ROL_VER", Nombre = "Ver roles", Modulo = "Roles", Activo = true },
+            new() { Codigo = "ROL_CREAR", Nombre = "Crear roles", Modulo = "Roles", Activo = true },
+            new() { Codigo = "ROL_EDITAR", Nombre = "Editar roles", Modulo = "Roles", Activo = true },
+            new() { Codigo = "ROL_ASIGNAR_PERMISOS", Nombre = "Asignar permisos a rol", Modulo = "Roles", Activo = true },
+
+            new() { Codigo = "PERMISO_VER", Nombre = "Ver permisos", Modulo = "Permisos", Activo = true },
+
+            new() { Codigo = "AUDITORIA_VER", Nombre = "Ver auditoría", Modulo = "Auditoría", Activo = true }
         };
 
-        await context.Permisos.AddRangeAsync(permisos);
+        var codigosExistentes = await context.Permisos
+            .Select(x => x.Codigo)
+            .ToListAsync();
+
+        var nuevosPermisos = permisosBase
+            .Where(x => !codigosExistentes.Contains(x.Codigo))
+            .ToList();
+
+        if (nuevosPermisos.Count > 0)
+            await context.Permisos.AddRangeAsync(nuevosPermisos);
     }
 
     private static async Task SeedRolesAsync(ApplicationDbContext context)
     {
-        if (await context.Roles.AnyAsync()) return;
+        var adminRol = await context.Roles.FirstOrDefaultAsync(x => x.Nombre == "Administrador");
 
-        var adminRol = new Rol
+        if (adminRol == null)
         {
-            Nombre = "Administrador",
-            Descripcion = "Rol principal del sistema con acceso total.",
-            EsSistema = true,
-            Activo = true,
-            FechaCreacion = DateTime.UtcNow
-        };
+            adminRol = new Rol
+            {
+                Nombre = "Administrador",
+                Descripcion = "Rol principal del sistema con acceso total.",
+                EsSistema = true,
+                Activo = true,
+                FechaCreacion = DateTime.UtcNow
+            };
 
-        var recepcionistaRol = new Rol
+            await context.Roles.AddAsync(adminRol);
+            await context.SaveChangesAsync();
+        }
+
+        if (!await context.Roles.AnyAsync(x => x.Nombre == "Recepcionista"))
         {
-            Nombre = "Recepcionista",
-            Descripcion = "Gestiona pacientes y citas.",
-            EsSistema = true,
-            Activo = true,
-            FechaCreacion = DateTime.UtcNow
-        };
+            await context.Roles.AddAsync(new Rol
+            {
+                Nombre = "Recepcionista",
+                Descripcion = "Gestiona pacientes y citas.",
+                EsSistema = true,
+                Activo = true,
+                FechaCreacion = DateTime.UtcNow
+            });
+        }
 
-        var doctorRol = new Rol
+        if (!await context.Roles.AnyAsync(x => x.Nombre == "Doctor"))
         {
-            Nombre = "Doctor",
-            Descripcion = "Gestiona atenciones médicas.",
-            EsSistema = true,
-            Activo = true,
-            FechaCreacion = DateTime.UtcNow
-        };
+            await context.Roles.AddAsync(new Rol
+            {
+                Nombre = "Doctor",
+                Descripcion = "Gestiona atenciones médicas.",
+                EsSistema = true,
+                Activo = true,
+                FechaCreacion = DateTime.UtcNow
+            });
+        }
 
-        var cajaRol = new Rol
+        if (!await context.Roles.AnyAsync(x => x.Nombre == "Caja"))
         {
-            Nombre = "Caja",
-            Descripcion = "Gestiona pagos y cobros.",
-            EsSistema = true,
-            Activo = true,
-            FechaCreacion = DateTime.UtcNow
-        };
+            await context.Roles.AddAsync(new Rol
+            {
+                Nombre = "Caja",
+                Descripcion = "Gestiona pagos y cobros.",
+                EsSistema = true,
+                Activo = true,
+                FechaCreacion = DateTime.UtcNow
+            });
+        }
 
-        await context.Roles.AddRangeAsync(adminRol, recepcionistaRol, doctorRol, cajaRol);
         await context.SaveChangesAsync();
 
         var permisos = await context.Permisos.ToListAsync();
 
+        var permisosAdminExistentes = await context.RolPermisos
+            .Where(x => x.RolId == adminRol.Id)
+            .Select(x => x.PermisoId)
+            .ToListAsync();
+
         foreach (var permiso in permisos)
         {
+            if (permisosAdminExistentes.Contains(permiso.Id)) continue;
+
             context.RolPermisos.Add(new RolPermiso
             {
                 RolId = adminRol.Id,

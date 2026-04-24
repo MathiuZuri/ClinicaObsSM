@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "5sQ6W60+RdE=",
+  "dgSpecHash": "j/NjV60eF28=",
   "success": true,
   "projectFilePath": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.API\\Clinica.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\paric\\.nuget\\packages\\bcrypt.net-next\\4.1.0\\bcrypt.net-next.4.1.0.nupkg.sha512",
     "C:\\Users\\paric\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\paric\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\9.0.14\\microsoft.aspnetcore.authentication.jwtbearer.9.0.14.nupkg.sha512",
     "C:\\Users\\paric\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.4\\microsoft.aspnetcore.openapi.9.0.4.nupkg.sha512",
