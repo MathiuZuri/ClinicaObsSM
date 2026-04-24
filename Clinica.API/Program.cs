@@ -9,7 +9,7 @@ using Clinica.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-
+using Clinica.API.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,7 +38,14 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    foreach (var permiso in PermisosPolicies.Todos)
+    {
+        options.AddPolicy(permiso, policy =>
+            policy.RequireClaim("permiso", permiso));
+    }
+});
 
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

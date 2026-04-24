@@ -1,6 +1,9 @@
 ﻿using Clinica.API.Services;
 using Clinica.Domain.DTOs.Usuarios;
 using Microsoft.AspNetCore.Mvc;
+using Clinica.API.Authorization;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace Clinica.API.Controllers;
 
