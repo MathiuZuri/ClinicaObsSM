@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Clinica.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+887191adcc062d867c87a832630f032d225bf886")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+222721601bfd0fbf103f052dfd4bba89bcd7b8cd")]
 [assembly: System.Reflection.AssemblyProductAttribute("Clinica.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Clinica.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

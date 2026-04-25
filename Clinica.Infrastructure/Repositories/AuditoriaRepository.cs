@@ -11,7 +11,7 @@ public class AuditoriaRepository : GenericRepository<Auditoria>, IAuditoriaRepos
     {
     }
 
-    public async Task<IEnumerable<Auditoria>> GetAllAsync()
+    public new async Task<IEnumerable<Auditoria>> GetAllAsync()
     {
         return await Context.Auditorias
             .Include(x => x.Usuario)
