@@ -1,244 +1,266 @@
 ﻿using Clinica.Domain.DTOs.Finanzas;
+using Clinica.Domain.Entities;
+using Clinica.Domain.Enums;
 using Clinica.Domain.Interfaces;
-using Clinica.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
 
 namespace Clinica.API.Services.Imp;
 
 public class FinanzasService : IFinanzasService
 {
-    private readonly ApplicationDbContext _context;
+    private readonly IPagoRepository _pagoRepository;
+    private readonly IPacienteRepository _pacienteRepository;
 
-    public FinanzasService(ApplicationDbContext context)
+    public FinanzasService(
+        IPagoRepository pagoRepository,
+        IPacienteRepository pacienteRepository)
     {
-        _context = context;
+        _pagoRepository = pagoRepository;
+        _pacienteRepository = pacienteRepository;
     }
 
     public async Task<ResumenDiarioFinanzasDto> ObtenerResumenDiarioAsync(DateOnly fecha)
     {
-        var inicio = fecha.ToDateTime(TimeOnly.MinValue);
-        var fin = fecha.ToDateTime(TimeOnly.MaxValue);
+        var pagos = await ObtenerPagosValidosAsync();
 
-        var pagos = await ObtenerPagosBase()
-            .Where(p => p.FechaPago >= inicio && p.FechaPago <= fin)
-            .ToListAsync();
+        var pagosDelDia = pagos
+            .Where(x => DateOnly.FromDateTime(x.FechaPago) == fecha)
+            .ToList();
 
         return new ResumenDiarioFinanzasDto
         {
             Fecha = fecha,
-            TotalIngresos = pagos.Sum(p => p.MontoPagado),
-            TotalPendiente = pagos.Sum(p => p.SaldoPendiente),
-            TotalDeuda = pagos.Where(p => p.SaldoPendiente > 0).Sum(p => p.SaldoPendiente),
-            CantidadPagos = pagos.Count,
-            PagosCompletados = pagos.Count(p => p.EstadoPago == "Pagado"),
-            PagosParciales = pagos.Count(p => p.EstadoPago == "Parcial"),
-            PagosPendientes = pagos.Count(p => p.EstadoPago == "Pendiente"),
-            Pagos = pagos
+            TotalIngresos = pagosDelDia.Sum(x => x.MontoPagado),
+            TotalPendiente = pagosDelDia.Sum(x => x.SaldoPendiente),
+            TotalDeuda = pagosDelDia.Where(x => x.SaldoPendiente > 0).Sum(x => x.SaldoPendiente),
+            CantidadPagos = pagosDelDia.Count,
+            PagosCompletados = pagosDelDia.Count(x => x.Estado == EstadoPago.Pagado),
+            PagosParciales = pagosDelDia.Count(x => x.Estado == EstadoPago.Parcial),
+            PagosPendientes = pagosDelDia.Count(x => x.Estado == EstadoPago.Pendiente || x.SaldoPendiente > 0),
+            Pagos = pagosDelDia.Select(MapearPagoFinanzas).ToList()
         };
     }
 
     public async Task<ResumenMensualFinanzasDto> ObtenerResumenMensualAsync(int anio, int mes)
     {
-        if (mes < 1 || mes > 12)
-            throw new Exception("El mes debe estar entre 1 y 12.");
+        ValidarAnioMes(anio, mes);
 
-        var inicio = new DateTime(anio, mes, 1);
-        var fin = inicio.AddMonths(1).AddTicks(-1);
+        var pagos = await ObtenerPagosValidosAsync();
 
-        var pagos = await ObtenerPagosBase()
-            .Where(p => p.FechaPago >= inicio && p.FechaPago <= fin)
-            .ToListAsync();
+        var pagosDelMes = pagos
+            .Where(x => x.FechaPago.Year == anio && x.FechaPago.Month == mes)
+            .ToList();
 
-        var dias = pagos
-            .GroupBy(p => DateOnly.FromDateTime(p.FechaPago))
+        var dias = pagosDelMes
+            .GroupBy(x => DateOnly.FromDateTime(x.FechaPago))
+            .OrderBy(x => x.Key)
             .Select(g => new ResumenDiarioFinanzasDto
             {
                 Fecha = g.Key,
-                TotalIngresos = g.Sum(p => p.MontoPagado),
-                TotalPendiente = g.Sum(p => p.SaldoPendiente),
-                TotalDeuda = g.Where(p => p.SaldoPendiente > 0).Sum(p => p.SaldoPendiente),
+                TotalIngresos = g.Sum(x => x.MontoPagado),
+                TotalPendiente = g.Sum(x => x.SaldoPendiente),
+                TotalDeuda = g.Where(x => x.SaldoPendiente > 0).Sum(x => x.SaldoPendiente),
                 CantidadPagos = g.Count(),
-                PagosCompletados = g.Count(p => p.EstadoPago == "Pagado"),
-                PagosParciales = g.Count(p => p.EstadoPago == "Parcial"),
-                PagosPendientes = g.Count(p => p.EstadoPago == "Pendiente"),
-                Pagos = g.ToList()
+                PagosCompletados = g.Count(x => x.Estado == EstadoPago.Pagado),
+                PagosParciales = g.Count(x => x.Estado == EstadoPago.Parcial),
+                PagosPendientes = g.Count(x => x.Estado == EstadoPago.Pendiente || x.SaldoPendiente > 0),
+                Pagos = g.Select(MapearPagoFinanzas).ToList()
             })
-            .OrderBy(d => d.Fecha)
             .ToList();
 
         return new ResumenMensualFinanzasDto
         {
             Anio = anio,
             Mes = mes,
-            TotalIngresos = pagos.Sum(p => p.MontoPagado),
-            TotalPendiente = pagos.Sum(p => p.SaldoPendiente),
-            TotalDeuda = pagos.Where(p => p.SaldoPendiente > 0).Sum(p => p.SaldoPendiente),
-            CantidadPagos = pagos.Count,
-            PagosCompletados = pagos.Count(p => p.EstadoPago == "Pagado"),
-            PagosParciales = pagos.Count(p => p.EstadoPago == "Parcial"),
-            PagosPendientes = pagos.Count(p => p.EstadoPago == "Pendiente"),
+            TotalIngresos = pagosDelMes.Sum(x => x.MontoPagado),
+            TotalPendiente = pagosDelMes.Sum(x => x.SaldoPendiente),
+            TotalDeuda = pagosDelMes.Where(x => x.SaldoPendiente > 0).Sum(x => x.SaldoPendiente),
+            CantidadPagos = pagosDelMes.Count,
+            PagosCompletados = pagosDelMes.Count(x => x.Estado == EstadoPago.Pagado),
+            PagosParciales = pagosDelMes.Count(x => x.Estado == EstadoPago.Parcial),
+            PagosPendientes = pagosDelMes.Count(x => x.Estado == EstadoPago.Pendiente || x.SaldoPendiente > 0),
             Dias = dias
         };
     }
 
     public async Task<ResumenAnualFinanzasDto> ObtenerResumenAnualAsync(int anio)
     {
-        var inicio = new DateTime(anio, 1, 1);
-        var fin = new DateTime(anio, 12, 31, 23, 59, 59);
+        if (anio < 2000 || anio > DateTime.UtcNow.Year + 1)
+            throw new InvalidOperationException("El año ingresado no es válido.");
 
-        var pagos = await ObtenerPagosBase()
-            .Where(p => p.FechaPago >= inicio && p.FechaPago <= fin)
-            .ToListAsync();
+        var pagos = await ObtenerPagosValidosAsync();
 
-        var meses = pagos
-            .GroupBy(p => p.FechaPago.Month)
-            .Select(g => new ResumenMensualFinanzasDto
+        var pagosDelAnio = pagos
+            .Where(x => x.FechaPago.Year == anio)
+            .ToList();
+
+        var meses = Enumerable.Range(1, 12)
+            .Select(mes =>
             {
-                Anio = anio,
-                Mes = g.Key,
-                TotalIngresos = g.Sum(p => p.MontoPagado),
-                TotalPendiente = g.Sum(p => p.SaldoPendiente),
-                TotalDeuda = g.Where(p => p.SaldoPendiente > 0).Sum(p => p.SaldoPendiente),
-                CantidadPagos = g.Count(),
-                PagosCompletados = g.Count(p => p.EstadoPago == "Pagado"),
-                PagosParciales = g.Count(p => p.EstadoPago == "Parcial"),
-                PagosPendientes = g.Count(p => p.EstadoPago == "Pendiente")
+                var pagosMes = pagosDelAnio
+                    .Where(x => x.FechaPago.Month == mes)
+                    .ToList();
+
+                return new ResumenMensualFinanzasDto
+                {
+                    Anio = anio,
+                    Mes = mes,
+                    TotalIngresos = pagosMes.Sum(x => x.MontoPagado),
+                    TotalPendiente = pagosMes.Sum(x => x.SaldoPendiente),
+                    TotalDeuda = pagosMes.Where(x => x.SaldoPendiente > 0).Sum(x => x.SaldoPendiente),
+                    CantidadPagos = pagosMes.Count,
+                    PagosCompletados = pagosMes.Count(x => x.Estado == EstadoPago.Pagado),
+                    PagosParciales = pagosMes.Count(x => x.Estado == EstadoPago.Parcial),
+                    PagosPendientes = pagosMes.Count(x => x.Estado == EstadoPago.Pendiente || x.SaldoPendiente > 0)
+                };
             })
-            .OrderBy(m => m.Mes)
             .ToList();
 
         return new ResumenAnualFinanzasDto
         {
             Anio = anio,
-            TotalIngresos = pagos.Sum(p => p.MontoPagado),
-            TotalPendiente = pagos.Sum(p => p.SaldoPendiente),
-            TotalDeuda = pagos.Where(p => p.SaldoPendiente > 0).Sum(p => p.SaldoPendiente),
-            CantidadPagos = pagos.Count,
-            PagosCompletados = pagos.Count(p => p.EstadoPago == "Pagado"),
-            PagosParciales = pagos.Count(p => p.EstadoPago == "Parcial"),
-            PagosPendientes = pagos.Count(p => p.EstadoPago == "Pendiente"),
+            TotalIngresos = pagosDelAnio.Sum(x => x.MontoPagado),
+            TotalPendiente = pagosDelAnio.Sum(x => x.SaldoPendiente),
+            TotalDeuda = pagosDelAnio.Where(x => x.SaldoPendiente > 0).Sum(x => x.SaldoPendiente),
+            CantidadPagos = pagosDelAnio.Count,
+            PagosCompletados = pagosDelAnio.Count(x => x.Estado == EstadoPago.Pagado),
+            PagosParciales = pagosDelAnio.Count(x => x.Estado == EstadoPago.Parcial),
+            PagosPendientes = pagosDelAnio.Count(x => x.Estado == EstadoPago.Pendiente || x.SaldoPendiente > 0),
             Meses = meses
         };
     }
 
-    public async Task<List<PagoFinanzasDto>> ObtenerPagosPendientesAsync()
+    public async Task<IEnumerable<PagoFinanzasDto>> ObtenerPagosPendientesAsync()
     {
-        return await ObtenerPagosBase()
-            .Where(p => p.EstadoPago == "Pendiente")
-            .OrderByDescending(p => p.FechaPago)
-            .ToListAsync();
+        var pagos = await ObtenerPagosValidosAsync();
+
+        return pagos
+            .Where(x => x.Estado == EstadoPago.Pendiente || x.SaldoPendiente > 0)
+            .OrderByDescending(x => x.FechaPago)
+            .Select(MapearPagoFinanzas);
     }
 
-    public async Task<List<PagoFinanzasDto>> ObtenerPagosPagadosAsync()
+    public async Task<IEnumerable<PagoFinanzasDto>> ObtenerPagosPagadosAsync()
     {
-        return await ObtenerPagosBase()
-            .Where(p => p.EstadoPago == "Pagado")
-            .OrderByDescending(p => p.FechaPago)
-            .ToListAsync();
+        var pagos = await ObtenerPagosValidosAsync();
+
+        return pagos
+            .Where(x => x.Estado == EstadoPago.Pagado && x.SaldoPendiente <= 0)
+            .OrderByDescending(x => x.FechaPago)
+            .Select(MapearPagoFinanzas);
     }
 
-    public async Task<List<PagoFinanzasDto>> ObtenerPagosParcialesAsync()
+    public async Task<IEnumerable<PagoFinanzasDto>> ObtenerPagosParcialesAsync()
     {
-        return await ObtenerPagosBase()
-            .Where(p => p.EstadoPago == "Parcial")
-            .OrderByDescending(p => p.FechaPago)
-            .ToListAsync();
+        var pagos = await ObtenerPagosValidosAsync();
+
+        return pagos
+            .Where(x => x.Estado == EstadoPago.Parcial)
+            .OrderByDescending(x => x.FechaPago)
+            .Select(MapearPagoFinanzas);
     }
 
-    public async Task<PagoFinanzasDto> BuscarPagoPorCodigoAsync(string codigoPago)
+    public async Task<PagoFinanzasDto?> ObtenerPagoPorCodigoAsync(string codigoPago)
     {
         if (string.IsNullOrWhiteSpace(codigoPago))
-            throw new Exception("Debe ingresar un código de pago válido.");
+            throw new InvalidOperationException("El código de pago es obligatorio.");
 
-        var pago = await ObtenerPagosBase()
-            .FirstOrDefaultAsync(p => p.CodigoPago == codigoPago);
+        var pago = await _pagoRepository.ObtenerPorCodigoConDetalleAsync(codigoPago.Trim());
 
-        if (pago is null)
-            throw new Exception("No se encontró ningún pago con el código ingresado.");
-
-        return pago;
+        return pago == null ? null : MapearPagoFinanzas(pago);
     }
 
     public async Task<EstadoCuentaPacienteDto> ObtenerEstadoCuentaPacienteAsync(Guid pacienteId)
     {
-        if (pacienteId == Guid.Empty)
-            throw new Exception("El ID del paciente no es válido.");
+        var paciente = await _pacienteRepository.GetByIdAsync(pacienteId)
+            ?? throw new KeyNotFoundException("Paciente no encontrado.");
 
-        var paciente = await _context.Pacientes
-            .AsNoTracking()
-            .FirstOrDefaultAsync(p => p.Id == pacienteId);
+        var pagos = await _pagoRepository.ObtenerPorPacienteAsync(pacienteId);
 
-        if (paciente is null)
-            throw new Exception("El paciente no existe.");
-
-        var pagos = await ObtenerPagosBase()
-            .Where(p => p.PacienteId == pacienteId)
-            .OrderByDescending(p => p.FechaPago)
-            .ToListAsync();
+        var pagosValidos = pagos
+            .Where(EsPagoValidoParaFinanzas)
+            .OrderByDescending(x => x.FechaPago)
+            .ToList();
 
         return new EstadoCuentaPacienteDto
         {
             PacienteId = paciente.Id,
             Paciente = $"{paciente.Nombres} {paciente.Apellidos}",
-            DniPaciente = paciente.Dni,
+            DniPaciente = paciente.DNI,
 
-            TotalFacturado = pagos.Sum(p => p.MontoTotal),
-            TotalPagado = pagos.Sum(p => p.MontoPagado),
-            TotalPendiente = pagos.Sum(p => p.SaldoPendiente),
+            TotalFacturado = pagosValidos.Sum(x => x.MontoTotal),
+            TotalPagado = pagosValidos.Sum(x => x.MontoPagado),
+            TotalPendiente = pagosValidos.Sum(x => x.SaldoPendiente),
 
-            CantidadPagos = pagos.Count,
-            PagosCompletados = pagos.Count(p => p.EstadoPago == "Pagado"),
-            PagosParciales = pagos.Count(p => p.EstadoPago == "Parcial"),
-            PagosPendientes = pagos.Count(p => p.EstadoPago == "Pendiente"),
+            CantidadPagos = pagosValidos.Count,
+            PagosCompletados = pagosValidos.Count(x => x.Estado == EstadoPago.Pagado),
+            PagosParciales = pagosValidos.Count(x => x.Estado == EstadoPago.Parcial),
+            PagosPendientes = pagosValidos.Count(x => x.Estado == EstadoPago.Pendiente || x.SaldoPendiente > 0),
 
-            Detalles = pagos.Select(p => new DetalleEstadoCuentaDto
+            Detalles = pagosValidos.Select(x => new DetalleEstadoCuentaDto
             {
-                PagoId = p.PagoId,
-                CodigoPago = p.CodigoPago,
-                AtencionId = p.AtencionId,
-                Servicio = p.Servicio,
-                MontoTotal = p.MontoTotal,
-                MontoPagado = p.MontoPagado,
-                SaldoPendiente = p.SaldoPendiente,
-                EstadoPago = p.EstadoPago,
-                FechaPago = p.FechaPago
+                PagoId = x.Id,
+                CodigoPago = x.CodigoPago,
+                AtencionId = x.AtencionId,
+                Servicio = x.ServicioClinico?.Nombre ?? "",
+                MontoTotal = x.MontoTotal,
+                MontoPagado = x.MontoPagado,
+                SaldoPendiente = x.SaldoPendiente,
+                EstadoPago = x.Estado.ToString(),
+                FechaPago = x.FechaPago
             }).ToList()
         };
     }
 
-    private IQueryable<PagoFinanzasDto> ObtenerPagosBase()
+    private async Task<List<Pago>> ObtenerPagosValidosAsync()
     {
-        return _context.Pagos
-            .AsNoTracking()
-            .Select(p => new PagoFinanzasDto
-            {
-                PagoId = p.Id,
-                CodigoPago = p.CodigoPago,
+        var pagos = await _pagoRepository.ObtenerTodosConDetalleAsync();
 
-                PacienteId = p.Atencion != null ? p.Atencion.PacienteId : null,
-                Paciente = p.Atencion != null
-                    ? p.Atencion.Paciente.Nombres + " " + p.Atencion.Paciente.Apellidos
-                    : string.Empty,
-                DniPaciente = p.Atencion != null
-                    ? p.Atencion.Paciente.Dni
-                    : string.Empty,
+        return pagos
+            .Where(EsPagoValidoParaFinanzas)
+            .ToList();
+    }
 
-                AtencionId = p.AtencionId,
-                Servicio = p.Atencion != null && p.Atencion.ServicioClinico != null
-                    ? p.Atencion.ServicioClinico.Nombre
-                    : "Sin servicio",
+    private static bool EsPagoValidoParaFinanzas(Pago pago)
+    {
+        return pago.Estado != EstadoPago.Anulado
+               && pago.Estado != EstadoPago.Reembolsado
+               && pago.Estado != EstadoPago.Eliminado;
+    }
 
-                MontoTotal = p.MontoTotal,
-                MontoPagado = p.MontoPagado,
-                SaldoPendiente = p.MontoTotal - p.MontoPagado,
+    private static PagoFinanzasDto MapearPagoFinanzas(Pago x)
+    {
+        return new PagoFinanzasDto
+        {
+            PagoId = x.Id,
+            CodigoPago = x.CodigoPago,
 
-                EstadoPago = p.EstadoPago,
-                MetodoPago = p.MetodoPago,
-                FechaPago = p.FechaPago,
+            PacienteId = x.PacienteId,
+            Paciente = x.Paciente == null ? "" : $"{x.Paciente.Nombres} {x.Paciente.Apellidos}",
+            DniPaciente = x.Paciente?.DNI ?? "",
 
-                RegistradoPor = p.UsuarioRegistro != null
-                    ? p.UsuarioRegistro.NombreUsuario
-                    : "Sistema"
-            });
+            AtencionId = x.AtencionId,
+            Servicio = x.ServicioClinico?.Nombre ?? "",
+
+            MontoTotal = x.MontoTotal,
+            MontoPagado = x.MontoPagado,
+            SaldoPendiente = x.SaldoPendiente,
+
+            EstadoPago = x.Estado.ToString(),
+            MetodoPago = x.MetodoPago.ToString(),
+
+            FechaPago = x.FechaPago,
+            RegistradoPor = x.UsuarioRegistro == null
+                ? ""
+                : $"{x.UsuarioRegistro.Nombres} {x.UsuarioRegistro.Apellidos}"
+        };
+    }
+
+    private static void ValidarAnioMes(int anio, int mes)
+    {
+        if (anio < 2000 || anio > DateTime.UtcNow.Year + 1)
+            throw new InvalidOperationException("El año ingresado no es válido.");
+
+        if (mes < 1 || mes > 12)
+            throw new InvalidOperationException("El mes ingresado no es válido.");
     }
 }
