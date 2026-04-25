@@ -16,6 +16,4 @@ public class RegistrarPagoDto
 
     public MetodoPago MetodoPago { get; set; }
     public string? Observacion { get; set; }
-
-    public Guid? UsuarioRegistroId { get; set; }
 }

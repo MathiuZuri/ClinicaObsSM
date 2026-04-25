@@ -10,6 +10,4 @@ public class CrearPacienteDto
     public string? Celular { get; set; }
     public string? Correo { get; set; }
     public string? Direccion { get; set; }
-
-    public Guid UsuarioId { get; set; }
 }

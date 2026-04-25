@@ -15,6 +15,4 @@ public class RegistrarAtencionDto
     public string? Tratamiento { get; set; }
 
     public decimal CostoFinal { get; set; }
-
-    public Guid? UsuarioRegistroId { get; set; }
 }

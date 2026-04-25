@@ -13,6 +13,4 @@ public class CrearCitaDto
 
     public string Motivo { get; set; } = string.Empty;
     public string? Observaciones { get; set; }
-
-    public Guid? UsuarioRegistroId { get; set; }
 }
