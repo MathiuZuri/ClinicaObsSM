@@ -46,6 +46,10 @@ public class DoctorService : IDoctorService
         if (existe != null)
             throw new InvalidOperationException("Ya existe un doctor registrado con ese CMP.");
         
+        if (dto.FechaFinContrato.HasValue && dto.FechaFinContrato.Value < dto.FechaInicioContrato)
+            throw new InvalidOperationException("La fecha de fin de contrato no puede ser menor que la fecha de inicio.");
+        
+        
         var usuarioId = _usuarioActualService.ObtenerUsuarioId();
         
         var doctor = new Doctor
@@ -74,6 +78,9 @@ public class DoctorService : IDoctorService
         var doctor = await _doctorRepository.GetByIdAsync(id);
         if (doctor == null)
             throw new KeyNotFoundException("Doctor no encontrado.");
+        
+        if (dto.FechaFinContrato.HasValue && dto.FechaFinContrato.Value < dto.FechaInicioContrato)
+            throw new InvalidOperationException("La fecha de fin de contrato no puede ser menor que la fecha de inicio.");
 
         doctor.CMP = dto.CMP;
         doctor.Nombres = dto.Nombres;

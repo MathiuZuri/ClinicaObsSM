@@ -65,6 +65,9 @@ public class AtencionService : IAtencionService
 
         var historial = await _historialRepository.GetByIdAsync(dto.HistorialClinicoId)
             ?? throw new KeyNotFoundException("Historial no encontrado.");
+        
+        if (dto.CostoFinal < 0)
+            throw new InvalidOperationException("El costo final no puede ser negativo.");
 
         var atencion = new Atencion
         {

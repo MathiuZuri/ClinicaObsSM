@@ -39,6 +39,9 @@ public class HorarioDoctorService : IHorarioDoctorService
 
         if (dto.HoraFin <= dto.HoraInicio)
             throw new InvalidOperationException("La hora de fin debe ser mayor que la hora de inicio.");
+        
+        if (dto.FechaFinVigencia.HasValue && dto.FechaFinVigencia.Value < dto.FechaInicioVigencia)
+            throw new InvalidOperationException("La fecha de fin de vigencia no puede ser menor que la fecha de inicio.");
 
         var horario = new HorarioDoctor
         {
@@ -66,6 +69,9 @@ public class HorarioDoctorService : IHorarioDoctorService
 
         if (dto.HoraFin <= dto.HoraInicio)
             throw new InvalidOperationException("La hora de fin debe ser mayor que la hora de inicio.");
+        
+        if (dto.FechaFinVigencia.HasValue && dto.FechaFinVigencia.Value < dto.FechaInicioVigencia)
+            throw new InvalidOperationException("La fecha de fin de vigencia no puede ser menor que la fecha de inicio.");
 
         horario.DiaSemana = dto.DiaSemana;
         horario.HoraInicio = dto.HoraInicio;
