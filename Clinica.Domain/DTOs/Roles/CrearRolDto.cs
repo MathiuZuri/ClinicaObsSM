@@ -1,7 +1,13 @@
-﻿namespace Clinica.Domain.DTOs.Roles;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Clinica.Domain.DTOs.Roles;
 
 public class CrearRolDto
 {
+    [Required(ErrorMessage = "El nombre del rol es obligatorio.")]
+    [StringLength(80, MinimumLength = 3, ErrorMessage = "El nombre del rol debe tener entre 3 y 80 caracteres.")]
     public string Nombre { get; set; } = string.Empty;
+
+    [StringLength(250, ErrorMessage = "La descripción no debe superar los 250 caracteres.")]
     public string? Descripcion { get; set; }
 }
