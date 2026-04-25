@@ -1,6 +1,89 @@
-﻿namespace Clinica.API.Controllers;
+﻿using Clinica.API.Authorization;
+using Clinica.API.Filters;
+using Clinica.API.Models;
+using Clinica.API.Services;
+using Clinica.Domain.Enums;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
-public class FinanzasController
+namespace Clinica.API.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class FinanzasController : ControllerBase
 {
-    
-} 
+    private readonly IFinanzasService _finanzasService;
+
+    public FinanzasController(IFinanzasService finanzasService)
+    {
+        _finanzasService = finanzasService;
+    }
+
+    [Authorize(Policy = PermisosPolicies.FinanzasVer)]
+    [HttpGet("resumen-diario")]
+    public async Task<IActionResult> ObtenerResumenDiario([FromQuery] DateOnly fecha)
+    {
+        var resumen = await _finanzasService.ObtenerResumenDiarioAsync(fecha);
+        return Ok(ApiResponse<object>.Ok(resumen, "Resumen diario de finanzas obtenido correctamente."));
+    }
+
+    [Authorize(Policy = PermisosPolicies.FinanzasVer)]
+    [HttpGet("resumen-mensual")]
+    public async Task<IActionResult> ObtenerResumenMensual([FromQuery] int anio, [FromQuery] int mes)
+    {
+        var resumen = await _finanzasService.ObtenerResumenMensualAsync(anio, mes);
+        return Ok(ApiResponse<object>.Ok(resumen, "Resumen mensual de finanzas obtenido correctamente."));
+    }
+
+    [Authorize(Policy = PermisosPolicies.FinanzasVer)]
+    [HttpGet("resumen-anual")]
+    public async Task<IActionResult> ObtenerResumenAnual([FromQuery] int anio)
+    {
+        var resumen = await _finanzasService.ObtenerResumenAnualAsync(anio);
+        return Ok(ApiResponse<object>.Ok(resumen, "Resumen anual de finanzas obtenido correctamente."));
+    }
+
+    [Authorize(Policy = PermisosPolicies.FinanzasVer)]
+    [HttpGet("pagos-pendientes")]
+    public async Task<IActionResult> ObtenerPagosPendientes()
+    {
+        var pagos = await _finanzasService.ObtenerPagosPendientesAsync();
+        return Ok(ApiResponse<object>.Ok(pagos, "Pagos pendientes obtenidos correctamente."));
+    }
+
+    [Authorize(Policy = PermisosPolicies.FinanzasVer)]
+    [HttpGet("pagos-pagados")]
+    public async Task<IActionResult> ObtenerPagosPagados()
+    {
+        var pagos = await _finanzasService.ObtenerPagosPagadosAsync();
+        return Ok(ApiResponse<object>.Ok(pagos, "Pagos pagados obtenidos correctamente."));
+    }
+
+    [Authorize(Policy = PermisosPolicies.FinanzasVer)]
+    [HttpGet("pagos-parciales")]
+    public async Task<IActionResult> ObtenerPagosParciales()
+    {
+        var pagos = await _finanzasService.ObtenerPagosParcialesAsync();
+        return Ok(ApiResponse<object>.Ok(pagos, "Pagos parciales obtenidos correctamente."));
+    }
+
+    [Authorize(Policy = PermisosPolicies.FinanzasVer)]
+    [HttpGet("pago/codigo/{codigoPago}")]
+    public async Task<IActionResult> ObtenerPagoPorCodigo(string codigoPago)
+    {
+        var pago = await _finanzasService.ObtenerPagoPorCodigoAsync(codigoPago);
+
+        if (pago == null)
+            throw new KeyNotFoundException("Pago no encontrado.");
+
+        return Ok(ApiResponse<object>.Ok(pago, "Pago obtenido correctamente."));
+    }
+
+    [Authorize(Policy = PermisosPolicies.FinanzasVer)]
+    [HttpGet("paciente/{pacienteId:guid}/estado-cuenta")]
+    public async Task<IActionResult> ObtenerEstadoCuentaPaciente(Guid pacienteId)
+    {
+        var estadoCuenta = await _finanzasService.ObtenerEstadoCuentaPacienteAsync(pacienteId);
+        return Ok(ApiResponse<object>.Ok(estadoCuenta, "Estado de cuenta del paciente obtenido correctamente."));
+    }
+}
