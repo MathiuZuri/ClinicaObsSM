@@ -1,10 +1,14 @@
-﻿using System.Security.Claims;
+﻿using System.Reflection;
+using System.Security.Claims;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using Clinica.Domain.Entities;
 using Clinica.Domain.Enums;
 using Clinica.Infrastructure.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.EntityFrameworkCore;
 
 namespace Clinica.API.Filters;
 
@@ -19,17 +23,30 @@ public class AuditoriaAutomaticaFilter : IAsyncActionFilter
 
     public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
     {
-        var ejecutado = await next();
-
-        var usuarioIdDesdeRespuesta = ObtenerUsuarioIdDesdeResultado(ejecutado);
-
         var http = context.HttpContext;
         var endpoint = context.ActionDescriptor as ControllerActionDescriptor;
+        var metodo = http.Request.Method.ToUpper();
 
         var atributo = endpoint?.MethodInfo
             .GetCustomAttributes(typeof(AuditoriaAttribute), true)
             .OfType<AuditoriaAttribute>()
             .FirstOrDefault();
+
+        var entidadIdAntes = ObtenerEntidadId(context);
+
+        string? valorAnterior = null;
+
+        if ((metodo is "PUT" or "PATCH" or "DELETE") && entidadIdAntes.HasValue)
+        {
+            valorAnterior = await ObtenerSnapshotEntidadAsync(
+                endpoint?.ControllerName,
+                entidadIdAntes.Value
+            );
+        }
+
+        var ejecutado = await next();
+
+        var usuarioIdDesdeRespuesta = ObtenerUsuarioIdDesdeResultado(ejecutado);
 
         var usuarioIdClaim = http.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
@@ -37,9 +54,36 @@ public class AuditoriaAutomaticaFilter : IAsyncActionFilter
             ? idUsuario
             : usuarioIdDesdeRespuesta;
 
+        var entidadIdDesdeRespuesta = ObtenerEntidadIdDesdeResultado(ejecutado);
+
+        var entidadIdFinal = entidadIdAntes ?? entidadIdDesdeRespuesta;
+
         var statusCode = http.Response.StatusCode;
 
         var fueExitoso = statusCode >= 200 && statusCode < 400 && ejecutado.Exception == null;
+
+        string? valorNuevo = null;
+
+        if (metodo is "POST" or "PUT" or "PATCH")
+        {
+            if (entidadIdFinal.HasValue)
+            {
+                valorNuevo = await ObtenerSnapshotEntidadAsync(
+                    endpoint?.ControllerName,
+                    entidadIdFinal.Value
+                );
+            }
+        }
+
+        valorNuevo ??= JsonSerializer.Serialize(new
+        {
+            Metodo = http.Request.Method,
+            Ruta = http.Request.Path.Value,
+            Query = http.Request.QueryString.Value,
+            StatusCode = statusCode,
+            Accion = endpoint?.ActionName,
+            Controlador = endpoint?.ControllerName
+        });
 
         var auditoria = new Auditoria
         {
@@ -49,18 +93,10 @@ public class AuditoriaAutomaticaFilter : IAsyncActionFilter
             Nivel = atributo?.Nivel ?? DetectarNivel(http.Request.Method),
             Modulo = atributo?.Modulo ?? endpoint?.ControllerName ?? "Sistema",
             EntidadAfectada = atributo?.Entidad ?? endpoint?.ControllerName ?? "General",
-            EntidadId = ObtenerEntidadId(context),
+            EntidadId = entidadIdFinal,
             Descripcion = GenerarDescripcion(http.Request.Method, endpoint, fueExitoso, statusCode),
-            ValorAnterior = null,
-            ValorNuevo = JsonSerializer.Serialize(new
-            {
-                Metodo = http.Request.Method,
-                Ruta = http.Request.Path.Value,
-                Query = http.Request.QueryString.Value,
-                StatusCode = statusCode,
-                Accion = endpoint?.ActionName,
-                Controlador = endpoint?.ControllerName
-            }),
+            ValorAnterior = valorAnterior,
+            ValorNuevo = valorNuevo,
             IpAddress = http.Connection.RemoteIpAddress?.ToString(),
             UserAgent = http.Request.Headers.UserAgent.ToString(),
             FueExitoso = fueExitoso,
@@ -97,31 +133,6 @@ public class AuditoriaAutomaticaFilter : IAsyncActionFilter
         };
     }
 
-    private static Guid? ObtenerUsuarioIdDesdeResultado(ActionExecutedContext ejecutado)
-    {
-        if (ejecutado.Result is not Microsoft.AspNetCore.Mvc.ObjectResult objectResult)
-            return null;
-
-        var value = objectResult.Value;
-
-        if (value == null)
-            return null;
-
-        var propiedadUsuarioId = value.GetType().GetProperty("UsuarioId");
-
-        if (propiedadUsuarioId == null)
-            return null;
-
-        var valorUsuarioId = propiedadUsuarioId.GetValue(value);
-
-        if (valorUsuarioId is Guid guid)
-            return guid;
-
-        return Guid.TryParse(valorUsuarioId?.ToString(), out var guidParseado)
-            ? guidParseado
-            : null;
-    }
-    
     private static Guid? ObtenerEntidadId(ActionExecutingContext context)
     {
         string? valor = null;
@@ -142,6 +153,111 @@ public class AuditoriaAutomaticaFilter : IAsyncActionFilter
             valor = historialId?.ToString();
 
         return Guid.TryParse(valor, out var guid) ? guid : null;
+    }
+
+    private static Guid? ObtenerUsuarioIdDesdeResultado(ActionExecutedContext ejecutado)
+    {
+        if (ejecutado.Result is not ObjectResult objectResult)
+            return null;
+
+        return BuscarGuidPorNombre(objectResult.Value, "UsuarioId");
+    }
+
+    private static Guid? ObtenerEntidadIdDesdeResultado(ActionExecutedContext ejecutado)
+    {
+        if (ejecutado.Result is not ObjectResult objectResult)
+            return null;
+
+        return BuscarGuidPorNombre(objectResult.Value, "Id");
+    }
+
+    private static Guid? BuscarGuidPorNombre(object? objeto, string nombrePropiedad)
+    {
+        if (objeto == null)
+            return null;
+
+        var tipo = objeto.GetType();
+
+        var propiedadDirecta = tipo.GetProperty(nombrePropiedad);
+        if (propiedadDirecta != null)
+        {
+            var valor = propiedadDirecta.GetValue(objeto);
+
+            if (valor is Guid guid)
+                return guid;
+
+            if (Guid.TryParse(valor?.ToString(), out var guidParseado))
+                return guidParseado;
+        }
+
+        var propiedadData = tipo.GetProperty("Data");
+        if (propiedadData == null)
+            return null;
+
+        var data = propiedadData.GetValue(objeto);
+        if (data == null)
+            return null;
+
+        return BuscarGuidPorNombre(data, nombrePropiedad);
+    }
+
+    private async Task<string?> ObtenerSnapshotEntidadAsync(string? controllerName, Guid id)
+    {
+        object? entidad = controllerName switch
+        {
+            "Pacientes" => await _context.Pacientes.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id),
+            "Doctores" => await _context.Doctores.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id),
+            "Horarios" => await _context.HorariosDoctor.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id),
+            "Citas" => await _context.Citas.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id),
+            "Atenciones" => await _context.Atenciones.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id),
+            "Pagos" => await _context.Pagos.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id),
+            "Usuarios" => await _context.Usuarios.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id),
+            "Roles" => await _context.Roles.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id),
+            "ServiciosClinicos" => await _context.ServiciosClinicos.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id),
+            "Historiales" => await _context.HistorialesClinicos.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id),
+            _ => null
+        };
+
+        if (entidad == null)
+            return null;
+
+        var snapshot = ConvertirASnapshotPlano(entidad);
+
+        return JsonSerializer.Serialize(snapshot, new JsonSerializerOptions
+        {
+            ReferenceHandler = ReferenceHandler.IgnoreCycles,
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+        });
+    }
+
+    private static Dictionary<string, object?> ConvertirASnapshotPlano(object entidad)
+    {
+        var resultado = new Dictionary<string, object?>();
+
+        var propiedades = entidad.GetType()
+            .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+            .Where(p => EsPropiedadSimple(p.PropertyType));
+
+        foreach (var propiedad in propiedades)
+        {
+            resultado[propiedad.Name] = propiedad.GetValue(entidad);
+        }
+
+        return resultado;
+    }
+
+    private static bool EsPropiedadSimple(Type type)
+    {
+        var tipoReal = Nullable.GetUnderlyingType(type) ?? type;
+
+        return tipoReal.IsPrimitive
+               || tipoReal.IsEnum
+               || tipoReal == typeof(string)
+               || tipoReal == typeof(decimal)
+               || tipoReal == typeof(Guid)
+               || tipoReal == typeof(DateTime)
+               || tipoReal == typeof(DateOnly)
+               || tipoReal == typeof(TimeOnly);
     }
 
     private static string GenerarDescripcion(
