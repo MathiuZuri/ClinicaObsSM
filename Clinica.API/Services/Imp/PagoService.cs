@@ -54,6 +54,12 @@ public class PagoService : IPagoService
     public async Task<Guid> RegistrarAsync(RegistrarPagoDto dto)
     {
         var usuarioId = _usuarioActualService.ObtenerUsuarioId();
+        
+        if (dto.MontoPagado > dto.MontoTotal)
+            throw new InvalidOperationException("El monto pagado no puede ser mayor al monto total.");
+
+        if (dto.MontoAdelanto > dto.MontoTotal)
+            throw new InvalidOperationException("El monto de adelanto no puede ser mayor al monto total.");
 
         var paciente = await _pacienteRepository.GetByIdAsync(dto.PacienteId)
             ?? throw new KeyNotFoundException("Paciente no encontrado.");

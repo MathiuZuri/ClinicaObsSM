@@ -62,6 +62,12 @@ public class CitaService : ICitaService
     public async Task<Guid> CrearAsync(CrearCitaDto dto)
     {
         var usuarioId = _usuarioActualService.ObtenerUsuarioId();
+        
+        if (dto.Fecha < DateOnly.FromDateTime(DateTime.Today))
+            throw new InvalidOperationException("No se puede programar una cita en una fecha pasada.");
+
+        if (dto.HoraFin <= dto.HoraInicio)
+            throw new InvalidOperationException("La hora de fin debe ser mayor que la hora de inicio.");
 
         var paciente = await _pacienteRepository.GetByIdAsync(dto.PacienteId)
             ?? throw new KeyNotFoundException("Paciente no encontrado.");
@@ -136,6 +142,12 @@ public class CitaService : ICitaService
 
         if (existeCruce)
             throw new InvalidOperationException("El doctor ya tiene una cita en ese nuevo horario.");
+        
+        if (dto.NuevaFecha < DateOnly.FromDateTime(DateTime.Today))
+            throw new InvalidOperationException("No se puede reprogramar una cita en una fecha pasada.");
+
+        if (dto.NuevaHoraFin <= dto.NuevaHoraInicio)
+            throw new InvalidOperationException("La hora de fin debe ser mayor que la hora de inicio.");
 
         cita.DoctorId = dto.DoctorId;
         cita.HorarioDoctorId = dto.HorarioDoctorId;
