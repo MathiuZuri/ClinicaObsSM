@@ -13,6 +13,7 @@ public class CitaService : ICitaService
     private readonly IServicioClinicoRepository _servicioRepository;
     private readonly IHistorialClinicoRepository _historialRepository;
     private readonly IHistorialDetalleRepository _detalleRepository;
+    private readonly IUsuarioActualService _usuarioActualService;
 
     public CitaService(
         ICitaRepository citaRepository,
@@ -20,7 +21,8 @@ public class CitaService : ICitaService
         IDoctorRepository doctorRepository,
         IServicioClinicoRepository servicioRepository,
         IHistorialClinicoRepository historialRepository,
-        IHistorialDetalleRepository detalleRepository)
+        IHistorialDetalleRepository detalleRepository,
+        IUsuarioActualService usuarioActualService)
     {
         _citaRepository = citaRepository;
         _pacienteRepository = pacienteRepository;
@@ -28,6 +30,7 @@ public class CitaService : ICitaService
         _servicioRepository = servicioRepository;
         _historialRepository = historialRepository;
         _detalleRepository = detalleRepository;
+        _usuarioActualService = usuarioActualService;
     }
 
     public async Task<IEnumerable<CitaResponseDto>> ObtenerTodasAsync()
@@ -58,6 +61,8 @@ public class CitaService : ICitaService
 
     public async Task<Guid> CrearAsync(CrearCitaDto dto)
     {
+        var usuarioId = _usuarioActualService.ObtenerUsuarioId();
+
         var paciente = await _pacienteRepository.GetByIdAsync(dto.PacienteId)
             ?? throw new KeyNotFoundException("Paciente no encontrado.");
 
@@ -91,7 +96,7 @@ public class CitaService : ICitaService
             Observaciones = dto.Observaciones,
             Estado = EstadoCita.Pendiente,
             FechaRegistro = DateTime.UtcNow,
-            UsuarioRegistroId = dto.UsuarioRegistroId
+            UsuarioRegistroId = usuarioId
         };
 
         await _citaRepository.AddAsync(cita);
@@ -109,7 +114,7 @@ public class CitaService : ICitaService
                 Titulo = "Cita programada",
                 Descripcion = $"Se programó una cita para el servicio {servicio.Nombre}.",
                 FechaRegistro = DateTime.UtcNow,
-                UsuarioId = dto.UsuarioRegistroId
+                UsuarioId = usuarioId
             });
         }
 

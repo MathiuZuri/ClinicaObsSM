@@ -13,6 +13,7 @@ public class PagoService : IPagoService
     private readonly IAtencionRepository _atencionRepository;
     private readonly IHistorialClinicoRepository _historialRepository;
     private readonly IHistorialDetalleRepository _detalleRepository;
+    private readonly IUsuarioActualService _usuarioActualService;
 
     public PagoService(
         IPagoRepository pagoRepository,
@@ -20,7 +21,8 @@ public class PagoService : IPagoService
         IServicioClinicoRepository servicioRepository,
         IAtencionRepository atencionRepository,
         IHistorialClinicoRepository historialRepository,
-        IHistorialDetalleRepository detalleRepository)
+        IHistorialDetalleRepository detalleRepository,
+        IUsuarioActualService usuarioActualService)
     {
         _pagoRepository = pagoRepository;
         _pacienteRepository = pacienteRepository;
@@ -28,6 +30,7 @@ public class PagoService : IPagoService
         _atencionRepository = atencionRepository;
         _historialRepository = historialRepository;
         _detalleRepository = detalleRepository;
+        _usuarioActualService = usuarioActualService;
     }
 
     public async Task<IEnumerable<PagoResponseDto>> ObtenerPorPacienteAsync(Guid pacienteId)
@@ -50,6 +53,8 @@ public class PagoService : IPagoService
 
     public async Task<Guid> RegistrarAsync(RegistrarPagoDto dto)
     {
+        var usuarioId = _usuarioActualService.ObtenerUsuarioId();
+
         var paciente = await _pacienteRepository.GetByIdAsync(dto.PacienteId)
             ?? throw new KeyNotFoundException("Paciente no encontrado.");
 
@@ -74,12 +79,11 @@ public class PagoService : IPagoService
             Estado = saldo == 0 ? EstadoPago.Pagado : EstadoPago.Parcial,
             Observacion = dto.Observacion,
             FechaPago = DateTime.UtcNow,
-            UsuarioRegistroId = dto.UsuarioRegistroId
+            UsuarioRegistroId = usuarioId
         };
 
         await _pagoRepository.AddAsync(pago);
 
-        // actualizar atención
         if (dto.AtencionId.HasValue)
         {
             var atencion = await _atencionRepository.GetByIdAsync(dto.AtencionId.Value);
@@ -106,7 +110,7 @@ public class PagoService : IPagoService
                 Titulo = "Pago registrado",
                 Descripcion = $"Se registró pago de S/ {dto.MontoPagado}.",
                 FechaRegistro = DateTime.UtcNow,
-                UsuarioId = dto.UsuarioRegistroId
+                UsuarioId = usuarioId
             });
         }
 

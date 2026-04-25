@@ -25,6 +25,9 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddScoped<JwtHelper>();
 
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<IUsuarioActualService, UsuarioActualService>();
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {

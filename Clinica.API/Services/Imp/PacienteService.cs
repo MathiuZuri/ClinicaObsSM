@@ -10,15 +10,18 @@ public class PacienteService : IPacienteService
     private readonly IPacienteRepository _pacienteRepository;
     private readonly IHistorialClinicoRepository _historialRepository;
     private readonly IHistorialDetalleRepository _historialDetalleRepository;
-
+    private readonly IUsuarioActualService _usuarioActualService;
+    
     public PacienteService(
         IPacienteRepository pacienteRepository,
         IHistorialClinicoRepository historialRepository,
-        IHistorialDetalleRepository historialDetalleRepository)
+        IHistorialDetalleRepository historialDetalleRepository,
+        IUsuarioActualService usuarioActualService)
     {
         _pacienteRepository = pacienteRepository;
         _historialRepository = historialRepository;
         _historialDetalleRepository = historialDetalleRepository;
+        _usuarioActualService = usuarioActualService;
     }
 
     public async Task<IEnumerable<PacienteResponseDto>> ObtenerTodosAsync()
@@ -61,6 +64,8 @@ public class PacienteService : IPacienteService
 
     public async Task<Guid> CrearAsync(CrearPacienteDto dto)
     {
+        var usuarioId = _usuarioActualService.ObtenerUsuarioId();
+
         var existe = await _pacienteRepository.ObtenerPorDniAsync(dto.DNI);
         if (existe != null)
             throw new InvalidOperationException("Ya existe un paciente registrado con ese DNI.");
@@ -77,7 +82,7 @@ public class PacienteService : IPacienteService
             Celular = dto.Celular,
             Correo = dto.Correo,
             Direccion = dto.Direccion,
-            UsuarioId = dto.UsuarioId,
+            UsuarioId = usuarioId,
             FechaRegistro = DateTime.UtcNow
         };
 
@@ -98,7 +103,7 @@ public class PacienteService : IPacienteService
             Titulo = "Apertura de historial clínico",
             Descripcion = "Se registró al paciente y se aperturó su historial clínico.",
             FechaRegistro = DateTime.UtcNow,
-            UsuarioId = dto.UsuarioId
+            UsuarioId = usuarioId
         };
 
         await _pacienteRepository.AddAsync(paciente);

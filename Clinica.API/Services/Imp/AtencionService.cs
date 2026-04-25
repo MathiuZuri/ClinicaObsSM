@@ -14,6 +14,7 @@ public class AtencionService : IAtencionService
     private readonly IServicioClinicoRepository _servicioRepository;
     private readonly IHistorialClinicoRepository _historialRepository;
     private readonly IHistorialDetalleRepository _detalleRepository;
+    private readonly IUsuarioActualService _usuarioActualService;
 
     public AtencionService(
         IAtencionRepository atencionRepository,
@@ -22,7 +23,8 @@ public class AtencionService : IAtencionService
         IDoctorRepository doctorRepository,
         IServicioClinicoRepository servicioRepository,
         IHistorialClinicoRepository historialRepository,
-        IHistorialDetalleRepository detalleRepository)
+        IHistorialDetalleRepository detalleRepository,
+        IUsuarioActualService usuarioActualService)
     {
         _atencionRepository = atencionRepository;
         _citaRepository = citaRepository;
@@ -31,6 +33,7 @@ public class AtencionService : IAtencionService
         _servicioRepository = servicioRepository;
         _historialRepository = historialRepository;
         _detalleRepository = detalleRepository;
+        _usuarioActualService = usuarioActualService;
     }
 
     public async Task<IEnumerable<AtencionResponseDto>> ObtenerPorPacienteAsync(Guid pacienteId)
@@ -49,6 +52,8 @@ public class AtencionService : IAtencionService
 
     public async Task<Guid> RegistrarAsync(RegistrarAtencionDto dto)
     {
+        var usuarioId = _usuarioActualService.ObtenerUsuarioId();
+
         var paciente = await _pacienteRepository.GetByIdAsync(dto.PacienteId)
             ?? throw new KeyNotFoundException("Paciente no encontrado.");
 
@@ -80,12 +85,11 @@ public class AtencionService : IAtencionService
             CostoFinal = dto.CostoFinal,
             MontoPagado = 0,
             SaldoPendiente = dto.CostoFinal,
-            UsuarioRegistroId = dto.UsuarioRegistroId
+            UsuarioRegistroId = usuarioId
         };
 
         await _atencionRepository.AddAsync(atencion);
 
-        // actualizar estado de cita
         if (dto.CitaId.HasValue)
         {
             var cita = await _citaRepository.GetByIdAsync(dto.CitaId.Value);
@@ -106,7 +110,7 @@ public class AtencionService : IAtencionService
             Titulo = "Atención médica registrada",
             Descripcion = $"Se registró atención para el servicio {servicio.Nombre}.",
             FechaRegistro = DateTime.UtcNow,
-            UsuarioId = dto.UsuarioRegistroId
+            UsuarioId = usuarioId
         });
 
         await _atencionRepository.SaveChangesAsync();
