@@ -12,6 +12,8 @@ using Microsoft.IdentityModel.Tokens;
 using Clinica.API.Authorization;
 using Clinica.API.Filters;
 using Clinica.API.Middlewares;
+using Clinica.API.Configurations;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +22,10 @@ builder.Services.AddControllers(options =>
 {
     options.Filters.Add<AuditoriaAutomaticaFilter>();
 });
+
+builder.Services.Configure<ApiBehaviorOptions>(
+    ValidationResponseConfig.ConfigurarRespuestasDeValidacion
+);
 
 builder.Services.AddOpenApi();
 
