@@ -8,10 +8,14 @@ namespace Clinica.API.Services.Imp;
 public class DoctorService : IDoctorService
 {
     private readonly IDoctorRepository _doctorRepository;
+    private readonly IUsuarioActualService _usuarioActualService;
 
-    public DoctorService(IDoctorRepository doctorRepository)
+    public DoctorService(
+        IDoctorRepository doctorRepository,
+        IUsuarioActualService usuarioActualService)
     {
         _doctorRepository = doctorRepository;
+        _usuarioActualService = usuarioActualService;
     }
 
     public async Task<IEnumerable<DoctorResponseDto>> ObtenerTodosAsync()
@@ -41,7 +45,9 @@ public class DoctorService : IDoctorService
         var existe = await _doctorRepository.ObtenerPorCmpAsync(dto.CMP);
         if (existe != null)
             throw new InvalidOperationException("Ya existe un doctor registrado con ese CMP.");
-
+        
+        var usuarioId = _usuarioActualService.ObtenerUsuarioId();
+        
         var doctor = new Doctor
         {
             Id = Guid.NewGuid(),
@@ -54,7 +60,7 @@ public class DoctorService : IDoctorService
             Correo = dto.Correo,
             FechaInicioContrato = FechaHelper.ToUtc(dto.FechaInicioContrato),
             FechaFinContrato = FechaHelper.ToUtc(dto.FechaFinContrato),
-            UsuarioId = dto.UsuarioId
+            UsuarioId = usuarioId
         };
 
         await _doctorRepository.AddAsync(doctor);
