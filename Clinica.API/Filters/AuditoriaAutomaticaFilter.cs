@@ -168,7 +168,7 @@ public class AuditoriaAutomaticaFilter : IAsyncActionFilter
         if (ejecutado.Result is not ObjectResult objectResult)
             return null;
 
-        return BuscarGuidPorNombre(objectResult.Value, "Id");
+        return BuscarGuidPorNombre(objectResult.Value, "id");
     }
 
     private static Guid? BuscarGuidPorNombre(object? objeto, string nombrePropiedad)
@@ -178,7 +178,12 @@ public class AuditoriaAutomaticaFilter : IAsyncActionFilter
 
         var tipo = objeto.GetType();
 
-        var propiedadDirecta = tipo.GetProperty(nombrePropiedad);
+        var propiedadDirecta = tipo.GetProperties()
+            .FirstOrDefault(p => string.Equals(
+                p.Name,
+                nombrePropiedad,
+                StringComparison.OrdinalIgnoreCase));
+
         if (propiedadDirecta != null)
         {
             var valor = propiedadDirecta.GetValue(objeto);
@@ -190,7 +195,12 @@ public class AuditoriaAutomaticaFilter : IAsyncActionFilter
                 return guidParseado;
         }
 
-        var propiedadData = tipo.GetProperty("Data");
+        var propiedadData = tipo.GetProperties()
+            .FirstOrDefault(p => string.Equals(
+                p.Name,
+                "Data",
+                StringComparison.OrdinalIgnoreCase));
+
         if (propiedadData == null)
             return null;
 
