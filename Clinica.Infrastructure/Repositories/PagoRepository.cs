@@ -42,4 +42,27 @@ public class PagoRepository : GenericRepository<Pago>, IPagoRepository
             .OrderByDescending(x => x.FechaPago)
             .ToListAsync();
     }
+    
+    public async Task<IEnumerable<Pago>> ObtenerTodosConDetalleAsync()
+    {
+        return await Context.Pagos
+            .Include(x => x.Paciente)
+            .Include(x => x.ServicioClinico)
+            .Include(x => x.Cita)
+            .Include(x => x.Atencion)
+            .Include(x => x.UsuarioRegistro)
+            .OrderByDescending(x => x.FechaPago)
+            .ToListAsync();
+    }
+
+    public async Task<Pago?> ObtenerPorCodigoConDetalleAsync(string codigoPago)
+    {
+        return await Context.Pagos
+            .Include(x => x.Paciente)
+            .Include(x => x.ServicioClinico)
+            .Include(x => x.Cita)
+            .Include(x => x.Atencion)
+            .Include(x => x.UsuarioRegistro)
+            .FirstOrDefaultAsync(x => x.CodigoPago == codigoPago);
+    }
 }
