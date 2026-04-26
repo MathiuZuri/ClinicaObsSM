@@ -8,10 +8,10 @@ public interface IFinanzasService
     Task<ResumenMensualFinanzasDto> ObtenerResumenMensualAsync(int anio, int mes);
     Task<ResumenAnualFinanzasDto> ObtenerResumenAnualAsync(int anio);
 
-    Task<List<PagoFinanzasDto>> ObtenerPagosPendientesAsync();
-    Task<List<PagoFinanzasDto>> ObtenerPagosPagadosAsync();
-    Task<List<PagoFinanzasDto>> ObtenerPagosParcialesAsync();
+    Task<IEnumerable<PagoFinanzasDto>> ObtenerPagosPendientesAsync();
+    Task<IEnumerable<PagoFinanzasDto>> ObtenerPagosPagadosAsync();
+    Task<IEnumerable<PagoFinanzasDto>> ObtenerPagosParcialesAsync();
 
-    Task<PagoFinanzasDto> BuscarPagoPorCodigoAsync(string codigoPago);
+    Task<PagoFinanzasDto?> ObtenerPagoPorCodigoAsync(string codigoPago);
     Task<EstadoCuentaPacienteDto> ObtenerEstadoCuentaPacienteAsync(Guid pacienteId);
 }

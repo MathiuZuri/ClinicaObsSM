@@ -18,6 +18,9 @@ public static class PermisosPolicies
     public const string PagoVer = "PAGO_VER";
     public const string PagoRegistrar = "PAGO_REGISTRAR";
 
+    public const string FinanzasVer = "FINANZAS_VER";
+    public const string FinanzasExportar = "FINANZAS_EXPORTAR";
+
     public const string DoctorVer = "DOCTOR_VER";
     public const string DoctorCrear = "DOCTOR_CREAR";
     public const string DoctorEditar = "DOCTOR_EDITAR";

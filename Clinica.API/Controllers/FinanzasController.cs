@@ -1,8 +1,6 @@
 ﻿using Clinica.API.Authorization;
-using Clinica.API.Filters;
 using Clinica.API.Models;
-using Clinica.API.Services;
-using Clinica.Domain.Enums;
+using Clinica.Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

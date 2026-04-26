@@ -37,6 +37,9 @@ public static class DataSeeder
 
             new() { Codigo = "PAGO_VER", Nombre = "Ver pagos", Modulo = "Pagos", Activo = true },
             new() { Codigo = "PAGO_REGISTRAR", Nombre = "Registrar pago", Modulo = "Pagos", Activo = true },
+            
+            new() { Codigo = "FINANZAS_VER", Nombre = "Ver finanzas", Modulo = "Finanzas", Activo = true },
+            new() { Codigo = "FINANZAS_EXPORTAR", Nombre = "Exportar reportes financieros", Modulo = "Finanzas", Activo = true },
 
             new() { Codigo = "DOCTOR_VER", Nombre = "Ver doctores", Modulo = "Doctores", Activo = true },
             new() { Codigo = "DOCTOR_CREAR", Nombre = "Crear doctores", Modulo = "Doctores", Activo = true },
