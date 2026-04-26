@@ -3,6 +3,9 @@ using Clinica.API.Models;
 using Clinica.Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Clinica.Domain.DTOs.Finanzas;
+using Clinica.API.Filters;
+using Clinica.Domain.Enums;
 
 namespace Clinica.API.Controllers;
 
@@ -107,5 +110,56 @@ public class FinanzasController : ControllerBase
     {
         var estadoPago = await _finanzasService.ObtenerEstadoPagoAtencionAsync(atencionId);
         return Ok(ApiResponse<object>.Ok(estadoPago, "Estado de pago de la atención obtenido correctamente."));
+    }
+    
+    [Authorize(Policy = PermisosPolicies.FinanzasVer)]
+    [HttpGet("libro-diario")]
+    public async Task<IActionResult> ObtenerLibroDiario([FromQuery] DateOnly fecha)
+    {
+        var resultado = await _finanzasService.ObtenerLibroDiarioAsync(fecha);
+        return Ok(ApiResponse<object>.Ok(resultado, "Libro diario obtenido correctamente."));
+    }
+
+    [Authorize(Policy = PermisosPolicies.FinanzasVer)]
+    [HttpGet("resumen-financiero-mensual-completo")]
+    public async Task<IActionResult> ObtenerResumenFinancieroMensualCompleto(
+        [FromQuery] int anio,
+        [FromQuery] int mes)
+    {
+        var resultado = await _finanzasService.ObtenerResumenFinancieroMensualCompletoAsync(anio, mes);
+        return Ok(ApiResponse<object>.Ok(resultado, "Resumen financiero mensual completo obtenido correctamente."));
+    }
+
+    [Auditoria("Finanzas", "Ajuste financiero", TipoAccionAuditoria.Creacion, NivelAuditoria.Critico)]
+    [Authorize(Policy = PermisosPolicies.PagoRegistrar)]
+    [HttpPost("ajustes-financieros")]
+    public async Task<IActionResult> RegistrarAjusteFinanciero([FromBody] RegistrarAjusteFinancieroDto dto)
+    {
+        var id = await _finanzasService.RegistrarAjusteFinancieroAsync(dto);
+        return Ok(ApiResponse<object>.Ok(new { id }, "Ajuste financiero registrado correctamente."));
+    }
+
+    [Authorize(Policy = PermisosPolicies.FinanzasVer)]
+    [HttpGet("ajustes-financieros")]
+    public async Task<IActionResult> ObtenerAjustesFinancieros()
+    {
+        var resultado = await _finanzasService.ObtenerAjustesFinancierosAsync();
+        return Ok(ApiResponse<object>.Ok(resultado, "Ajustes financieros obtenidos correctamente."));
+    }
+
+    [Authorize(Policy = PermisosPolicies.FinanzasVer)]
+    [HttpGet("atencion/{atencionId:guid}/ajustes-financieros")]
+    public async Task<IActionResult> ObtenerAjustesPorAtencion(Guid atencionId)
+    {
+        var resultado = await _finanzasService.ObtenerAjustesPorAtencionAsync(atencionId);
+        return Ok(ApiResponse<object>.Ok(resultado, "Ajustes financieros de la atención obtenidos correctamente."));
+    }
+
+    [Authorize(Policy = PermisosPolicies.FinanzasVer)]
+    [HttpGet("pago/{pagoId:guid}/ajustes-financieros")]
+    public async Task<IActionResult> ObtenerAjustesPorPago(Guid pagoId)
+    {
+        var resultado = await _finanzasService.ObtenerAjustesPorPagoAsync(pagoId);
+        return Ok(ApiResponse<object>.Ok(resultado, "Ajustes financieros del pago obtenidos correctamente."));
     }
 }

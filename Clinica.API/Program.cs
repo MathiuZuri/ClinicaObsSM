@@ -86,6 +86,7 @@ builder.Services.AddScoped<IHistorialClinicoRepository, HistorialClinicoReposito
 builder.Services.AddScoped<IHistorialDetalleRepository, HistorialDetalleRepository>();
 builder.Services.AddScoped<IAtencionRepository, AtencionRepository>();
 builder.Services.AddScoped<IPagoRepository, PagoRepository>();
+builder.Services.AddScoped<IAjusteFinancieroRepository, AjusteFinancieroRepository>();
 
 // Servicios
 builder.Services.AddScoped<IAuthService, AuthService>();
@@ -103,10 +104,10 @@ builder.Services.AddScoped<IServicioClinicoService, ServicioClinicoService>();
 builder.Services.AddScoped<IHistorialClinicoService, HistorialClinicoService>();
 builder.Services.AddScoped<IAtencionService, AtencionService>();
 builder.Services.AddScoped<IPagoService, PagoService>();
-builder.Services.AddScoped<IAjusteFinancieroRepository, AjusteFinancieroRepository>();
-builder.Services.AddScoped<
-    Clinica.Domain.Interfaces.IFinanzasService,
-    Clinica.API.Services.Imp.FinanzasService>();
+builder.Services.AddScoped<IFinanzasService, FinanzasService>();
+//builder.Services.AddScoped<
+//    Clinica.Domain.Interfaces.IFinanzasService,
+//    Clinica.API.Services.Imp.FinanzasService>();
 
 builder.Services.AddCors(options =>
 {

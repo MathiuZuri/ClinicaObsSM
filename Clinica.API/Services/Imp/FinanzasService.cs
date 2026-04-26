@@ -9,13 +9,194 @@ public class FinanzasService : IFinanzasService
 {
     private readonly IPagoRepository _pagoRepository;
     private readonly IPacienteRepository _pacienteRepository;
+    private readonly IAjusteFinancieroRepository _ajusteFinancieroRepository;
 
     public FinanzasService(
         IPagoRepository pagoRepository,
-        IPacienteRepository pacienteRepository)
+        IPacienteRepository pacienteRepository,
+        IAjusteFinancieroRepository ajusteFinancieroRepository)
     {
         _pagoRepository = pagoRepository;
         _pacienteRepository = pacienteRepository;
+        _ajusteFinancieroRepository = ajusteFinancieroRepository;
+    }
+
+    // ==========================================================
+    // AJUSTES FINANCIEROS / JUSTIFICACIONES
+    // ==========================================================
+
+    public async Task<Guid> RegistrarAjusteFinancieroAsync(RegistrarAjusteFinancieroDto dto)
+    {
+        if (dto.PagoId == Guid.Empty)
+            throw new InvalidOperationException("El identificador del pago es obligatorio.");
+
+        if (dto.MontoAjuste <= 0)
+            throw new InvalidOperationException("El monto del ajuste debe ser mayor a 0.");
+
+        if (string.IsNullOrWhiteSpace(dto.Motivo))
+            throw new InvalidOperationException("El motivo del ajuste financiero es obligatorio.");
+
+        var pago = await _pagoRepository.GetByIdAsync(dto.PagoId)
+                   ?? throw new KeyNotFoundException("Pago no encontrado.");
+
+        var ajuste = new AjusteFinanciero
+        {
+            Id = Guid.NewGuid(),
+            PagoId = pago.Id,
+            AtencionId = pago.AtencionId,
+            PacienteId = pago.PacienteId,
+            TipoAjuste = dto.TipoAjuste,
+            MontoAjuste = dto.MontoAjuste,
+            Motivo = dto.Motivo.Trim(),
+            Observacion = dto.Observacion?.Trim(),
+            FechaRegistro = DateTime.UtcNow
+        };
+
+        await _ajusteFinancieroRepository.AddAsync(ajuste);
+        await _ajusteFinancieroRepository.SaveChangesAsync();
+
+        return ajuste.Id;
+    }
+    
+    public async Task<IEnumerable<PagoFinanzasDto>> ObtenerLibroDiarioAsync(DateOnly fecha)
+    {
+        var pagos = await ObtenerPagosValidosAsync();
+
+        return pagos
+            .Where(x => DateOnly.FromDateTime(x.FechaPago) == fecha)
+            .OrderByDescending(x => x.FechaPago)
+            .Select(MapearPagoFinanzas)
+            .ToList();
+    }
+
+    public async Task<ResumenFinancieroMensualCompletoDto> ObtenerResumenFinancieroMensualCompletoAsync(int anio, int mes)
+    {
+        ValidarAnioMes(anio, mes);
+
+        var pagos = await ObtenerPagosValidosAsync();
+
+        var pagosDelMes = pagos
+            .Where(x => x.FechaPago.Year == anio && x.FechaPago.Month == mes)
+            .ToList();
+
+        var estadosPorAtencion = pagosDelMes
+            .Where(x => x.AtencionId.HasValue)
+            .GroupBy(x => x.AtencionId!.Value)
+            .Select(MapearEstadoPagoAtencion)
+            .ToList();
+
+        var ajustes = await _ajusteFinancieroRepository.ObtenerTodosConDetalleAsync();
+
+        var ajustesDelMes = ajustes
+            .Where(x => x.FechaRegistro.Year == anio && x.FechaRegistro.Month == mes)
+            .OrderByDescending(x => x.FechaRegistro)
+            .Select(MapearAjusteFinanciero)
+            .ToList();
+
+        return new ResumenFinancieroMensualCompletoDto
+        {
+            Anio = anio,
+            Mes = mes,
+
+            ResumenCaja = new ResumenCajaDto
+            {
+                TotalIngresos = pagosDelMes.Sum(x => x.MontoPagado),
+                CantidadMovimientos = pagosDelMes.Count,
+
+                TotalEfectivo = pagosDelMes
+                    .Where(x => x.MetodoPago == MetodoPago.Efectivo)
+                    .Sum(x => x.MontoPagado),
+
+                TotalYape = pagosDelMes
+                    .Where(x => x.MetodoPago == MetodoPago.Yape)
+                    .Sum(x => x.MontoPagado),
+
+                TotalPlin = pagosDelMes
+                    .Where(x => x.MetodoPago == MetodoPago.Plin)
+                    .Sum(x => x.MontoPagado),
+
+                TotalTransferencia = pagosDelMes
+                    .Where(x => x.MetodoPago == MetodoPago.Transferencia)
+                    .Sum(x => x.MontoPagado),
+
+                TotalTarjeta = pagosDelMes
+                    .Where(x => x.MetodoPago == MetodoPago.Tarjeta)
+                    .Sum(x => x.MontoPagado),
+
+                TotalOtro = pagosDelMes
+                    .Where(x => x.MetodoPago == MetodoPago.Otro)
+                    .Sum(x => x.MontoPagado),
+
+                MetodosPago = pagosDelMes
+                    .GroupBy(x => x.MetodoPago)
+                    .Select(g => new ResumenMetodoPagoDto
+                    {
+                        MetodoPago = g.Key.ToString(),
+                        Total = g.Sum(x => x.MontoPagado),
+                        CantidadMovimientos = g.Count()
+                    })
+                    .OrderByDescending(x => x.Total)
+                    .ToList(),
+
+                Movimientos = pagosDelMes
+                    .OrderByDescending(x => x.FechaPago)
+                    .Select(MapearPagoFinanzas)
+                    .ToList()
+            },
+
+            ResumenRealAtenciones = new ResumenRealAtencionesDto
+            {
+                TotalFacturadoReal = estadosPorAtencion.Sum(x => x.MontoTotal),
+                TotalPagadoReal = estadosPorAtencion.Sum(x => x.TotalPagado),
+                TotalDeudaReal = estadosPorAtencion.Sum(x => x.SaldoReal),
+                TotalSobrepagos = estadosPorAtencion.Sum(x => x.Sobrepago),
+
+                AtencionesPagadas = estadosPorAtencion.Count(x => x.EstadoFinanciero == "Pagado"),
+                AtencionesParciales = estadosPorAtencion.Count(x => x.EstadoFinanciero == "Parcial"),
+                AtencionesPendientes = estadosPorAtencion.Count(x => x.EstadoFinanciero == "Pendiente"),
+                AtencionesSobrepagadas = estadosPorAtencion.Count(x => x.EstadoFinanciero == "Sobrepagado"),
+
+                EstadosAtenciones = estadosPorAtencion
+            },
+
+            AjustesFinancieros = ajustesDelMes
+        };
+    }
+
+    public async Task<IEnumerable<AjusteFinancieroDto>> ObtenerAjustesFinancierosAsync()
+    {
+        var ajustes = await _ajusteFinancieroRepository.ObtenerTodosConDetalleAsync();
+
+        return ajustes
+            .OrderByDescending(x => x.FechaRegistro)
+            .Select(MapearAjusteFinanciero)
+            .ToList();
+    }
+
+    public async Task<IEnumerable<AjusteFinancieroDto>> ObtenerAjustesPorAtencionAsync(Guid atencionId)
+    {
+        if (atencionId == Guid.Empty)
+            throw new InvalidOperationException("El identificador de la atención es obligatorio.");
+
+        var ajustes = await _ajusteFinancieroRepository.ObtenerPorAtencionAsync(atencionId);
+
+        return ajustes
+            .OrderByDescending(x => x.FechaRegistro)
+            .Select(MapearAjusteFinanciero)
+            .ToList();
+    }
+
+    public async Task<IEnumerable<AjusteFinancieroDto>> ObtenerAjustesPorPagoAsync(Guid pagoId)
+    {
+        if (pagoId == Guid.Empty)
+            throw new InvalidOperationException("El identificador del pago es obligatorio.");
+
+        var ajustes = await _ajusteFinancieroRepository.ObtenerPorPagoAsync(pagoId);
+
+        return ajustes
+            .OrderByDescending(x => x.FechaRegistro)
+            .Select(MapearAjusteFinanciero)
+            .ToList();
     }
 
     // ==========================================================
@@ -418,6 +599,36 @@ public class FinanzasService : IFinanzasService
         };
     }
 
+    private static AjusteFinancieroDto MapearAjusteFinanciero(AjusteFinanciero x)
+    {
+        return new AjusteFinancieroDto
+        {
+            Id = x.Id,
+
+            PagoId = x.PagoId,
+            CodigoPago = x.Pago?.CodigoPago ?? "",
+
+            AtencionId = x.AtencionId,
+
+            PacienteId = x.PacienteId,
+            Paciente = x.Paciente == null
+                ? ""
+                : $"{x.Paciente.Nombres} {x.Paciente.Apellidos}",
+            DniPaciente = x.Paciente?.DNI ?? "",
+
+            TipoAjuste = x.TipoAjuste.ToString(),
+            MontoAjuste = x.MontoAjuste,
+
+            Motivo = x.Motivo,
+            Observacion = x.Observacion,
+
+            RegistradoPor = x.UsuarioRegistro == null
+                ? ""
+                : $"{x.UsuarioRegistro.Nombres} {x.UsuarioRegistro.Apellidos}",
+
+            FechaRegistro = x.FechaRegistro
+        };
+    }
     private static void ValidarAnioMes(int anio, int mes)
     {
         if (anio < 2000 || anio > DateTime.UtcNow.Year + 1)

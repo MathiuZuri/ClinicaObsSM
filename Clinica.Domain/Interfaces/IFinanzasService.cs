@@ -18,4 +18,13 @@ public interface IFinanzasService
     Task<IEnumerable<EstadoPagoAtencionDto>> ObtenerDeudasRealesAsync();
     Task<IEnumerable<EstadoPagoAtencionDto>> ObtenerDeudasRealesPacienteAsync(Guid pacienteId);
     Task<EstadoPagoAtencionDto> ObtenerEstadoPagoAtencionAsync(Guid atencionId);
+    
+    
+    Task<IEnumerable<PagoFinanzasDto>> ObtenerLibroDiarioAsync(DateOnly fecha);
+    Task<ResumenFinancieroMensualCompletoDto> ObtenerResumenFinancieroMensualCompletoAsync(int anio, int mes);
+
+    Task<Guid> RegistrarAjusteFinancieroAsync(RegistrarAjusteFinancieroDto dto);
+    Task<IEnumerable<AjusteFinancieroDto>> ObtenerAjustesFinancierosAsync();
+    Task<IEnumerable<AjusteFinancieroDto>> ObtenerAjustesPorAtencionAsync(Guid atencionId);
+    Task<IEnumerable<AjusteFinancieroDto>> ObtenerAjustesPorPagoAsync(Guid pagoId);
 }

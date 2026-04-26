@@ -20,6 +20,7 @@ public static class PermisosPolicies
 
     public const string FinanzasVer = "FINANZAS_VER";
     public const string FinanzasExportar = "FINANZAS_EXPORTAR";
+    public const string FinanzasAjustar = "FINANZAS_AJUSTAR";
 
     public const string DoctorVer = "DOCTOR_VER";
     public const string DoctorCrear = "DOCTOR_CREAR";
@@ -55,7 +56,7 @@ public static class PermisosPolicies
 
         PagoVer, PagoRegistrar,
 
-        FinanzasVer, FinanzasExportar,
+        FinanzasVer, FinanzasExportar, FinanzasAjustar,
 
         DoctorVer, DoctorCrear, DoctorEditar,
         HorarioVer, HorarioCrear, HorarioEditar,
