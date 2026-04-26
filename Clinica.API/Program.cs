@@ -103,7 +103,7 @@ builder.Services.AddScoped<IServicioClinicoService, ServicioClinicoService>();
 builder.Services.AddScoped<IHistorialClinicoService, HistorialClinicoService>();
 builder.Services.AddScoped<IAtencionService, AtencionService>();
 builder.Services.AddScoped<IPagoService, PagoService>();
-
+builder.Services.AddScoped<IAjusteFinancieroRepository, AjusteFinancieroRepository>();
 builder.Services.AddScoped<
     Clinica.Domain.Interfaces.IFinanzasService,
     Clinica.API.Services.Imp.FinanzasService>();
