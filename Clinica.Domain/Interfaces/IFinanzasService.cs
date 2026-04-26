@@ -14,4 +14,8 @@ public interface IFinanzasService
 
     Task<PagoFinanzasDto?> ObtenerPagoPorCodigoAsync(string codigoPago);
     Task<EstadoCuentaPacienteDto> ObtenerEstadoCuentaPacienteAsync(Guid pacienteId);
+
+    Task<IEnumerable<EstadoPagoAtencionDto>> ObtenerDeudasRealesAsync();
+    Task<IEnumerable<EstadoPagoAtencionDto>> ObtenerDeudasRealesPacienteAsync(Guid pacienteId);
+    Task<EstadoPagoAtencionDto> ObtenerEstadoPagoAtencionAsync(Guid atencionId);
 }
