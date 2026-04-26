@@ -37,4 +37,6 @@ public class Pago
     public Usuario? UsuarioRegistro { get; set; }
 
     public ICollection<HistorialDetalle> HistorialDetalles { get; set; } = new List<HistorialDetalle>();
+    
+    public ICollection<AjusteFinanciero> AjustesFinancieros { get; set; } = new List<AjusteFinanciero>();
 }

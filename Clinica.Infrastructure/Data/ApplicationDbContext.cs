@@ -27,6 +27,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<Atencion> Atenciones => Set<Atencion>();
     public DbSet<Pago> Pagos => Set<Pago>();
 
+    public DbSet<AjusteFinanciero> AjustesFinancieros => Set<AjusteFinanciero>();
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);

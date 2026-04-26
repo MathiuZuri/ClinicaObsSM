@@ -43,4 +43,6 @@ public class Atencion
 
     public ICollection<Pago> Pagos { get; set; } = new List<Pago>();
     public ICollection<HistorialDetalle> HistorialDetalles { get; set; } = new List<HistorialDetalle>();
+    
+    public ICollection<AjusteFinanciero> AjustesFinancieros { get; set; } = new List<AjusteFinanciero>();
 }
