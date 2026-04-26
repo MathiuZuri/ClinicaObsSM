@@ -84,4 +84,28 @@ public class FinanzasController : ControllerBase
         var estadoCuenta = await _finanzasService.ObtenerEstadoCuentaPacienteAsync(pacienteId);
         return Ok(ApiResponse<object>.Ok(estadoCuenta, "Estado de cuenta del paciente obtenido correctamente."));
     }
+    
+    [Authorize(Policy = PermisosPolicies.FinanzasVer)]
+    [HttpGet("deudas-reales")]
+    public async Task<IActionResult> ObtenerDeudasReales()
+    {
+        var deudas = await _finanzasService.ObtenerDeudasRealesAsync();
+        return Ok(ApiResponse<object>.Ok(deudas, "Deudas reales obtenidas correctamente."));
+    }
+
+    [Authorize(Policy = PermisosPolicies.FinanzasVer)]
+    [HttpGet("paciente/{pacienteId:guid}/deudas-reales")]
+    public async Task<IActionResult> ObtenerDeudasRealesPaciente(Guid pacienteId)
+    {
+        var deudas = await _finanzasService.ObtenerDeudasRealesPacienteAsync(pacienteId);
+        return Ok(ApiResponse<object>.Ok(deudas, "Deudas reales del paciente obtenidas correctamente."));
+    }
+
+    [Authorize(Policy = PermisosPolicies.FinanzasVer)]
+    [HttpGet("atencion/{atencionId:guid}/estado-pago")]
+    public async Task<IActionResult> ObtenerEstadoPagoAtencion(Guid atencionId)
+    {
+        var estadoPago = await _finanzasService.ObtenerEstadoPagoAtencionAsync(atencionId);
+        return Ok(ApiResponse<object>.Ok(estadoPago, "Estado de pago de la atención obtenido correctamente."));
+    }
 }

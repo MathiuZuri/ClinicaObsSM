@@ -18,6 +18,67 @@ public class FinanzasService : IFinanzasService
         _pacienteRepository = pacienteRepository;
     }
 
+    // ==========================================================
+    // DEUDAS REALES AGRUPADAS POR ATENCIÓN
+    // ==========================================================
+
+    public async Task<IEnumerable<EstadoPagoAtencionDto>> ObtenerDeudasRealesAsync()
+    {
+        var pagos = await ObtenerPagosValidosAsync();
+
+        return pagos
+            .Where(x => x.AtencionId.HasValue)
+            .GroupBy(x => x.AtencionId!.Value)
+            .Select(MapearEstadoPagoAtencion)
+            .Where(x => x.TieneDeuda)
+            .OrderByDescending(x => x.SaldoReal)
+            .ThenBy(x => x.Paciente)
+            .ToList();
+    }
+
+    public async Task<IEnumerable<EstadoPagoAtencionDto>> ObtenerDeudasRealesPacienteAsync(Guid pacienteId)
+    {
+        if (pacienteId == Guid.Empty)
+            throw new InvalidOperationException("El identificador del paciente es obligatorio.");
+
+        var paciente = await _pacienteRepository.GetByIdAsync(pacienteId)
+            ?? throw new KeyNotFoundException("Paciente no encontrado.");
+
+        var pagos = await ObtenerPagosValidosAsync();
+
+        return pagos
+            .Where(x => x.PacienteId == paciente.Id && x.AtencionId.HasValue)
+            .GroupBy(x => x.AtencionId!.Value)
+            .Select(MapearEstadoPagoAtencion)
+            .Where(x => x.TieneDeuda)
+            .OrderByDescending(x => x.SaldoReal)
+            .ToList();
+    }
+
+    public async Task<EstadoPagoAtencionDto> ObtenerEstadoPagoAtencionAsync(Guid atencionId)
+    {
+        if (atencionId == Guid.Empty)
+            throw new InvalidOperationException("El identificador de la atención es obligatorio.");
+
+        var pagos = await ObtenerPagosValidosAsync();
+
+        var pagosAtencion = pagos
+            .Where(x => x.AtencionId == atencionId)
+            .ToList();
+
+        if (!pagosAtencion.Any())
+            throw new KeyNotFoundException("No se encontraron pagos asociados a la atención.");
+
+        return pagosAtencion
+            .GroupBy(x => x.AtencionId!.Value)
+            .Select(MapearEstadoPagoAtencion)
+            .First();
+    }
+
+    // ==========================================================
+    // RESÚMENES DE CAJA / MOVIMIENTOS INDIVIDUALES
+    // ==========================================================
+
     public async Task<ResumenDiarioFinanzasDto> ObtenerResumenDiarioAsync(DateOnly fecha)
     {
         var pagos = await ObtenerPagosValidosAsync();
@@ -36,7 +97,10 @@ public class FinanzasService : IFinanzasService
             PagosCompletados = pagosDelDia.Count(x => x.Estado == EstadoPago.Pagado),
             PagosParciales = pagosDelDia.Count(x => x.Estado == EstadoPago.Parcial),
             PagosPendientes = pagosDelDia.Count(x => x.Estado == EstadoPago.Pendiente || x.SaldoPendiente > 0),
-            Pagos = pagosDelDia.Select(MapearPagoFinanzas).ToList()
+            Pagos = pagosDelDia
+                .OrderByDescending(x => x.FechaPago)
+                .Select(MapearPagoFinanzas)
+                .ToList()
         };
     }
 
@@ -63,7 +127,10 @@ public class FinanzasService : IFinanzasService
                 PagosCompletados = g.Count(x => x.Estado == EstadoPago.Pagado),
                 PagosParciales = g.Count(x => x.Estado == EstadoPago.Parcial),
                 PagosPendientes = g.Count(x => x.Estado == EstadoPago.Pendiente || x.SaldoPendiente > 0),
-                Pagos = g.Select(MapearPagoFinanzas).ToList()
+                Pagos = g
+                    .OrderByDescending(x => x.FechaPago)
+                    .Select(MapearPagoFinanzas)
+                    .ToList()
             })
             .ToList();
 
@@ -129,6 +196,8 @@ public class FinanzasService : IFinanzasService
         };
     }
 
+    // Lista movimientos de pago individuales con saldo pendiente.
+    // Para deuda real agrupada por atención usar ObtenerDeudasRealesAsync().
     public async Task<IEnumerable<PagoFinanzasDto>> ObtenerPagosPendientesAsync()
     {
         var pagos = await ObtenerPagosValidosAsync();
@@ -136,7 +205,8 @@ public class FinanzasService : IFinanzasService
         return pagos
             .Where(x => x.Estado == EstadoPago.Pendiente || x.SaldoPendiente > 0)
             .OrderByDescending(x => x.FechaPago)
-            .Select(MapearPagoFinanzas);
+            .Select(MapearPagoFinanzas)
+            .ToList();
     }
 
     public async Task<IEnumerable<PagoFinanzasDto>> ObtenerPagosPagadosAsync()
@@ -146,7 +216,8 @@ public class FinanzasService : IFinanzasService
         return pagos
             .Where(x => x.Estado == EstadoPago.Pagado && x.SaldoPendiente <= 0)
             .OrderByDescending(x => x.FechaPago)
-            .Select(MapearPagoFinanzas);
+            .Select(MapearPagoFinanzas)
+            .ToList();
     }
 
     public async Task<IEnumerable<PagoFinanzasDto>> ObtenerPagosParcialesAsync()
@@ -156,7 +227,8 @@ public class FinanzasService : IFinanzasService
         return pagos
             .Where(x => x.Estado == EstadoPago.Parcial)
             .OrderByDescending(x => x.FechaPago)
-            .Select(MapearPagoFinanzas);
+            .Select(MapearPagoFinanzas)
+            .ToList();
     }
 
     public async Task<PagoFinanzasDto?> ObtenerPagoPorCodigoAsync(string codigoPago)
@@ -169,8 +241,15 @@ public class FinanzasService : IFinanzasService
         return pago == null ? null : MapearPagoFinanzas(pago);
     }
 
+    // ==========================================================
+    // ESTADO DE CUENTA DEL PACIENTE
+    // ==========================================================
+
     public async Task<EstadoCuentaPacienteDto> ObtenerEstadoCuentaPacienteAsync(Guid pacienteId)
     {
+        if (pacienteId == Guid.Empty)
+            throw new InvalidOperationException("El identificador del paciente es obligatorio.");
+
         var paciente = await _pacienteRepository.GetByIdAsync(pacienteId)
             ?? throw new KeyNotFoundException("Paciente no encontrado.");
 
@@ -181,21 +260,32 @@ public class FinanzasService : IFinanzasService
             .OrderByDescending(x => x.FechaPago)
             .ToList();
 
+        var estadosPorAtencion = pagosValidos
+            .Where(x => x.AtencionId.HasValue)
+            .GroupBy(x => x.AtencionId!.Value)
+            .Select(MapearEstadoPagoAtencion)
+            .ToList();
+
         return new EstadoCuentaPacienteDto
         {
             PacienteId = paciente.Id,
             Paciente = $"{paciente.Nombres} {paciente.Apellidos}",
             DniPaciente = paciente.DNI,
 
-            TotalFacturado = pagosValidos.Sum(x => x.MontoTotal),
-            TotalPagado = pagosValidos.Sum(x => x.MontoPagado),
-            TotalPendiente = pagosValidos.Sum(x => x.SaldoPendiente),
+            // Cálculo profesional: no duplica MontoTotal si hay varios pagos de una misma atención.
+            TotalFacturado = estadosPorAtencion.Sum(x => x.MontoTotal),
+            TotalPagado = estadosPorAtencion.Sum(x => x.TotalPagado),
+            TotalPendiente = estadosPorAtencion.Sum(x => x.SaldoReal),
 
+            // CantidadPagos representa movimientos individuales.
             CantidadPagos = pagosValidos.Count,
-            PagosCompletados = pagosValidos.Count(x => x.Estado == EstadoPago.Pagado),
-            PagosParciales = pagosValidos.Count(x => x.Estado == EstadoPago.Parcial),
-            PagosPendientes = pagosValidos.Count(x => x.Estado == EstadoPago.Pendiente || x.SaldoPendiente > 0),
 
+            // Estos contadores representan estado real agrupado por atención.
+            PagosCompletados = estadosPorAtencion.Count(x => x.EstadoFinanciero == "Pagado"),
+            PagosParciales = estadosPorAtencion.Count(x => x.EstadoFinanciero == "Parcial"),
+            PagosPendientes = estadosPorAtencion.Count(x => x.EstadoFinanciero == "Pendiente" || x.TieneDeuda),
+
+            // Detalles mantiene los movimientos individuales para trazabilidad y reclamos.
             Detalles = pagosValidos.Select(x => new DetalleEstadoCuentaDto
             {
                 PagoId = x.Id,
@@ -210,6 +300,10 @@ public class FinanzasService : IFinanzasService
             }).ToList()
         };
     }
+
+    // ==========================================================
+    // MÉTODOS PRIVADOS
+    // ==========================================================
 
     private async Task<List<Pago>> ObtenerPagosValidosAsync()
     {
@@ -252,6 +346,75 @@ public class FinanzasService : IFinanzasService
             RegistradoPor = x.UsuarioRegistro == null
                 ? ""
                 : $"{x.UsuarioRegistro.Nombres} {x.UsuarioRegistro.Apellidos}"
+        };
+    }
+
+    private static EstadoPagoAtencionDto MapearEstadoPagoAtencion(IGrouping<Guid, Pago> grupo)
+    {
+        var pagos = grupo
+            .OrderBy(x => x.FechaPago)
+            .ToList();
+
+        var primerPago = pagos.First();
+
+        /*
+         * IMPORTANTE:
+         * No se suma MontoTotal, porque una misma atención puede tener varios pagos.
+         * Ejemplo:
+         * Atención: S/ 70
+         * Pago 1: S/ 10, MontoTotal = 70
+         * Pago 2: S/ 70, MontoTotal = 70
+         *
+         * Si sumamos MontoTotal sería 140, lo cual es incorrecto.
+         * Por eso se toma el monto mayor registrado para la atención.
+         */
+        var montoTotal = pagos.Max(x => x.MontoTotal);
+        var totalPagado = pagos.Sum(x => x.MontoPagado);
+
+        var saldoReal = Math.Max(montoTotal - totalPagado, 0);
+        var sobrepago = Math.Max(totalPagado - montoTotal, 0);
+
+        string estadoFinanciero;
+
+        if (sobrepago > 0)
+            estadoFinanciero = "Sobrepagado";
+        else if (saldoReal == 0)
+            estadoFinanciero = "Pagado";
+        else if (totalPagado > 0)
+            estadoFinanciero = "Parcial";
+        else
+            estadoFinanciero = "Pendiente";
+
+        return new EstadoPagoAtencionDto
+        {
+            AtencionId = grupo.Key,
+
+            PacienteId = primerPago.PacienteId,
+            Paciente = primerPago.Paciente == null
+                ? ""
+                : $"{primerPago.Paciente.Nombres} {primerPago.Paciente.Apellidos}",
+            DniPaciente = primerPago.Paciente?.DNI ?? "",
+
+            Servicio = primerPago.ServicioClinico?.Nombre ?? "",
+
+            MontoTotal = montoTotal,
+            TotalPagado = totalPagado,
+            SaldoReal = saldoReal,
+            Sobrepago = sobrepago,
+
+            TieneDeuda = saldoReal > 0,
+            TieneSobrepago = sobrepago > 0,
+
+            EstadoFinanciero = estadoFinanciero,
+
+            FechaPrimerPago = pagos.Min(x => x.FechaPago),
+            FechaUltimoPago = pagos.Max(x => x.FechaPago),
+
+            CantidadPagos = pagos.Count,
+            Pagos = pagos
+                .OrderByDescending(x => x.FechaPago)
+                .Select(MapearPagoFinanzas)
+                .ToList()
         };
     }
 
