@@ -52,7 +52,11 @@ public static class PermisosPolicies
         PacienteVer, PacienteCrear, PacienteEditar,
         CitaVer, CitaProgramar, CitaReprogramar, CitaCancelar,
         AtencionVer, AtencionRegistrar, AtencionCerrar,
+
         PagoVer, PagoRegistrar,
+
+        FinanzasVer, FinanzasExportar,
+
         DoctorVer, DoctorCrear, DoctorEditar,
         HorarioVer, HorarioCrear, HorarioEditar,
         ServicioVer,
