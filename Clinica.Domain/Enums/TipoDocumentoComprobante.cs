@@ -1,6 +1,10 @@
 ﻿namespace Clinica.Domain.Enums;
 
-public class TipoDocumentoComprobante
+public enum TipoDocumentoComprobante
 {
-    
+    DNI = 1,
+    CarnetExtranjeria = 2,
+    RUC = 3,
+    Pasaporte = 4,
+    SinDocumento = 5
 }
