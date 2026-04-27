@@ -16,4 +16,8 @@
       <ProjectReference Include="..\Clinica.Domain\Clinica.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Documents\Comprobantes\Pdf\" />
+    </ItemGroup>
+
 </Project>
