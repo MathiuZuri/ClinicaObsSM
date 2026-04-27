@@ -10,15 +10,18 @@ public class FinanzasService : IFinanzasService
     private readonly IPagoRepository _pagoRepository;
     private readonly IPacienteRepository _pacienteRepository;
     private readonly IAjusteFinancieroRepository _ajusteFinancieroRepository;
+    private readonly IUsuarioActualService _usuarioActualService;
 
     public FinanzasService(
         IPagoRepository pagoRepository,
         IPacienteRepository pacienteRepository,
-        IAjusteFinancieroRepository ajusteFinancieroRepository)
+        IAjusteFinancieroRepository ajusteFinancieroRepository,
+        IUsuarioActualService usuarioActualService)
     {
         _pagoRepository = pagoRepository;
         _pacienteRepository = pacienteRepository;
         _ajusteFinancieroRepository = ajusteFinancieroRepository;
+        _usuarioActualService = usuarioActualService;
     }
 
     // ==========================================================
@@ -39,6 +42,20 @@ public class FinanzasService : IFinanzasService
         var pago = await _pagoRepository.GetByIdAsync(dto.PagoId)
                    ?? throw new KeyNotFoundException("Pago no encontrado.");
 
+        var ajustesExistentes = await _ajusteFinancieroRepository.ObtenerPorPagoAsync(dto.PagoId);
+
+        var motivoNormalizado = dto.Motivo.Trim().ToUpper();
+
+        var existeDuplicado = ajustesExistentes.Any(x =>
+            x.TipoAjuste == dto.TipoAjuste &&
+            x.MontoAjuste == dto.MontoAjuste &&
+            x.Motivo.Trim().ToUpper() == motivoNormalizado);
+
+        if (existeDuplicado)
+            throw new InvalidOperationException("Ya existe un ajuste financiero similar registrado para este pago.");
+
+        var usuarioId = _usuarioActualService.ObtenerUsuarioId();
+
         var ajuste = new AjusteFinanciero
         {
             Id = Guid.NewGuid(),
@@ -49,6 +66,7 @@ public class FinanzasService : IFinanzasService
             MontoAjuste = dto.MontoAjuste,
             Motivo = dto.Motivo.Trim(),
             Observacion = dto.Observacion?.Trim(),
+            UsuarioRegistroId = usuarioId,
             FechaRegistro = DateTime.UtcNow
         };
 

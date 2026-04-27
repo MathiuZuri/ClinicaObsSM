@@ -1,4 +1,5 @@
 ﻿using System.Security.Claims;
+using Clinica.Domain.Interfaces;
 
 namespace Clinica.API.Services.Imp;
 
@@ -15,7 +16,7 @@ public class UsuarioActualService : IUsuarioActualService
     {
         var usuarioId = ObtenerUsuarioIdOpcional();
 
-        if (usuarioId == null)
+        if (usuarioId is null)
             throw new UnauthorizedAccessException("No se pudo identificar al usuario autenticado.");
 
         return usuarioId.Value;
@@ -23,13 +24,20 @@ public class UsuarioActualService : IUsuarioActualService
 
     public Guid? ObtenerUsuarioIdOpcional()
     {
-        var claim = _httpContextAccessor.HttpContext?
-            .User
-            .FindFirst(ClaimTypes.NameIdentifier)?
-            .Value;
+        var user = _httpContextAccessor.HttpContext?.User;
 
-        return Guid.TryParse(claim, out var usuarioId)
-            ? usuarioId
-            : null;
+        if (user == null || user.Identity?.IsAuthenticated != true)
+            return null;
+
+        var idClaim =
+            user.FindFirst(ClaimTypes.NameIdentifier)?.Value ??
+            user.FindFirst("sub")?.Value ??
+            user.FindFirst("usuarioId")?.Value ??
+            user.FindFirst("UsuarioId")?.Value;
+
+        if (Guid.TryParse(idClaim, out var usuarioId))
+            return usuarioId;
+
+        return null;
     }
 }

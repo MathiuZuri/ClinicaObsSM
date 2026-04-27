@@ -1,4 +1,4 @@
-﻿namespace Clinica.API.Services;
+﻿namespace Clinica.Domain.Interfaces;
 
 public interface IUsuarioActualService
 {
