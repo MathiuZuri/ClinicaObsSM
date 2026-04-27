@@ -39,4 +39,5 @@ public class Pago
     public ICollection<HistorialDetalle> HistorialDetalles { get; set; } = new List<HistorialDetalle>();
     
     public ICollection<AjusteFinanciero> AjustesFinancieros { get; set; } = new List<AjusteFinanciero>();
+    public ICollection<Comprobante> Comprobantes { get; set; } = new List<Comprobante>();
 }
