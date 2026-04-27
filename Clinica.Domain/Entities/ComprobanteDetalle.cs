@@ -1,4 +1,6 @@
-﻿public class ComprobanteDetalle
+﻿namespace Clinica.Domain.Entities;
+
+public class ComprobanteDetalle
 {
     public Guid Id { get; set; } = Guid.NewGuid();
 
