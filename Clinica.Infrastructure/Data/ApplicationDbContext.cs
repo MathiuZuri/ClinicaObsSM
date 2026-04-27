@@ -26,8 +26,10 @@ public class ApplicationDbContext : DbContext
     public DbSet<HistorialDetalle> HistorialDetalles => Set<HistorialDetalle>();
     public DbSet<Atencion> Atenciones => Set<Atencion>();
     public DbSet<Pago> Pagos => Set<Pago>();
-
     public DbSet<AjusteFinanciero> AjustesFinancieros => Set<AjusteFinanciero>();
+    
+    public DbSet<Comprobante> Comprobantes => Set<Comprobante>();
+    public DbSet<ComprobanteDetalle> ComprobanteDetalles => Set<ComprobanteDetalle>();
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
