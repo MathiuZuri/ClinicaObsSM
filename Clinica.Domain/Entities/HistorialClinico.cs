@@ -16,4 +16,5 @@ public class HistorialClinico
     public EstadoHistorialClinico Estado { get; set; } = EstadoHistorialClinico.Activo;
 
     public ICollection<HistorialDetalle> Detalles { get; set; } = new List<HistorialDetalle>();
+    public ICollection<Comprobante> Comprobantes { get; set; } = new List<Comprobante>();
 }
