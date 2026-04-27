@@ -1,4 +1,6 @@
-﻿public enum TipoFormatoImpresion
+﻿namespace Clinica.Domain.Enums;
+
+public enum TipoFormatoImpresion
 {
     A4 = 1,
     MediaHoja = 2,
