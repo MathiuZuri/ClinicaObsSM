@@ -1,6 +1,5 @@
-﻿namespace Clinica.Domain.Enums;
-
-public class EstadoComprobante
+﻿public enum EstadoComprobante
 {
-    
+    Emitido = 1,
+    Anulado = 2
 }
