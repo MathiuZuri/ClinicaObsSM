@@ -31,4 +31,5 @@ public class Paciente
     public ICollection<Cita> Citas { get; set; } = new List<Cita>();
     public ICollection<Atencion> Atenciones { get; set; } = new List<Atencion>();
     public ICollection<Pago> Pagos { get; set; } = new List<Pago>();
+    public ICollection<Comprobante> Comprobantes { get; set; } = new List<Comprobante>();
 }
