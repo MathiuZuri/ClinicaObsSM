@@ -52,6 +52,7 @@ public static class PermisosPolicies
     public const string ComprobanteEmitir = "COMPROBANTE_EMITIR";
     public const string ComprobanteAnular = "COMPROBANTE_ANULAR";
     public const string ComprobanteImprimir = "COMPROBANTE_IMPRIMIR";
+    public const string HistorialImprimir = "HISTORIAL_IMPRIMIR";
 
     public static readonly string[] Todos =
     {
@@ -67,6 +68,9 @@ public static class PermisosPolicies
         ComprobanteEmitir,
         ComprobanteAnular,
         ComprobanteImprimir,
+        
+        HistorialVer,
+        HistorialImprimir,
 
         DoctorVer, DoctorCrear, DoctorEditar,
         HorarioVer, HorarioCrear, HorarioEditar,
