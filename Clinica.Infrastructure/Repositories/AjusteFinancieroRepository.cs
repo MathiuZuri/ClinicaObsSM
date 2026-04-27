@@ -1,4 +1,5 @@
 ﻿using Clinica.Domain.Entities;
+using Clinica.Domain.Enums;
 using Clinica.Domain.Interfaces;
 using Clinica.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -44,5 +45,21 @@ public class AjusteFinancieroRepository : GenericRepository<AjusteFinanciero>, I
             .Where(x => x.PagoId == pagoId)
             .OrderByDescending(x => x.FechaRegistro)
             .ToListAsync();
+    }
+    
+    public async Task<bool> ExisteAjusteSimilarAsync(
+        Guid pagoId,
+        TipoAjusteFinanciero tipoAjuste,
+        decimal montoAjuste,
+        string motivo)
+    {
+        var motivoNormalizado = motivo.Trim().ToUpper();
+
+        return await Context.AjustesFinancieros
+            .AnyAsync(x =>
+                x.PagoId == pagoId &&
+                x.TipoAjuste == tipoAjuste &&
+                x.MontoAjuste == montoAjuste &&
+                x.Motivo.Trim().ToUpper() == motivoNormalizado);
     }
 }

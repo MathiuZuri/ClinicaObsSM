@@ -42,14 +42,11 @@ public class FinanzasService : IFinanzasService
         var pago = await _pagoRepository.GetByIdAsync(dto.PagoId)
                    ?? throw new KeyNotFoundException("Pago no encontrado.");
 
-        var ajustesExistentes = await _ajusteFinancieroRepository.ObtenerPorPagoAsync(dto.PagoId);
-
-        var motivoNormalizado = dto.Motivo.Trim().ToUpper();
-
-        var existeDuplicado = ajustesExistentes.Any(x =>
-            x.TipoAjuste == dto.TipoAjuste &&
-            x.MontoAjuste == dto.MontoAjuste &&
-            x.Motivo.Trim().ToUpper() == motivoNormalizado);
+        var existeDuplicado = await _ajusteFinancieroRepository.ExisteAjusteSimilarAsync(
+            pago.Id,
+            dto.TipoAjuste,
+            dto.MontoAjuste,
+            dto.Motivo);
 
         if (existeDuplicado)
             throw new InvalidOperationException("Ya existe un ajuste financiero similar registrado para este pago.");
