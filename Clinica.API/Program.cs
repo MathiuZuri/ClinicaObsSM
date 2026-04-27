@@ -14,6 +14,8 @@ using Clinica.API.Filters;
 using Clinica.API.Middlewares;
 using Clinica.API.Configurations;
 using Microsoft.AspNetCore.Mvc;
+using QuestPDF.Infrastructure;
+using Clinica.Infrastructure.Documents.Comprobantes.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -88,6 +90,8 @@ builder.Services.AddScoped<IAtencionRepository, AtencionRepository>();
 builder.Services.AddScoped<IPagoRepository, PagoRepository>();
 builder.Services.AddScoped<IAjusteFinancieroRepository, AjusteFinancieroRepository>();
 
+builder.Services.AddScoped<IComprobanteRepository, ComprobanteRepository>();
+
 // Servicios
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
@@ -109,6 +113,11 @@ builder.Services.AddScoped<IFinanzasService, FinanzasService>();
 //    Clinica.Domain.Interfaces.IFinanzasService,
 //    Clinica.API.Services.Imp.FinanzasService>();
 
+builder.Services.AddScoped<IComprobanteService, ComprobanteService>();
+builder.Services.AddScoped<IComprobantePdfService, ComprobantePdfService>();
+
+
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("PermitirBlazor", policy =>
@@ -118,6 +127,7 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod();
     });
 });
+QuestPDF.Settings.License = LicenseType.Community;
 
 var app = builder.Build();
 app.UseMiddleware<ExceptionMiddleware>();

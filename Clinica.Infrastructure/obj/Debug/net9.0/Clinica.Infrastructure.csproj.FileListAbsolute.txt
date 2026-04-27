@@ -14,19 +14,9 @@ F:\proyectC#\ClinicaObst\Clinica.Infrastructure\obj\Debug\net9.0\refint\Clinica.
 F:\proyectC#\ClinicaObst\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.pdb
 F:\proyectC#\ClinicaObst\Clinica.Infrastructure\obj\Debug\net9.0\ref\Clinica.Infrastructure.dll
 F:\proyectC#\ClinicaObst\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.sourcelink.json
-K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\Clinica.Infrastructure.deps.json
-K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\Clinica.Infrastructure.dll
-K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\Clinica.Infrastructure.pdb
-K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\Clinica.Domain.dll
-K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\Clinica.Domain.pdb
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.csproj.AssemblyReference.cache
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.AssemblyInfoInputs.cache
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.AssemblyInfo.cs
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.csproj.CoreCompileInputs.cache
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.sourcelink.json
-K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\Clinica..0DDBE4D2.Up2Date
-K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.dll
-K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\refint\Clinica.Infrastructure.dll
-K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.pdb
-K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\ref\Clinica.Infrastructure.dll

@@ -33,6 +33,7 @@ public class Comprobante
     public TipoDocumentoComprobante TipoDocumentoPaciente { get; set; } = TipoDocumentoComprobante.DNI;
     public string NumeroDocumentoPaciente { get; set; } = string.Empty;
     public string NombrePaciente { get; set; } = string.Empty;
+    public string? DireccionPaciente { get; set; }
 
     public decimal Subtotal { get; set; }
     public decimal TasaImpuesto { get; set; }

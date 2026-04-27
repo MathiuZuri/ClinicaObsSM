@@ -14,17 +14,14 @@ public class ComprobanteDto
 
     public Guid PacienteId { get; set; }
     public string Paciente { get; set; } = string.Empty;
-    public string DocumentoPaciente { get; set; } = string.Empty;
+
+    public string TipoDocumentoPaciente { get; set; } = string.Empty;
+    public string NumeroDocumentoPaciente { get; set; } = string.Empty;
+    public string? DireccionPaciente { get; set; }
 
     public Guid? PagoId { get; set; }
-    public string? CodigoPago { get; set; }
-
     public Guid? CitaId { get; set; }
-    public string? CodigoCita { get; set; }
-
     public Guid? AtencionId { get; set; }
-    public string? CodigoAtencion { get; set; }
-
     public Guid? HistorialClinicoId { get; set; }
 
     public decimal Subtotal { get; set; }
@@ -34,9 +31,12 @@ public class ComprobanteDto
 
     public DateTime FechaEmision { get; set; }
 
-    public string EmitidoPor { get; set; } = string.Empty;
+    public Guid UsuarioEmisionId { get; set; }
+    public string? UsuarioEmision { get; set; }
 
     public DateTime? FechaAnulacion { get; set; }
+    public Guid? UsuarioAnulacionId { get; set; }
+    public string? UsuarioAnulacion { get; set; }
     public string? MotivoAnulacion { get; set; }
 
     public string? Observacion { get; set; }

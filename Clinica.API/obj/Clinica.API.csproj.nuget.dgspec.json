@@ -77,6 +77,10 @@
               "target": "Package",
               "version": "[9.0.4, )"
             },
+            "QuestPDF": {
+              "target": "Package",
+              "version": "[2026.2.4, )"
+            },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[8.17.0, )"
@@ -229,6 +233,10 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[9.0.4, )"
+            },
+            "QuestPDF": {
+              "target": "Package",
+              "version": "[2026.2.4, )"
             }
           },
           "imports": [

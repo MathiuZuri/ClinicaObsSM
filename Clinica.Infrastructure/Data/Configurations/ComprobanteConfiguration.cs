@@ -12,14 +12,6 @@ public class ComprobanteConfiguration : IEntityTypeConfiguration<Comprobante>
 
         builder.HasKey(x => x.Id);
 
-        builder.Property(x => x.Serie)
-            .IsRequired()
-            .HasMaxLength(10);
-
-        builder.Property(x => x.Numero)
-            .IsRequired()
-            .HasMaxLength(20);
-
         builder.Property(x => x.CodigoComprobante)
             .IsRequired()
             .HasMaxLength(60);
@@ -27,7 +19,14 @@ public class ComprobanteConfiguration : IEntityTypeConfiguration<Comprobante>
         builder.HasIndex(x => x.CodigoComprobante)
             .IsUnique();
 
-        builder.HasIndex(x => new { x.Serie, x.Numero })
+        builder.Property(x => x.Serie)
+            .IsRequired()
+            .HasMaxLength(20);
+
+        builder.Property(x => x.Numero)
+            .IsRequired();
+
+        builder.HasIndex(x => new { x.Serie, x.Numero, x.TipoComprobante })
             .IsUnique();
 
         builder.Property(x => x.TipoComprobante)
@@ -40,15 +39,15 @@ public class ComprobanteConfiguration : IEntityTypeConfiguration<Comprobante>
             .IsRequired()
             .HasMaxLength(40);
 
-        builder.Property(x => x.TipoDocumentoPaciente)
-            .HasConversion<string>()
-            .IsRequired()
-            .HasMaxLength(40);
-
         builder.Property(x => x.FormatoImpresion)
             .HasConversion<string>()
             .IsRequired()
             .HasMaxLength(40);
+
+        builder.Property(x => x.TipoDocumentoPaciente)
+            .HasConversion<string>()
+            .IsRequired()
+            .HasMaxLength(30);
 
         builder.Property(x => x.NumeroDocumentoPaciente)
             .IsRequired()
@@ -65,7 +64,7 @@ public class ComprobanteConfiguration : IEntityTypeConfiguration<Comprobante>
             .HasPrecision(10, 2)
             .IsRequired();
 
-        builder.Property(x => x.PorcentajeImpuesto)
+        builder.Property(x => x.TasaImpuesto)
             .HasPrecision(5, 2)
             .IsRequired();
 
@@ -77,24 +76,26 @@ public class ComprobanteConfiguration : IEntityTypeConfiguration<Comprobante>
             .HasPrecision(10, 2)
             .IsRequired();
 
-        builder.Property(x => x.Observacion)
-            .HasMaxLength(700);
-
-        builder.Property(x => x.MotivoAnulacion)
-            .HasMaxLength(700);
-
-        builder.Property(x => x.SnapshotJson)
-            .HasColumnType("jsonb");
-
         builder.Property(x => x.FechaEmision)
             .IsRequired();
 
         builder.Property(x => x.FechaAnulacion);
 
+        builder.Property(x => x.MotivoAnulacion)
+            .HasMaxLength(500);
+
+        builder.Property(x => x.Observacion)
+            .HasMaxLength(500);
+
+        builder.Property(x => x.DatosSnapshotJson)
+            .IsRequired()
+            .HasColumnType("jsonb");
+
         builder.HasIndex(x => x.PacienteId);
         builder.HasIndex(x => x.PagoId);
         builder.HasIndex(x => x.CitaId);
         builder.HasIndex(x => x.AtencionId);
+        builder.HasIndex(x => x.HistorialClinicoId);
         builder.HasIndex(x => x.FechaEmision);
         builder.HasIndex(x => x.Estado);
 
@@ -118,10 +119,15 @@ public class ComprobanteConfiguration : IEntityTypeConfiguration<Comprobante>
             .HasForeignKey(x => x.AtencionId)
             .OnDelete(DeleteBehavior.SetNull);
 
+        builder.HasOne(x => x.HistorialClinico)
+            .WithMany()
+            .HasForeignKey(x => x.HistorialClinicoId)
+            .OnDelete(DeleteBehavior.SetNull);
+
         builder.HasOne(x => x.UsuarioEmision)
             .WithMany()
             .HasForeignKey(x => x.UsuarioEmisionId)
-            .OnDelete(DeleteBehavior.SetNull);
+            .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasOne(x => x.UsuarioAnulacion)
             .WithMany()
