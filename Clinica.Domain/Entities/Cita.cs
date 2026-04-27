@@ -37,4 +37,5 @@ public class Cita
     public Atencion? Atencion { get; set; }
     public ICollection<Pago> Pagos { get; set; } = new List<Pago>();
     public ICollection<HistorialDetalle> HistorialDetalles { get; set; } = new List<HistorialDetalle>();
+    public ICollection<Comprobante> Comprobantes { get; set; } = new List<Comprobante>();
 }
