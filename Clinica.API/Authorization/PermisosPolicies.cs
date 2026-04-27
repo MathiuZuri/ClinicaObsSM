@@ -47,6 +47,11 @@ public static class PermisosPolicies
     public const string PermisoVer = "PERMISO_VER";
 
     public const string AuditoriaVer = "AUDITORIA_VER";
+    
+    public const string ComprobanteVer = "COMPROBANTE_VER";
+    public const string ComprobanteEmitir = "COMPROBANTE_EMITIR";
+    public const string ComprobanteAnular = "COMPROBANTE_ANULAR";
+    public const string ComprobanteImprimir = "COMPROBANTE_IMPRIMIR";
 
     public static readonly string[] Todos =
     {
@@ -57,6 +62,11 @@ public static class PermisosPolicies
         PagoVer, PagoRegistrar,
 
         FinanzasVer, FinanzasExportar, FinanzasAjustar,
+        
+        ComprobanteVer,
+        ComprobanteEmitir,
+        ComprobanteAnular,
+        ComprobanteImprimir,
 
         DoctorVer, DoctorCrear, DoctorEditar,
         HorarioVer, HorarioCrear, HorarioEditar,
