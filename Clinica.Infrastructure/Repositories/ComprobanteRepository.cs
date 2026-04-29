@@ -11,9 +11,14 @@ public class ComprobanteRepository : GenericRepository<Comprobante>, IComprobant
     {
     }
 
+    // ==========================================================
+    // LISTADO GENERAL CON DETALLE
+    // ==========================================================
+
     public async Task<IEnumerable<Comprobante>> ObtenerTodosConDetalleAsync()
     {
         return await Context.Comprobantes
+            .AsNoTracking()
             .Include(x => x.Paciente)
             .Include(x => x.Pago)
             .Include(x => x.Cita)
@@ -26,9 +31,14 @@ public class ComprobanteRepository : GenericRepository<Comprobante>, IComprobant
             .ToListAsync();
     }
 
+    // ==========================================================
+    // BUSCAR POR ID CON DETALLE
+    // ==========================================================
+
     public async Task<Comprobante?> ObtenerPorIdConDetalleAsync(Guid id)
     {
         return await Context.Comprobantes
+            .AsNoTracking()
             .Include(x => x.Paciente)
             .Include(x => x.Pago)
             .Include(x => x.Cita)
@@ -40,10 +50,17 @@ public class ComprobanteRepository : GenericRepository<Comprobante>, IComprobant
             .FirstOrDefaultAsync(x => x.Id == id);
     }
 
+    // ==========================================================
+    // CONSULTAS POR RELACIONES
+    // ==========================================================
+
     public async Task<IEnumerable<Comprobante>> ObtenerPorPacienteAsync(Guid pacienteId)
     {
         return await Context.Comprobantes
+            .AsNoTracking()
             .Include(x => x.Paciente)
+            .Include(x => x.UsuarioEmision)
+            .Include(x => x.UsuarioAnulacion)
             .Include(x => x.Detalles)
             .Where(x => x.PacienteId == pacienteId)
             .OrderByDescending(x => x.FechaEmision)
@@ -53,8 +70,11 @@ public class ComprobanteRepository : GenericRepository<Comprobante>, IComprobant
     public async Task<IEnumerable<Comprobante>> ObtenerPorPagoAsync(Guid pagoId)
     {
         return await Context.Comprobantes
+            .AsNoTracking()
             .Include(x => x.Paciente)
             .Include(x => x.Pago)
+            .Include(x => x.UsuarioEmision)
+            .Include(x => x.UsuarioAnulacion)
             .Include(x => x.Detalles)
             .Where(x => x.PagoId == pagoId)
             .OrderByDescending(x => x.FechaEmision)
@@ -64,17 +84,25 @@ public class ComprobanteRepository : GenericRepository<Comprobante>, IComprobant
     public async Task<IEnumerable<Comprobante>> ObtenerPorAtencionAsync(Guid atencionId)
     {
         return await Context.Comprobantes
+            .AsNoTracking()
             .Include(x => x.Paciente)
             .Include(x => x.Atencion)
+            .Include(x => x.UsuarioEmision)
+            .Include(x => x.UsuarioAnulacion)
             .Include(x => x.Detalles)
             .Where(x => x.AtencionId == atencionId)
             .OrderByDescending(x => x.FechaEmision)
             .ToListAsync();
     }
 
+    // ==========================================================
+    // SERIE Y NUMERACIÓN
+    // ==========================================================
+
     public async Task<Comprobante?> ObtenerPorSerieNumeroAsync(string serie, int numero)
     {
         return await Context.Comprobantes
+            .AsNoTracking()
             .Include(x => x.Paciente)
             .Include(x => x.Detalles)
             .FirstOrDefaultAsync(x => x.Serie == serie && x.Numero == numero);
