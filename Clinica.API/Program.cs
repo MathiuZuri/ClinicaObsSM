@@ -1,25 +1,30 @@
 using System.Text;
+using Clinica.API.Authorization;
+using Clinica.API.Configurations;
+using Clinica.API.Filters;
 using Clinica.API.Helpers;
+using Clinica.API.Middlewares;
 using Clinica.API.Services;
 using Clinica.API.Services.Imp;
 using Clinica.Domain.Interfaces;
 using Clinica.Infrastructure.Data;
 using Clinica.Infrastructure.Data.Seeds;
+using Clinica.Infrastructure.Documents.Comprobantes.Services;
 using Clinica.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Clinica.API.Authorization;
-using Clinica.API.Filters;
-using Clinica.API.Middlewares;
-using Clinica.API.Configurations;
-using Microsoft.AspNetCore.Mvc;
 using QuestPDF.Infrastructure;
-using Clinica.Infrastructure.Documents.Comprobantes.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// ==========================================================
+// CONFIGURACIÓN GENERAL
+// ==========================================================
+
 builder.Services.AddScoped<AuditoriaAutomaticaFilter>();
+
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add<AuditoriaAutomaticaFilter>();
@@ -31,10 +36,13 @@ builder.Services.Configure<ApiBehaviorOptions>(
 
 builder.Services.AddOpenApi();
 
-builder.Services.AddScoped<JwtHelper>();
-
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<JwtHelper>();
 builder.Services.AddScoped<IUsuarioActualService, UsuarioActualService>();
+
+// ==========================================================
+// AUTENTICACIÓN JWT
+// ==========================================================
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -56,6 +64,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+// ==========================================================
+// AUTORIZACIÓN POR PERMISOS
+// ==========================================================
+
 builder.Services.AddAuthorization(options =>
 {
     foreach (var permiso in PermisosPolicies.Todos)
@@ -65,14 +77,23 @@ builder.Services.AddAuthorization(options =>
     }
 });
 
+// ==========================================================
+// BASE DE DATOS
+// ==========================================================
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Repositorio genérico
+// ==========================================================
+// REPOSITORIO GENÉRICO
+// ==========================================================
+
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
-// Repositorios
+// ==========================================================
+// REPOSITORIOS
+// ==========================================================
+
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IRolRepository, RolRepository>();
 builder.Services.AddScoped<IPermisoRepository, PermisoRepository>();
@@ -87,12 +108,16 @@ builder.Services.AddScoped<IServicioClinicoRepository, ServicioClinicoRepository
 builder.Services.AddScoped<IHistorialClinicoRepository, HistorialClinicoRepository>();
 builder.Services.AddScoped<IHistorialDetalleRepository, HistorialDetalleRepository>();
 builder.Services.AddScoped<IAtencionRepository, AtencionRepository>();
+
 builder.Services.AddScoped<IPagoRepository, PagoRepository>();
 builder.Services.AddScoped<IAjusteFinancieroRepository, AjusteFinancieroRepository>();
 
 builder.Services.AddScoped<IComprobanteRepository, ComprobanteRepository>();
 
-// Servicios
+// ==========================================================
+// SERVICIOS
+// ==========================================================
+
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IRolService, RolService>();
@@ -107,16 +132,16 @@ builder.Services.AddScoped<ICitaService, CitaService>();
 builder.Services.AddScoped<IServicioClinicoService, ServicioClinicoService>();
 builder.Services.AddScoped<IHistorialClinicoService, HistorialClinicoService>();
 builder.Services.AddScoped<IAtencionService, AtencionService>();
+
 builder.Services.AddScoped<IPagoService, PagoService>();
 builder.Services.AddScoped<IFinanzasService, FinanzasService>();
-//builder.Services.AddScoped<
-//    Clinica.Domain.Interfaces.IFinanzasService,
-//    Clinica.API.Services.Imp.FinanzasService>();
 
 builder.Services.AddScoped<IComprobanteService, ComprobanteService>();
 builder.Services.AddScoped<IComprobantePdfService, ComprobantePdfService>();
 
-
+// ==========================================================
+// CORS
+// ==========================================================
 
 builder.Services.AddCors(options =>
 {
@@ -127,9 +152,19 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod();
     });
 });
+
+// ==========================================================
+// QUESTPDF
+// ==========================================================
+
 QuestPDF.Settings.License = LicenseType.Community;
 
+// ==========================================================
+// PIPELINE HTTP
+// ==========================================================
+
 var app = builder.Build();
+
 app.UseMiddleware<ExceptionMiddleware>();
 
 if (app.Environment.IsDevelopment())
@@ -146,6 +181,10 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// ==========================================================
+// SEEDER
+// ==========================================================
 
 using (var scope = app.Services.CreateScope())
 {

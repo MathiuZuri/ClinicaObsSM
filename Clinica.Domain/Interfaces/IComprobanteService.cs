@@ -4,25 +4,49 @@ namespace Clinica.Domain.Interfaces;
 
 public interface IComprobanteService
 {
-    Task<ComprobantePagoPreviewDto> PreviewBoletaPagoAsync(Guid pagoId, decimal tasaImpuesto = 0.18m);
-    Task<Guid> EmitirBoletaPagoAsync(EmitirComprobantePagoDto dto);
+    // ==========================================================
+    // PREVIEWS
+    // ==========================================================
+
+    Task<ComprobantePagoPreviewDto> PreviewBoletaPagoAsync(Guid pagoId, decimal tasaImpuesto = 18m);
 
     Task<ComprobanteCitaPreviewDto> PreviewConstanciaCitaAsync(Guid citaId);
-    Task<Guid> EmitirConstanciaCitaAsync(EmitirComprobanteCitaDto dto);
 
     Task<ComprobanteAtencionPreviewDto> PreviewResumenAtencionAsync(Guid atencionId);
-    Task<Guid> EmitirResumenAtencionAsync(EmitirComprobanteAtencionDto dto);
 
     Task<ComprobanteEstadoCuentaPreviewDto> PreviewEstadoCuentaPacienteAsync(Guid pacienteId);
 
-    Task<ComprobanteHistoriaClinicaPreviewDto> PreviewHistoriaClinicaAsync(Guid historialClinicoId);
-    Task<Guid> EmitirHistoriaClinicaAsync(Guid historialClinicoId);
+    // ==========================================================
+    // EMISIÓN
+    // ==========================================================
 
-    Task<ComprobanteDto> ObtenerComprobanteAsync(Guid comprobanteId);
+    Task<Guid> EmitirBoletaPagoAsync(EmitirComprobantePagoDto dto);
 
-    Task<IEnumerable<ComprobanteDto>> ObtenerComprobantesPorPacienteAsync(Guid pacienteId);
-    Task<IEnumerable<ComprobanteDto>> ObtenerComprobantesPorPagoAsync(Guid pagoId);
-    Task<IEnumerable<ComprobanteDto>> ObtenerComprobantesPorAtencionAsync(Guid atencionId);
+    Task<Guid> EmitirConstanciaCitaAsync(EmitirComprobanteCitaDto dto);
+
+    Task<Guid> EmitirResumenAtencionAsync(EmitirComprobanteAtencionDto dto);
+
+    // ==========================================================
+    // PDF
+    // ==========================================================
+
+    Task<DocumentoGeneradoDto> GenerarPdfBoletaPagoAsync(Guid comprobanteId);
+
+    // ==========================================================
+    // CONSULTAS
+    // ==========================================================
+
+    Task<ComprobanteDto> ObtenerPorIdAsync(Guid id);
+
+    Task<IEnumerable<ComprobanteDto>> ObtenerPorPacienteAsync(Guid pacienteId);
+
+    Task<IEnumerable<ComprobanteDto>> ObtenerPorPagoAsync(Guid pagoId);
+
+    Task<IEnumerable<ComprobanteDto>> ObtenerPorAtencionAsync(Guid atencionId);
+
+    // ==========================================================
+    // ANULACIÓN
+    // ==========================================================
 
     Task AnularComprobanteAsync(Guid comprobanteId, string motivo);
 }
