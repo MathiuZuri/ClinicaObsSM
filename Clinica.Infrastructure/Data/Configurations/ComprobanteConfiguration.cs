@@ -12,6 +12,10 @@ public class ComprobanteConfiguration : IEntityTypeConfiguration<Comprobante>
 
         builder.HasKey(x => x.Id);
 
+        // ==========================================================
+        // IDENTIFICACIÓN DEL COMPROBANTE
+        // ==========================================================
+
         builder.Property(x => x.CodigoComprobante)
             .IsRequired()
             .HasMaxLength(60);
@@ -28,6 +32,10 @@ public class ComprobanteConfiguration : IEntityTypeConfiguration<Comprobante>
 
         builder.HasIndex(x => new { x.Serie, x.Numero, x.TipoComprobante })
             .IsUnique();
+
+        // ==========================================================
+        // ENUMS
+        // ==========================================================
 
         builder.Property(x => x.TipoComprobante)
             .HasConversion<string>()
@@ -49,6 +57,10 @@ public class ComprobanteConfiguration : IEntityTypeConfiguration<Comprobante>
             .IsRequired()
             .HasMaxLength(30);
 
+        // ==========================================================
+        // DATOS DEL PACIENTE CONGELADOS EN EL COMPROBANTE
+        // ==========================================================
+
         builder.Property(x => x.NumeroDocumentoPaciente)
             .IsRequired()
             .HasMaxLength(20);
@@ -59,6 +71,10 @@ public class ComprobanteConfiguration : IEntityTypeConfiguration<Comprobante>
 
         builder.Property(x => x.DireccionPaciente)
             .HasMaxLength(250);
+
+        // ==========================================================
+        // MONTOS
+        // ==========================================================
 
         builder.Property(x => x.Subtotal)
             .HasPrecision(10, 2)
@@ -76,6 +92,10 @@ public class ComprobanteConfiguration : IEntityTypeConfiguration<Comprobante>
             .HasPrecision(10, 2)
             .IsRequired();
 
+        // ==========================================================
+        // FECHAS Y OBSERVACIONES
+        // ==========================================================
+
         builder.Property(x => x.FechaEmision)
             .IsRequired();
 
@@ -87,9 +107,20 @@ public class ComprobanteConfiguration : IEntityTypeConfiguration<Comprobante>
         builder.Property(x => x.Observacion)
             .HasMaxLength(500);
 
+        // ==========================================================
+        // SNAPSHOT JSON
+        // ==========================================================
+        // PostgreSQL jsonb no debe recibir string vacío.
+        // Por eso se configura como jsonb y con valor por defecto '{}'.
+
         builder.Property(x => x.DatosSnapshotJson)
             .IsRequired()
-            .HasColumnType("jsonb");
+            .HasColumnType("jsonb")
+            .HasDefaultValueSql("'{}'::jsonb");
+
+        // ==========================================================
+        // ÍNDICES
+        // ==========================================================
 
         builder.HasIndex(x => x.PacienteId);
         builder.HasIndex(x => x.PagoId);
@@ -98,6 +129,10 @@ public class ComprobanteConfiguration : IEntityTypeConfiguration<Comprobante>
         builder.HasIndex(x => x.HistorialClinicoId);
         builder.HasIndex(x => x.FechaEmision);
         builder.HasIndex(x => x.Estado);
+
+        // ==========================================================
+        // RELACIONES
+        // ==========================================================
 
         builder.HasOne(x => x.Paciente)
             .WithMany()
@@ -110,12 +145,12 @@ public class ComprobanteConfiguration : IEntityTypeConfiguration<Comprobante>
             .OnDelete(DeleteBehavior.SetNull);
 
         builder.HasOne(x => x.Cita)
-            .WithMany()
+            .WithMany(x => x.Comprobantes)
             .HasForeignKey(x => x.CitaId)
             .OnDelete(DeleteBehavior.SetNull);
 
         builder.HasOne(x => x.Atencion)
-            .WithMany()
+            .WithMany(x => x.Comprobantes)
             .HasForeignKey(x => x.AtencionId)
             .OnDelete(DeleteBehavior.SetNull);
 
