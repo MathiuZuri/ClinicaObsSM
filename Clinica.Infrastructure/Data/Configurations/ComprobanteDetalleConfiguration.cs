@@ -12,6 +12,10 @@ public class ComprobanteDetalleConfiguration : IEntityTypeConfiguration<Comproba
 
         builder.HasKey(x => x.Id);
 
+        // ==========================================================
+        // DATOS DEL SERVICIO
+        // ==========================================================
+
         builder.Property(x => x.CodigoServicio)
             .IsRequired()
             .HasMaxLength(50);
@@ -22,6 +26,10 @@ public class ComprobanteDetalleConfiguration : IEntityTypeConfiguration<Comproba
 
         builder.Property(x => x.Cantidad)
             .IsRequired();
+
+        // ==========================================================
+        // MONTOS
+        // ==========================================================
 
         builder.Property(x => x.PrecioUnitarioFinal)
             .HasPrecision(10, 2)
@@ -42,6 +50,10 @@ public class ComprobanteDetalleConfiguration : IEntityTypeConfiguration<Comproba
         builder.Property(x => x.Total)
             .HasPrecision(10, 2)
             .IsRequired();
+
+        // ==========================================================
+        // RELACIÓN CON COMPROBANTE
+        // ==========================================================
 
         builder.HasIndex(x => x.ComprobanteId);
 
