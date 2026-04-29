@@ -23,4 +23,5 @@ public class Usuario
     public ICollection<UsuarioRol> UsuarioRoles { get; set; } = new List<UsuarioRol>();
     public ICollection<Auditoria> Auditorias { get; set; } = new List<Auditoria>();
     public ICollection<Comprobante> ComprobantesEmitidos { get; set; } = new List<Comprobante>();
+    public ICollection<Comprobante> ComprobantesAnulados { get; set; } = new List<Comprobante>();
 }

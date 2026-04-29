@@ -307,6 +307,194 @@ namespace Clinica.Infrastructure.Migrations
                     b.ToTable("Citas", (string)null);
                 });
 
+            modelBuilder.Entity("Clinica.Domain.Entities.Comprobante", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("AtencionId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("CitaId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("CodigoComprobante")
+                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("character varying(60)");
+
+                    b.Property<string>("DatosSnapshotJson")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("jsonb")
+                        .HasDefaultValueSql("'{}'::jsonb");
+
+                    b.Property<string>("DireccionPaciente")
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("character varying(40)");
+
+                    b.Property<DateTime?>("FechaAnulacion")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("FechaEmision")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("FormatoImpresion")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("character varying(40)");
+
+                    b.Property<Guid?>("HistorialClinicoId")
+                        .HasColumnType("uuid");
+
+                    b.Property<decimal>("MontoImpuesto")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("numeric(10,2)");
+
+                    b.Property<string>("MotivoAnulacion")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<string>("NombrePaciente")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
+                    b.Property<int>("Numero")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("NumeroDocumentoPaciente")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
+
+                    b.Property<string>("Observacion")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<Guid>("PacienteId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("PagoId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Serie")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
+
+                    b.Property<decimal>("Subtotal")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("numeric(10,2)");
+
+                    b.Property<decimal>("TasaImpuesto")
+                        .HasPrecision(5, 2)
+                        .HasColumnType("numeric(5,2)");
+
+                    b.Property<string>("TipoComprobante")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("character varying(40)");
+
+                    b.Property<string>("TipoDocumentoPaciente")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("character varying(30)");
+
+                    b.Property<decimal>("Total")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("numeric(10,2)");
+
+                    b.Property<Guid?>("UsuarioAnulacionId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("UsuarioEmisionId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AtencionId");
+
+                    b.HasIndex("CitaId");
+
+                    b.HasIndex("CodigoComprobante")
+                        .IsUnique();
+
+                    b.HasIndex("Estado");
+
+                    b.HasIndex("FechaEmision");
+
+                    b.HasIndex("HistorialClinicoId");
+
+                    b.HasIndex("PacienteId");
+
+                    b.HasIndex("PagoId");
+
+                    b.HasIndex("UsuarioAnulacionId");
+
+                    b.HasIndex("UsuarioEmisionId");
+
+                    b.HasIndex("Serie", "Numero", "TipoComprobante")
+                        .IsUnique();
+
+                    b.ToTable("Comprobantes", (string)null);
+                });
+
+            modelBuilder.Entity("Clinica.Domain.Entities.ComprobanteDetalle", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("CodigoServicio")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<Guid>("ComprobanteId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
+
+                    b.Property<decimal>("MontoImpuesto")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("numeric(10,2)");
+
+                    b.Property<decimal>("PrecioUnitarioFinal")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("numeric(10,2)");
+
+                    b.Property<decimal>("Subtotal")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("numeric(10,2)");
+
+                    b.Property<decimal>("TasaImpuesto")
+                        .HasPrecision(5, 2)
+                        .HasColumnType("numeric(5,2)");
+
+                    b.Property<decimal>("Total")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("numeric(10,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ComprobanteId");
+
+                    b.ToTable("ComprobanteDetalles", (string)null);
+                });
+
             modelBuilder.Entity("Clinica.Domain.Entities.Doctor", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1017,6 +1205,71 @@ namespace Clinica.Infrastructure.Migrations
                     b.Navigation("UsuarioRegistro");
                 });
 
+            modelBuilder.Entity("Clinica.Domain.Entities.Comprobante", b =>
+                {
+                    b.HasOne("Clinica.Domain.Entities.Atencion", "Atencion")
+                        .WithMany("Comprobantes")
+                        .HasForeignKey("AtencionId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Clinica.Domain.Entities.Cita", "Cita")
+                        .WithMany("Comprobantes")
+                        .HasForeignKey("CitaId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Clinica.Domain.Entities.HistorialClinico", "HistorialClinico")
+                        .WithMany("Comprobantes")
+                        .HasForeignKey("HistorialClinicoId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Clinica.Domain.Entities.Paciente", "Paciente")
+                        .WithMany("Comprobantes")
+                        .HasForeignKey("PacienteId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Clinica.Domain.Entities.Pago", "Pago")
+                        .WithMany("Comprobantes")
+                        .HasForeignKey("PagoId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Clinica.Domain.Entities.Usuario", "UsuarioAnulacion")
+                        .WithMany("ComprobantesAnulados")
+                        .HasForeignKey("UsuarioAnulacionId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Clinica.Domain.Entities.Usuario", "UsuarioEmision")
+                        .WithMany("ComprobantesEmitidos")
+                        .HasForeignKey("UsuarioEmisionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Atencion");
+
+                    b.Navigation("Cita");
+
+                    b.Navigation("HistorialClinico");
+
+                    b.Navigation("Paciente");
+
+                    b.Navigation("Pago");
+
+                    b.Navigation("UsuarioAnulacion");
+
+                    b.Navigation("UsuarioEmision");
+                });
+
+            modelBuilder.Entity("Clinica.Domain.Entities.ComprobanteDetalle", b =>
+                {
+                    b.HasOne("Clinica.Domain.Entities.Comprobante", "Comprobante")
+                        .WithMany("Detalles")
+                        .HasForeignKey("ComprobanteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Comprobante");
+                });
+
             modelBuilder.Entity("Clinica.Domain.Entities.Doctor", b =>
                 {
                     b.HasOne("Clinica.Domain.Entities.Usuario", "Usuario")
@@ -1182,6 +1435,8 @@ namespace Clinica.Infrastructure.Migrations
                 {
                     b.Navigation("AjustesFinancieros");
 
+                    b.Navigation("Comprobantes");
+
                     b.Navigation("HistorialDetalles");
 
                     b.Navigation("Pagos");
@@ -1191,9 +1446,16 @@ namespace Clinica.Infrastructure.Migrations
                 {
                     b.Navigation("Atencion");
 
+                    b.Navigation("Comprobantes");
+
                     b.Navigation("HistorialDetalles");
 
                     b.Navigation("Pagos");
+                });
+
+            modelBuilder.Entity("Clinica.Domain.Entities.Comprobante", b =>
+                {
+                    b.Navigation("Detalles");
                 });
 
             modelBuilder.Entity("Clinica.Domain.Entities.Doctor", b =>
@@ -1207,6 +1469,8 @@ namespace Clinica.Infrastructure.Migrations
 
             modelBuilder.Entity("Clinica.Domain.Entities.HistorialClinico", b =>
                 {
+                    b.Navigation("Comprobantes");
+
                     b.Navigation("Detalles");
                 });
 
@@ -1221,6 +1485,8 @@ namespace Clinica.Infrastructure.Migrations
 
                     b.Navigation("Citas");
 
+                    b.Navigation("Comprobantes");
+
                     b.Navigation("HistorialClinico");
 
                     b.Navigation("Pagos");
@@ -1229,6 +1495,8 @@ namespace Clinica.Infrastructure.Migrations
             modelBuilder.Entity("Clinica.Domain.Entities.Pago", b =>
                 {
                     b.Navigation("AjustesFinancieros");
+
+                    b.Navigation("Comprobantes");
 
                     b.Navigation("HistorialDetalles");
                 });
@@ -1257,6 +1525,10 @@ namespace Clinica.Infrastructure.Migrations
             modelBuilder.Entity("Clinica.Domain.Entities.Usuario", b =>
                 {
                     b.Navigation("Auditorias");
+
+                    b.Navigation("ComprobantesAnulados");
+
+                    b.Navigation("ComprobantesEmitidos");
 
                     b.Navigation("UsuarioRoles");
                 });

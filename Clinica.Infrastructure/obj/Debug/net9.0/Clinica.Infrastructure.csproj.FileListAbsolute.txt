@@ -14,3 +14,38 @@ F:\proyectC#\ClinicaObst\Clinica.Infrastructure\obj\Debug\net9.0\refint\Clinica.
 F:\proyectC#\ClinicaObst\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.pdb
 F:\proyectC#\ClinicaObst\Clinica.Infrastructure\obj\Debug\net9.0\ref\Clinica.Infrastructure.dll
 F:\proyectC#\ClinicaObst\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.sourcelink.json
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-Black.ttf
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-BlackItalic.ttf
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-Bold.ttf
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-BoldItalic.ttf
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-ExtraBold.ttf
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-ExtraBoldItalic.ttf
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-ExtraLight.ttf
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-ExtraLightItalic.ttf
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-Italic.ttf
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-Light.ttf
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-LightItalic.ttf
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-Medium.ttf
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-MediumItalic.ttf
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-Regular.ttf
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-SemiBold.ttf
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-SemiBoldItalic.ttf
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-Thin.ttf
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-ThinItalic.ttf
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\OFL.txt
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\Clinica.Infrastructure.deps.json
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\Clinica.Infrastructure.dll
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\Clinica.Infrastructure.pdb
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\Clinica.Domain.dll
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\bin\Debug\net9.0\Clinica.Domain.pdb
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.csproj.AssemblyReference.cache
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.AssemblyInfoInputs.cache
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.AssemblyInfo.cs
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.csproj.CoreCompileInputs.cache
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.sourcelink.json
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\Clinica..0DDBE4D2.Up2Date
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.dll
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\refint\Clinica.Infrastructure.dll
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.pdb
+K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\ref\Clinica.Infrastructure.dll

@@ -135,12 +135,12 @@ public class ComprobanteConfiguration : IEntityTypeConfiguration<Comprobante>
         // ==========================================================
 
         builder.HasOne(x => x.Paciente)
-            .WithMany()
+            .WithMany(x => x.Comprobantes)
             .HasForeignKey(x => x.PacienteId)
             .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasOne(x => x.Pago)
-            .WithMany()
+            .WithMany(x => x.Comprobantes)
             .HasForeignKey(x => x.PagoId)
             .OnDelete(DeleteBehavior.SetNull);
 
@@ -155,17 +155,17 @@ public class ComprobanteConfiguration : IEntityTypeConfiguration<Comprobante>
             .OnDelete(DeleteBehavior.SetNull);
 
         builder.HasOne(x => x.HistorialClinico)
-            .WithMany()
+            .WithMany(x => x.Comprobantes)
             .HasForeignKey(x => x.HistorialClinicoId)
             .OnDelete(DeleteBehavior.SetNull);
 
         builder.HasOne(x => x.UsuarioEmision)
-            .WithMany()
+            .WithMany(x => x.ComprobantesEmitidos)
             .HasForeignKey(x => x.UsuarioEmisionId)
             .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasOne(x => x.UsuarioAnulacion)
-            .WithMany()
+            .WithMany(x => x.ComprobantesAnulados)
             .HasForeignKey(x => x.UsuarioAnulacionId)
             .OnDelete(DeleteBehavior.SetNull);
 

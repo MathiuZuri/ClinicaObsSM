@@ -52,7 +52,7 @@ public class Comprobante
 
     public string? Observacion { get; set; }
 
-    public string DatosSnapshotJson { get; set; } = string.Empty;
+    public string DatosSnapshotJson { get; set; } = "{}";
 
     public ICollection<ComprobanteDetalle> Detalles { get; set; } = new List<ComprobanteDetalle>();
 }
