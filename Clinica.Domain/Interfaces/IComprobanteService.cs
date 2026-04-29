@@ -32,6 +32,12 @@ public interface IComprobanteService
 
     Task<DocumentoGeneradoDto> GenerarPdfBoletaPagoAsync(Guid comprobanteId);
 
+    Task<DocumentoGeneradoDto> GenerarPdfConstanciaCitaAsync(Guid comprobanteId);
+
+    Task<DocumentoGeneradoDto> GenerarPdfResumenAtencionAsync(Guid comprobanteId);
+
+    Task<DocumentoGeneradoDto> GenerarPdfEstadoCuentaPacienteAsync(Guid pacienteId);
+
     // ==========================================================
     // CONSULTAS
     // ==========================================================
