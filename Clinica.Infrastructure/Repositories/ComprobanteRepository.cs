@@ -38,11 +38,16 @@ public class ComprobanteRepository : GenericRepository<Comprobante>, IComprobant
     public async Task<Comprobante?> ObtenerPorIdConDetalleAsync(Guid id)
     {
         return await Context.Comprobantes
-            .AsNoTracking()
             .Include(x => x.Paciente)
             .Include(x => x.Pago)
             .Include(x => x.Cita)
+            .ThenInclude(x => x!.Doctor)
+            .Include(x => x.Cita)
+            .ThenInclude(x => x!.ServicioClinico)
             .Include(x => x.Atencion)
+            .ThenInclude(x => x!.Doctor)
+            .Include(x => x.Atencion)
+            .ThenInclude(x => x!.ServicioClinico)
             .Include(x => x.HistorialClinico)
             .Include(x => x.UsuarioEmision)
             .Include(x => x.UsuarioAnulacion)

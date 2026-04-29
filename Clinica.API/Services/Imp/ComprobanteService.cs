@@ -223,6 +223,81 @@ public class ComprobanteService : IComprobanteService
             Archivo = archivo
         };
     }
+    
+    public async Task<DocumentoGeneradoDto> GenerarPdfConstanciaCitaAsync(Guid comprobanteId)
+    {
+        if (comprobanteId == Guid.Empty)
+            throw new InvalidOperationException("El identificador del comprobante es obligatorio.");
+
+        var comprobante = await _comprobanteRepository.ObtenerPorIdConDetalleAsync(comprobanteId)
+            ?? throw new KeyNotFoundException("Comprobante no encontrado.");
+
+        if (comprobante.TipoComprobante != TipoComprobante.ConstanciaCita)
+            throw new InvalidOperationException("El comprobante solicitado no corresponde a una constancia de cita.");
+
+        if (comprobante.Estado == EstadoComprobante.Anulado)
+            throw new InvalidOperationException("No se puede generar PDF de un comprobante anulado.");
+
+        var preview = MapearCitaPreview(comprobante);
+        var archivo = _comprobantePdfService.GenerarConstanciaCitaPdf(preview);
+
+        return new DocumentoGeneradoDto
+        {
+            NombreArchivo = $"{comprobante.CodigoComprobante}.pdf",
+            ContentType = "application/pdf",
+            Archivo = archivo
+        };
+    }
+
+    public async Task<DocumentoGeneradoDto> GenerarPdfResumenAtencionAsync(Guid comprobanteId)
+    {
+        if (comprobanteId == Guid.Empty)
+            throw new InvalidOperationException("El identificador del comprobante es obligatorio.");
+
+        var comprobante = await _comprobanteRepository.ObtenerPorIdConDetalleAsync(comprobanteId)
+            ?? throw new KeyNotFoundException("Comprobante no encontrado.");
+
+        if (comprobante.TipoComprobante != TipoComprobante.ResumenAtencion)
+            throw new InvalidOperationException("El comprobante solicitado no corresponde a un resumen de atención.");
+
+        if (comprobante.Estado == EstadoComprobante.Anulado)
+            throw new InvalidOperationException("No se puede generar PDF de un comprobante anulado.");
+
+        var preview = MapearAtencionPreview(comprobante);
+        var archivo = _comprobantePdfService.GenerarResumenAtencionPdf(preview);
+
+        return new DocumentoGeneradoDto
+        {
+            NombreArchivo = $"{comprobante.CodigoComprobante}.pdf",
+            ContentType = "application/pdf",
+            Archivo = archivo
+        };
+    }
+
+    public async Task<DocumentoGeneradoDto> GenerarPdfEstadoCuentaPacienteAsync(Guid comprobanteId)
+    {
+        if (comprobanteId == Guid.Empty)
+            throw new InvalidOperationException("El identificador del comprobante es obligatorio.");
+
+        var comprobante = await _comprobanteRepository.ObtenerPorIdConDetalleAsync(comprobanteId)
+            ?? throw new KeyNotFoundException("Comprobante no encontrado.");
+
+        if (comprobante.TipoComprobante != TipoComprobante.EstadoCuenta)
+            throw new InvalidOperationException("El comprobante solicitado no corresponde a un estado de cuenta.");
+
+        if (comprobante.Estado == EstadoComprobante.Anulado)
+            throw new InvalidOperationException("No se puede generar PDF de un comprobante anulado.");
+
+        var preview = MapearEstadoCuentaPreview(comprobante);
+        var archivo = _comprobantePdfService.GenerarEstadoCuentaPacientePdf(preview);
+
+        return new DocumentoGeneradoDto
+        {
+            NombreArchivo = $"{comprobante.CodigoComprobante}.pdf",
+            ContentType = "application/pdf",
+            Archivo = archivo
+        };
+    }
 
     // ==========================================================
     // CONSULTAS
@@ -460,6 +535,107 @@ public class ComprobanteService : IComprobanteService
                 MontoImpuesto = d.MontoImpuesto,
                 Total = d.Total
             }).ToList()
+        };
+    }
+    
+    private static ComprobanteCitaPreviewDto MapearCitaPreview(Comprobante comprobante)
+    {
+        var cita = comprobante.Cita;
+
+        return new ComprobanteCitaPreviewDto
+        {
+            ComprobanteId = comprobante.Id,
+            CodigoComprobante = comprobante.CodigoComprobante,
+
+            CitaId = comprobante.CitaId ?? Guid.Empty,
+            CodigoCita = cita?.CodigoCita ?? "",
+
+            PacienteId = comprobante.PacienteId,
+            Paciente = comprobante.NombrePaciente,
+            DniPaciente = comprobante.NumeroDocumentoPaciente,
+            DireccionPaciente = comprobante.DireccionPaciente,
+
+            DoctorId = cita?.DoctorId ?? Guid.Empty,
+            Doctor = cita?.Doctor == null ? "" : $"{cita.Doctor.Nombres} {cita.Doctor.Apellidos}",
+            Especialidad = cita?.Doctor?.Especialidad ?? "",
+
+            ServicioClinicoId = cita?.ServicioClinicoId ?? Guid.Empty,
+            Servicio = cita?.ServicioClinico?.Nombre ?? "Servicio clínico",
+
+            FechaCita = cita?.Fecha ?? default,
+            HoraInicio = cita?.HoraInicio ?? default,
+            HoraFin = cita?.HoraFin ?? default,
+
+            EstadoCita = cita?.Estado.ToString() ?? "",
+            Motivo = cita?.Motivo ?? "",
+
+            FechaEmision = comprobante.FechaEmision,
+            Observacion = comprobante.Observacion
+        };
+    }
+
+    private static ComprobanteAtencionPreviewDto MapearAtencionPreview(Comprobante comprobante)
+    {
+        var atencion = comprobante.Atencion;
+
+        return new ComprobanteAtencionPreviewDto
+        {
+            ComprobanteId = comprobante.Id,
+            CodigoComprobante = comprobante.CodigoComprobante,
+
+            AtencionId = comprobante.AtencionId ?? Guid.Empty,
+            CodigoAtencion = atencion?.CodigoAtencion ?? "",
+
+            PacienteId = comprobante.PacienteId,
+            Paciente = comprobante.NombrePaciente,
+            DniPaciente = comprobante.NumeroDocumentoPaciente,
+            DireccionPaciente = comprobante.DireccionPaciente,
+
+            DoctorId = atencion?.DoctorId ?? Guid.Empty,
+            Doctor = atencion?.Doctor == null ? "" : $"{atencion.Doctor.Nombres} {atencion.Doctor.Apellidos}",
+            Especialidad = atencion?.Doctor?.Especialidad ?? "",
+
+            ServicioClinicoId = atencion?.ServicioClinicoId ?? Guid.Empty,
+            Servicio = atencion?.ServicioClinico?.Nombre ?? "Servicio clínico",
+
+            FechaInicio = atencion?.FechaInicio ?? comprobante.FechaEmision,
+            FechaCierre = atencion?.FechaCierre,
+
+            MotivoConsulta = atencion?.MotivoConsulta ?? "",
+            DiagnosticoResumen = atencion?.DiagnosticoResumen,
+            Indicaciones = atencion?.Indicaciones,
+            Tratamiento = atencion?.Tratamiento,
+            Observaciones = atencion?.Observaciones,
+
+            EstadoAtencion = atencion?.Estado.ToString() ?? "",
+
+            CostoFinal = atencion?.CostoFinal ?? 0,
+            MontoPagado = atencion?.MontoPagado ?? 0,
+            SaldoPendiente = atencion?.SaldoPendiente ?? 0,
+
+            FechaEmision = comprobante.FechaEmision
+        };
+    }
+
+    private static ComprobanteEstadoCuentaPreviewDto MapearEstadoCuentaPreview(Comprobante comprobante)
+    {
+        return new ComprobanteEstadoCuentaPreviewDto
+        {
+            ComprobanteId = comprobante.Id,
+            CodigoComprobante = comprobante.CodigoComprobante,
+
+            PacienteId = comprobante.PacienteId,
+            Paciente = comprobante.NombrePaciente,
+            DniPaciente = comprobante.NumeroDocumentoPaciente,
+            DireccionPaciente = comprobante.DireccionPaciente,
+
+            TotalFacturado = comprobante.Total,
+            TotalPagado = comprobante.Total,
+            TotalPendiente = 0,
+
+            FechaEmision = comprobante.FechaEmision,
+
+            Detalles = new List<DetalleEstadoCuentaComprobanteDto>()
         };
     }
 }

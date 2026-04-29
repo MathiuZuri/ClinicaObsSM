@@ -36,7 +36,7 @@ public interface IComprobanteService
 
     Task<DocumentoGeneradoDto> GenerarPdfResumenAtencionAsync(Guid comprobanteId);
 
-    Task<DocumentoGeneradoDto> GenerarPdfEstadoCuentaPacienteAsync(Guid pacienteId);
+    Task<DocumentoGeneradoDto> GenerarPdfEstadoCuentaPacienteAsync(Guid comprobanteId);
 
     // ==========================================================
     // CONSULTAS
