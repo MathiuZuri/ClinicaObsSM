@@ -135,6 +135,7 @@ public class ComprobanteService : IComprobanteService
             PagoId = pago.Id,
             CitaId = pago.CitaId,
             AtencionId = pago.AtencionId,
+            HistorialClinicoId = pago.Atencion?.HistorialClinicoId,
 
             TipoDocumentoPaciente = TipoDocumentoComprobante.DNI,
             NumeroDocumentoPaciente = pago.Paciente?.DNI ?? "",
