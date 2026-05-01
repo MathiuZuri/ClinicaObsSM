@@ -139,6 +139,10 @@ public class AuditoriaAutomaticaFilter : IAsyncActionFilter
 
         if (context.RouteData.Values.TryGetValue("id", out var id))
             valor = id?.ToString();
+        else if (context.RouteData.Values.TryGetValue("comprobanteId", out var comprobanteId))
+            valor = comprobanteId?.ToString();
+        else if (context.RouteData.Values.TryGetValue("pagoId", out var pagoId))
+            valor = pagoId?.ToString();
         else if (context.RouteData.Values.TryGetValue("usuarioId", out var usuarioId))
             valor = usuarioId?.ToString();
         else if (context.RouteData.Values.TryGetValue("pacienteId", out var pacienteId))
@@ -151,6 +155,8 @@ public class AuditoriaAutomaticaFilter : IAsyncActionFilter
             valor = atencionId?.ToString();
         else if (context.RouteData.Values.TryGetValue("historialId", out var historialId))
             valor = historialId?.ToString();
+        else if (context.RouteData.Values.TryGetValue("historialClinicoId", out var historialClinicoId))
+            valor = historialClinicoId?.ToString();
 
         return Guid.TryParse(valor, out var guid) ? guid : null;
     }
@@ -221,6 +227,7 @@ public class AuditoriaAutomaticaFilter : IAsyncActionFilter
             "Citas" => await _context.Citas.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id),
             "Atenciones" => await _context.Atenciones.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id),
             "Pagos" => await _context.Pagos.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id),
+            "Comprobantes" => await _context.Comprobantes.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id),
             "Usuarios" => await _context.Usuarios.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id),
             "Roles" => await _context.Roles.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id),
             "ServiciosClinicos" => await _context.ServiciosClinicos.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id),

@@ -78,7 +78,7 @@ public class PagoRepository : GenericRepository<Pago>, IPagoRepository
             .Include(x => x.ServicioClinico)
             .Include(x => x.Cita)
             .Include(x => x.Atencion)
-            .ThenInclude(x => x.HistorialClinico)
+                .ThenInclude(x => x.HistorialClinico)
             .Include(x => x.UsuarioRegistro)
             .FirstOrDefaultAsync(x => x.CodigoPago == codigoPago);
     }

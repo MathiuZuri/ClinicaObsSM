@@ -23,15 +23,27 @@ public class ExceptionMiddleware
         }
         catch (KeyNotFoundException ex)
         {
-            await ResponderErrorAsync(context, HttpStatusCode.NotFound, ex.Message);
+            await ResponderErrorAsync(
+                context,
+                HttpStatusCode.NotFound,
+                ex.Message
+            );
         }
         catch (InvalidOperationException ex)
         {
-            await ResponderErrorAsync(context, HttpStatusCode.BadRequest, ex.Message);
+            await ResponderErrorAsync(
+                context,
+                HttpStatusCode.BadRequest,
+                ex.Message
+            );
         }
         catch (UnauthorizedAccessException ex)
         {
-            await ResponderErrorAsync(context, HttpStatusCode.Unauthorized, ex.Message);
+            await ResponderErrorAsync(
+                context,
+                HttpStatusCode.Unauthorized,
+                ex.Message
+            );
         }
         catch (Exception ex)
         {
@@ -39,12 +51,23 @@ public class ExceptionMiddleware
                 ? ex.Message
                 : "Ocurrió un error interno en el servidor.";
 
-            await ResponderErrorAsync(context, HttpStatusCode.InternalServerError, mensaje);
+            await ResponderErrorAsync(
+                context,
+                HttpStatusCode.InternalServerError,
+                mensaje
+            );
         }
     }
 
-    private static async Task ResponderErrorAsync(HttpContext context, HttpStatusCode statusCode, string mensaje)
+    private static async Task ResponderErrorAsync(
+        HttpContext context,
+        HttpStatusCode statusCode,
+        string mensaje)
     {
+        if (context.Response.HasStarted)
+            return;
+
+        context.Response.Clear();
         context.Response.ContentType = "application/json";
         context.Response.StatusCode = (int)statusCode;
 
