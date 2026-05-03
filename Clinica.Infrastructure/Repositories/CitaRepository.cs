@@ -58,4 +58,31 @@ public class CitaRepository : GenericRepository<Cita>, ICitaRepository
             .ThenByDescending(x => x.HoraInicio)
             .ToListAsync();
     }
+    
+    // esto es exclusivo de evolution api, no incluir al sistema
+    public async Task<IEnumerable<Cita>> ObtenerCitasParaRecordatorioAsync(
+        DateTime desdeUtc,
+        DateTime hastaUtc)
+    {
+        var hoy = DateOnly.FromDateTime(DateTime.Now);
+        var manana = hoy.AddDays(1);
+
+        return await Context.Citas
+            .Include(x => x.Paciente)
+            .Include(x => x.Doctor)
+            .Include(x => x.ServicioClinico)
+            .Where(x =>
+                x.Fecha >= hoy &&
+                x.Fecha <= manana &&
+                x.Paciente.Celular != null &&
+                x.Paciente.Celular != "" &&
+                (
+                    x.Estado == Clinica.Domain.Enums.EstadoCita.Pendiente ||
+                    x.Estado == Clinica.Domain.Enums.EstadoCita.Confirmada ||
+                    x.Estado == Clinica.Domain.Enums.EstadoCita.Reprogramada
+                ))
+            .OrderBy(x => x.Fecha)
+            .ThenBy(x => x.HoraInicio)
+            .ToListAsync();
+    }
 }

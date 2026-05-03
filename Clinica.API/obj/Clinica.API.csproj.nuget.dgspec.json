@@ -1,36 +1,37 @@
 {
   "format": 1,
   "restore": {
-    "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.API\\Clinica.API.csproj": {}
+    "F:\\proyectC#\\ClinicaObst\\Clinica.API\\Clinica.API.csproj": {}
   },
   "projects": {
-    "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.API\\Clinica.API.csproj": {
+    "F:\\proyectC#\\ClinicaObst\\Clinica.API\\Clinica.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.API\\Clinica.API.csproj",
+        "projectUniqueName": "F:\\proyectC#\\ClinicaObst\\Clinica.API\\Clinica.API.csproj",
         "projectName": "Clinica.API",
-        "projectPath": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.API\\Clinica.API.csproj",
-        "packagesPath": "C:\\Users\\paric\\.nuget\\packages\\",
-        "outputPath": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.API\\obj\\",
+        "projectPath": "F:\\proyectC#\\ClinicaObst\\Clinica.API\\Clinica.API.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "F:\\proyectC#\\ClinicaObst\\Clinica.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\paric\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj": {
-                "projectPath": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj"
+              "F:\\proyectC#\\ClinicaObst\\Clinica.Domain\\Clinica.Domain.csproj": {
+                "projectPath": "F:\\proyectC#\\ClinicaObst\\Clinica.Domain\\Clinica.Domain.csproj"
               },
-              "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Infrastructure\\Clinica.Infrastructure.csproj": {
-                "projectPath": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Infrastructure\\Clinica.Infrastructure.csproj"
+              "F:\\proyectC#\\ClinicaObst\\Clinica.Infrastructure\\Clinica.Infrastructure.csproj": {
+                "projectPath": "F:\\proyectC#\\ClinicaObst\\Clinica.Infrastructure\\Clinica.Infrastructure.csproj"
               }
             }
           }
@@ -109,22 +110,23 @@
         }
       }
     },
-    "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj": {
+    "F:\\proyectC#\\ClinicaObst\\Clinica.Domain\\Clinica.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj",
+        "projectUniqueName": "F:\\proyectC#\\ClinicaObst\\Clinica.Domain\\Clinica.Domain.csproj",
         "projectName": "Clinica.Domain",
-        "projectPath": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj",
-        "packagesPath": "C:\\Users\\paric\\.nuget\\packages\\",
-        "outputPath": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Domain\\obj\\",
+        "projectPath": "F:\\proyectC#\\ClinicaObst\\Clinica.Domain\\Clinica.Domain.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "F:\\proyectC#\\ClinicaObst\\Clinica.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\paric\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -178,30 +180,31 @@
         }
       }
     },
-    "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Infrastructure\\Clinica.Infrastructure.csproj": {
+    "F:\\proyectC#\\ClinicaObst\\Clinica.Infrastructure\\Clinica.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Infrastructure\\Clinica.Infrastructure.csproj",
+        "projectUniqueName": "F:\\proyectC#\\ClinicaObst\\Clinica.Infrastructure\\Clinica.Infrastructure.csproj",
         "projectName": "Clinica.Infrastructure",
-        "projectPath": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Infrastructure\\Clinica.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\paric\\.nuget\\packages\\",
-        "outputPath": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Infrastructure\\obj\\",
+        "projectPath": "F:\\proyectC#\\ClinicaObst\\Clinica.Infrastructure\\Clinica.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "F:\\proyectC#\\ClinicaObst\\Clinica.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\paric\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj": {
-                "projectPath": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj"
+              "F:\\proyectC#\\ClinicaObst\\Clinica.Domain\\Clinica.Domain.csproj": {
+                "projectPath": "F:\\proyectC#\\ClinicaObst\\Clinica.Domain\\Clinica.Domain.csproj"
               }
             }
           }

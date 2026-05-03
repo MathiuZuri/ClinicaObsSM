@@ -28,6 +28,9 @@ public class ApplicationDbContext : DbContext
     public DbSet<Doctor> Doctores => Set<Doctor>();
     public DbSet<HorarioDoctor> HorariosDoctor => Set<HorarioDoctor>();
     public DbSet<Cita> Citas => Set<Cita>();
+    
+    // esto es exclusivo de evolution api, no incluir al sistema
+    public DbSet<NotificacionCita> NotificacionesCitas => Set<NotificacionCita>();
 
     // ==========================================================
     // SERVICIOS, HISTORIAL, ATENCIONES Y FINANZAS

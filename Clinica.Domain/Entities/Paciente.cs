@@ -32,4 +32,7 @@ public class Paciente
     public ICollection<Atencion> Atenciones { get; set; } = new List<Atencion>();
     public ICollection<Pago> Pagos { get; set; } = new List<Pago>();
     public ICollection<Comprobante> Comprobantes { get; set; } = new List<Comprobante>();
+    
+    // esto es exclusivo de evolution api, no incluir al sistema
+    public ICollection<NotificacionCita> NotificacionesCita { get; set; } = new List<NotificacionCita>();
 }

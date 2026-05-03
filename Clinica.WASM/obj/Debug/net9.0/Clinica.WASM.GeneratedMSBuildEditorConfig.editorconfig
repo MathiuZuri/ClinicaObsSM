@@ -13,53 +13,53 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = Clinica.WASM
 build_property.RootNamespace = Clinica.WASM
-build_property.ProjectDir = K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.WASM\
+build_property.ProjectDir = F:\proyectC#\ClinicaObst\Clinica.WASM\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = false
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.WASM
+build_property.MSBuildProjectDirectory = F:\proyectC#\ClinicaObst\Clinica.WASM
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[K:/CLINICA SANTA MONICA DEV/DEV/ClinicaObsSM/Clinica.WASM/App.razor]
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[K:/CLINICA SANTA MONICA DEV/DEV/ClinicaObsSM/Clinica.WASM/Layout/MainLayout.razor]
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[K:/CLINICA SANTA MONICA DEV/DEV/ClinicaObsSM/Clinica.WASM/Layout/NavMenu.razor]
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[K:/CLINICA SANTA MONICA DEV/DEV/ClinicaObsSM/Clinica.WASM/Pages/HistoriaClinica.razor]
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Pages/HistoriaClinica.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSGlzdG9yaWFDbGluaWNhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[K:/CLINICA SANTA MONICA DEV/DEV/ClinicaObsSM/Clinica.WASM/Pages/Home.razor]
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[K:/CLINICA SANTA MONICA DEV/DEV/ClinicaObsSM/Clinica.WASM/Pages/util/DialogoConfirmacion.razor]
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Pages/util/DialogoConfirmacion.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcdXRpbFxEaWFsb2dvQ29uZmlybWFjaW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[K:/CLINICA SANTA MONICA DEV/DEV/ClinicaObsSM/Clinica.WASM/_Imports.razor]
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[K:/CLINICA SANTA MONICA DEV/DEV/ClinicaObsSM/Clinica.WASM/Pages/forms/FormularioPaciente.razor]
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Pages/forms/FormularioPaciente.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcZm9ybXNcRm9ybXVsYXJpb1BhY2llbnRlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-snr0fjv4b4
 
-[K:/CLINICA SANTA MONICA DEV/DEV/ClinicaObsSM/Clinica.WASM/Pages/pages/Citas.razor]
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Pages/pages/Citas.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNccGFnZXNcQ2l0YXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-qhkdgmlp8s
 
-[K:/CLINICA SANTA MONICA DEV/DEV/ClinicaObsSM/Clinica.WASM/Pages/pages/ListadoPacientes.razor]
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Pages/pages/ListadoPacientes.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNccGFnZXNcTGlzdGFkb1BhY2llbnRlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-1qlgwdhvim

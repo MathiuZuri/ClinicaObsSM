@@ -13,4 +13,9 @@ public interface ICitaRepository : IGenericRepository<Cita>
 
     Task<IEnumerable<Cita>> ObtenerPorPacienteAsync(Guid pacienteId);
     Task<IEnumerable<Cita>> ObtenerPorDoctorAsync(Guid doctorId);
+    
+    // esto es exclusivo de evolution api, no incluir al sistema
+    Task<IEnumerable<Cita>> ObtenerCitasParaRecordatorioAsync(
+        DateTime desdeUtc,
+        DateTime hastaUtc);
 }

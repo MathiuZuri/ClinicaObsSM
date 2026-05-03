@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Clinica.WASM")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0c3980cd1183ef94abd4e84e3149984e32c646e0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+220ca585a14c0bc23818416848b4439dda3369fb")]
 [assembly: System.Reflection.AssemblyProductAttribute("Clinica.WASM")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Clinica.WASM")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

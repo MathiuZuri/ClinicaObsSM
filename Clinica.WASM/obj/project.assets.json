@@ -525,7 +525,7 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
-      "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.4": {
+      "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.15": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.Sdk.WebAssembly.Pack.props": {},
@@ -1105,7 +1105,7 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
-      "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.4": {
+      "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.15": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.Sdk.WebAssembly.Pack.props": {},
@@ -2115,10 +2115,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.4": {
-      "sha512": "SbawDIBdWK+7UTkiIXquadlWAUPxV88+jytBdVsIFzvJXkxGGQKrufO4KPyYdS4shFtXLZyCuCckNt0YN5hZKw==",
+    "Microsoft.NET.Sdk.WebAssembly.Pack/9.0.15": {
+      "sha512": "DE4Z/tttKeJp6fXwgbeqcidI7FHKBBFYIC2gCXtm9Aa7FjDYmWKFlAPVXhWK0250DRNlhJwtkq9ziim1QRViyw==",
       "type": "package",
-      "path": "microsoft.net.sdk.webassembly.pack/9.0.4",
+      "path": "microsoft.net.sdk.webassembly.pack/9.0.15",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -2149,7 +2149,7 @@
         "build/Microsoft.NET.Sdk.WebAssembly.Pack.targets",
         "build/Wasm.web.config",
         "build/browser.runtimeconfig.template.json",
-        "microsoft.net.sdk.webassembly.pack.9.0.4.nupkg.sha512",
+        "microsoft.net.sdk.webassembly.pack.9.0.15.nupkg.sha512",
         "microsoft.net.sdk.webassembly.pack.nuspec",
         "tools/net472/Microsoft.NET.Sdk.WebAssembly.Pack.Tasks.dll",
         "tools/net472/Microsoft.NET.WebAssembly.Webcil.dll",
@@ -2202,37 +2202,38 @@
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 9.0.4",
       "Microsoft.EntityFrameworkCore >= 9.0.14",
       "Microsoft.NET.ILLink.Tasks >= 9.0.4",
-      "Microsoft.NET.Sdk.WebAssembly.Pack >= 9.0.4",
+      "Microsoft.NET.Sdk.WebAssembly.Pack >= 9.0.15",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 9.0.4"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\paric\\.nuget\\packages\\": {}
+    "C:\\Users\\PC\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.WASM\\Clinica.WASM.csproj",
+      "projectUniqueName": "F:\\proyectC#\\ClinicaObst\\Clinica.WASM\\Clinica.WASM.csproj",
       "projectName": "Clinica.WASM",
-      "projectPath": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.WASM\\Clinica.WASM.csproj",
-      "packagesPath": "C:\\Users\\paric\\.nuget\\packages\\",
-      "outputPath": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.WASM\\obj\\",
+      "projectPath": "F:\\proyectC#\\ClinicaObst\\Clinica.WASM\\Clinica.WASM.csproj",
+      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+      "outputPath": "F:\\proyectC#\\ClinicaObst\\Clinica.WASM\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\paric\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj": {
-              "projectPath": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj"
+            "F:\\proyectC#\\ClinicaObst\\Clinica.Domain\\Clinica.Domain.csproj": {
+              "projectPath": "F:\\proyectC#\\ClinicaObst\\Clinica.Domain\\Clinica.Domain.csproj"
             }
           }
         }
@@ -2275,7 +2276,7 @@
           "Microsoft.NET.Sdk.WebAssembly.Pack": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[9.0.4, )",
+            "version": "[9.0.15, )",
             "autoReferenced": true
           },
           "Npgsql.EntityFrameworkCore.PostgreSQL": {
@@ -2296,8 +2297,8 @@
         "warn": true,
         "downloadDependencies": [
           {
-            "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-            "version": "[9.0.4, 9.0.4]"
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[9.0.15, 9.0.15]"
           }
         ],
         "frameworkReferences": {

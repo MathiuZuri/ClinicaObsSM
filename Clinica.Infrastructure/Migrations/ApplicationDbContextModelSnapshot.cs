@@ -695,6 +695,64 @@ namespace Clinica.Infrastructure.Migrations
                     b.ToTable("HorariosDoctor", (string)null);
                 });
 
+            modelBuilder.Entity("Clinica.Domain.Entities.NotificacionCita", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Canal")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("CitaId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Error")
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)");
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("FechaActualizacion")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("FechaEnvio")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("FechaProgramadaEnvio")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("Intentos")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Mensaje")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<Guid>("PacienteId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("TelefonoDestino")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CitaId");
+
+                    b.HasIndex("PacienteId");
+
+                    b.HasIndex("Estado", "FechaProgramadaEnvio");
+
+                    b.ToTable("NotificacionesCitas", (string)null);
+                });
+
             modelBuilder.Entity("Clinica.Domain.Entities.Paciente", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1342,6 +1400,25 @@ namespace Clinica.Infrastructure.Migrations
                     b.Navigation("Doctor");
                 });
 
+            modelBuilder.Entity("Clinica.Domain.Entities.NotificacionCita", b =>
+                {
+                    b.HasOne("Clinica.Domain.Entities.Cita", "Cita")
+                        .WithMany("Notificaciones")
+                        .HasForeignKey("CitaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Clinica.Domain.Entities.Paciente", "Paciente")
+                        .WithMany("NotificacionesCita")
+                        .HasForeignKey("PacienteId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Cita");
+
+                    b.Navigation("Paciente");
+                });
+
             modelBuilder.Entity("Clinica.Domain.Entities.Paciente", b =>
                 {
                     b.HasOne("Clinica.Domain.Entities.Usuario", "Usuario")
@@ -1450,6 +1527,8 @@ namespace Clinica.Infrastructure.Migrations
 
                     b.Navigation("HistorialDetalles");
 
+                    b.Navigation("Notificaciones");
+
                     b.Navigation("Pagos");
                 });
 
@@ -1488,6 +1567,8 @@ namespace Clinica.Infrastructure.Migrations
                     b.Navigation("Comprobantes");
 
                     b.Navigation("HistorialClinico");
+
+                    b.Navigation("NotificacionesCita");
 
                     b.Navigation("Pagos");
                 });

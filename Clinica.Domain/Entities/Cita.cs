@@ -38,4 +38,7 @@ public class Cita
     public ICollection<Pago> Pagos { get; set; } = new List<Pago>();
     public ICollection<HistorialDetalle> HistorialDetalles { get; set; } = new List<HistorialDetalle>();
     public ICollection<Comprobante> Comprobantes { get; set; } = new List<Comprobante>();
+    
+    // esto es exclusivo de evolution api, no incluir al sistema
+    public ICollection<NotificacionCita> Notificaciones { get; set; } = new List<NotificacionCita>();
 }

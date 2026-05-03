@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using QuestPDF.Infrastructure;
+using Clinica.API.Services.Background;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -114,6 +115,9 @@ builder.Services.AddScoped<IAjusteFinancieroRepository, AjusteFinancieroReposito
 
 builder.Services.AddScoped<IComprobanteRepository, ComprobanteRepository>();
 
+// esto es exclusivo de evolution api, no incluir al sistema
+builder.Services.AddScoped<INotificacionCitaRepository, NotificacionCitaRepository>();
+
 // ==========================================================
 // SERVICIOS
 // ==========================================================
@@ -138,6 +142,22 @@ builder.Services.AddScoped<IFinanzasService, FinanzasService>();
 
 builder.Services.AddScoped<IComprobanteService, ComprobanteService>();
 builder.Services.AddScoped<IComprobantePdfService, ComprobantePdfService>();
+
+// esto es exclusivo de evolution api, no incluir al sistema
+builder.Services.Configure<WhatsAppOptions>(
+    builder.Configuration.GetSection("WhatsApp"));
+
+builder.Services.AddHttpClient<INotificacionWhatsAppService, EvolutionWhatsAppService>((serviceProvider, client) =>
+{
+    var options = serviceProvider
+        .GetRequiredService<Microsoft.Extensions.Options.IOptions<WhatsAppOptions>>()
+        .Value;
+
+    client.BaseAddress = new Uri(options.BaseUrl);
+    client.Timeout = TimeSpan.FromSeconds(30);
+});
+
+builder.Services.AddHostedService<RecordatorioCitasBackgroundService>();
 
 // ==========================================================
 // CORS

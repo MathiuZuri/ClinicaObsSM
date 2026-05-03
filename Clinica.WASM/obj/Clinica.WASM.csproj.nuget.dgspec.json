@@ -1,25 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.WASM\\Clinica.WASM.csproj": {}
+    "F:\\proyectC#\\ClinicaObst\\Clinica.WASM\\Clinica.WASM.csproj": {}
   },
   "projects": {
-    "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj": {
+    "F:\\proyectC#\\ClinicaObst\\Clinica.Domain\\Clinica.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj",
+        "projectUniqueName": "F:\\proyectC#\\ClinicaObst\\Clinica.Domain\\Clinica.Domain.csproj",
         "projectName": "Clinica.Domain",
-        "projectPath": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj",
-        "packagesPath": "C:\\Users\\paric\\.nuget\\packages\\",
-        "outputPath": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Domain\\obj\\",
+        "projectPath": "F:\\proyectC#\\ClinicaObst\\Clinica.Domain\\Clinica.Domain.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "F:\\proyectC#\\ClinicaObst\\Clinica.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\paric\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -73,30 +74,31 @@
         }
       }
     },
-    "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.WASM\\Clinica.WASM.csproj": {
+    "F:\\proyectC#\\ClinicaObst\\Clinica.WASM\\Clinica.WASM.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.WASM\\Clinica.WASM.csproj",
+        "projectUniqueName": "F:\\proyectC#\\ClinicaObst\\Clinica.WASM\\Clinica.WASM.csproj",
         "projectName": "Clinica.WASM",
-        "projectPath": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.WASM\\Clinica.WASM.csproj",
-        "packagesPath": "C:\\Users\\paric\\.nuget\\packages\\",
-        "outputPath": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.WASM\\obj\\",
+        "projectPath": "F:\\proyectC#\\ClinicaObst\\Clinica.WASM\\Clinica.WASM.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "F:\\proyectC#\\ClinicaObst\\Clinica.WASM\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\paric\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj": {
-                "projectPath": "K:\\CLINICA SANTA MONICA DEV\\DEV\\ClinicaObsSM\\Clinica.Domain\\Clinica.Domain.csproj"
+              "F:\\proyectC#\\ClinicaObst\\Clinica.Domain\\Clinica.Domain.csproj": {
+                "projectPath": "F:\\proyectC#\\ClinicaObst\\Clinica.Domain\\Clinica.Domain.csproj"
               }
             }
           }
@@ -139,7 +141,7 @@
             "Microsoft.NET.Sdk.WebAssembly.Pack": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.4, )",
+              "version": "[9.0.15, )",
               "autoReferenced": true
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
@@ -160,8 +162,8 @@
           "warn": true,
           "downloadDependencies": [
             {
-              "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-              "version": "[9.0.4, 9.0.4]"
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[9.0.15, 9.0.15]"
             }
           ],
           "frameworkReferences": {

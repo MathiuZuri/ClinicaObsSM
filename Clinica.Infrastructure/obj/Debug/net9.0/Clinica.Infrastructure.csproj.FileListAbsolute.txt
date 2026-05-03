@@ -49,3 +49,22 @@ K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\ne
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\refint\Clinica.Infrastructure.dll
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\Clinica.Infrastructure.pdb
 K:\CLINICA SANTA MONICA DEV\DEV\ClinicaObsSM\Clinica.Infrastructure\obj\Debug\net9.0\ref\Clinica.Infrastructure.dll
+F:\proyectC#\ClinicaObst\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-Black.ttf
+F:\proyectC#\ClinicaObst\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-BlackItalic.ttf
+F:\proyectC#\ClinicaObst\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-Bold.ttf
+F:\proyectC#\ClinicaObst\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-BoldItalic.ttf
+F:\proyectC#\ClinicaObst\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-ExtraBold.ttf
+F:\proyectC#\ClinicaObst\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-ExtraBoldItalic.ttf
+F:\proyectC#\ClinicaObst\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-ExtraLight.ttf
+F:\proyectC#\ClinicaObst\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-ExtraLightItalic.ttf
+F:\proyectC#\ClinicaObst\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-Italic.ttf
+F:\proyectC#\ClinicaObst\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-Light.ttf
+F:\proyectC#\ClinicaObst\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-LightItalic.ttf
+F:\proyectC#\ClinicaObst\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-Medium.ttf
+F:\proyectC#\ClinicaObst\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-MediumItalic.ttf
+F:\proyectC#\ClinicaObst\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-Regular.ttf
+F:\proyectC#\ClinicaObst\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-SemiBold.ttf
+F:\proyectC#\ClinicaObst\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-SemiBoldItalic.ttf
+F:\proyectC#\ClinicaObst\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-Thin.ttf
+F:\proyectC#\ClinicaObst\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\Lato-ThinItalic.ttf
+F:\proyectC#\ClinicaObst\Clinica.Infrastructure\bin\Debug\net9.0\LatoFont\OFL.txt
