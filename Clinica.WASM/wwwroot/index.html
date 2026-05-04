@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clinica.WASM</title>
+    <title>Clínica Santa Mónica</title>
     <base href="/" />
-    <!-- <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" /> -->
-    <link rel="stylesheet" href="css/app.css" />
+
     <link rel="icon" type="image/png" href="favicon.png" />
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+
+    <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/app.css" />
+
     <link href="Clinica.WASM.styles.css" rel="stylesheet" />
 </head>
 
@@ -23,7 +29,7 @@
             justify-content: center;
             height: 100vh;
             background-color: #f6f8fc; /* var(--bg) */
-            font-family: "Inter", system-ui, sans-serif;
+            font-family: "Roboto", system-ui, sans-serif;
             color: #1e2430; /* var(--ink) */
         }
         .spinner {
@@ -64,6 +70,8 @@
         <span class="dismiss">🗙</span>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
+<!-- <script>navigator.serviceWorker.register('service-worker.js');</script> -->
+    <script src="_content/MudBlazor/MudBlazor.min.js"></script>
 </body>
 
 </html>

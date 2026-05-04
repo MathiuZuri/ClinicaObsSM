@@ -1,0 +1,8 @@
+.loading-state[b-95nkaohzdc] {
+    width: 100%;
+    min-height: 180px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 32px 16px;
+}

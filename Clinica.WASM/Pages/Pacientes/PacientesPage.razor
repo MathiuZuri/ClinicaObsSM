@@ -1,0 +1,107 @@
+﻿@page "/panel/pacientes"
+
+<PageTitle>Pacientes | Clínica Santa Mónica</PageTitle>
+
+<RequireAuth>
+    <PageHeader Title="Pacientes"
+                Subtitle="Gestión de pacientes registrados en la clínica.">
+
+        <ActionContent>
+            <RequirePermission Permission="@Permisos.PacienteCrear">
+                <MudButton Variant="Variant.Filled"
+                           Color="Color.Primary"
+                           StartIcon="@Icons.Material.Filled.PersonAdd"
+                           OnClick="AbrirFormularioNuevo">
+                    Nuevo paciente
+                </MudButton>
+            </RequirePermission>
+        </ActionContent>
+
+    </PageHeader>
+
+    @if (!string.IsNullOrWhiteSpace(MensajeExito))
+    {
+        <MudAlert Severity="Severity.Success" Dense="true" Class="mb-4">
+            @MensajeExito
+        </MudAlert>
+    }
+
+    @if (!string.IsNullOrWhiteSpace(MensajeError))
+    {
+        <MudAlert Severity="Severity.Error" Dense="true" Class="mb-4">
+            @MensajeError
+        </MudAlert>
+    }
+
+    @if (MostrandoFormulario)
+    {
+        <MudPaper Elevation="1" Class="pa-5 patient-form-card">
+            <MudText Typo="Typo.h6" Class="mb-1">
+                Registrar nuevo paciente
+            </MudText>
+
+            <MudText Typo="Typo.body2" Color="Color.Secondary" Class="mb-4">
+                Complete los datos personales del paciente para aperturar su historial clínico.
+            </MudText>
+
+            <PacienteForm Model="NuevoPaciente"
+                          IsProcessing="EstaProcesando"
+                          OnSave="GuardarPacienteAsync"
+                          OnCancel="CerrarFormulario" />
+        </MudPaper>
+    }
+    else if (MostrandoEdicionContacto)
+    {
+        <MudPaper Elevation="1" Class="pa-5 patient-form-card">
+            <MudText Typo="Typo.h6" Class="mb-1">
+                Editar contacto del paciente
+            </MudText>
+
+            <MudText Typo="Typo.body2" Color="Color.Secondary" Class="mb-4">
+                Solo se actualizarán los datos de contacto permitidos por el backend.
+            </MudText>
+
+            <PacienteContactoForm Paciente="PacienteSeleccionado"
+                                  Model="ContactoPaciente"
+                                  IsProcessing="EstaProcesando"
+                                  OnSave="ActualizarContactoAsync"
+                                  OnCancel="CerrarFormulario" />
+        </MudPaper>
+    }
+    else
+    {
+        <MudPaper Elevation="0" Class="mb-4 search-panel">
+            <MudTextField @bind-Value="SearchText"
+                          Placeholder="Buscar por nombre, DNI o código de paciente..."
+                          Variant="Variant.Outlined"
+                          Margin="Margin.Dense"
+                          Adornment="Adornment.Start"
+                          AdornmentIcon="@Icons.Material.Filled.Search"
+                          Immediate="true" />
+        </MudPaper>
+
+        @if (HayErrorCarga)
+        {
+            <ErrorState Title="No se pudieron cargar los pacientes"
+                        Message="@MensajeError"
+                        OnRetry="CargarPacientesAsync" />
+        }
+        else
+        {
+            <PacientesTable Pacientes="Pacientes"
+                            SearchText="@SearchText"
+                            IsLoading="EstaCargando"
+                            OnView="VerPaciente"
+                            OnEditContact="EditarContacto">
+                <ActionContent>
+                    <MudButton Variant="Variant.Filled"
+                               Color="Color.Primary"
+                               StartIcon="@Icons.Material.Filled.PersonAdd"
+                               OnClick="AbrirFormularioNuevo">
+                        Nuevo paciente
+                    </MudButton>
+                </ActionContent>
+            </PacientesTable>
+        }
+    }
+</RequireAuth>

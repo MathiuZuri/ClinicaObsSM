@@ -1,0 +1,12 @@
+﻿.nav-menu {
+    padding: 12px 8px 24px;
+}
+
+.nav-section-title {
+    display: block;
+    margin: 18px 16px 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--mud-palette-text-secondary);
+}

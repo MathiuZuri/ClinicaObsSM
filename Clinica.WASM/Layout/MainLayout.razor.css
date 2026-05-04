@@ -1,0 +1,112 @@
+﻿.main-appbar {
+    backdrop-filter: blur(10px);
+}
+
+.brand-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-logo {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #3f65ff, #e4a4bb);
+    color: white;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.brand-text {
+    line-height: 1.1;
+}
+
+.brand-title {
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.brand-subtitle {
+    opacity: 0.75;
+}
+
+.status-chip {
+    margin-right: 8px;
+}
+
+.main-drawer {
+    border-right: 1px solid var(--mud-palette-divider);
+}
+
+.drawer-header {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+}
+
+.drawer-logo {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #3f65ff, #e4a4bb);
+    color: white;
+    font-weight: 800;
+}
+
+.drawer-title {
+    font-weight: 700;
+}
+
+.drawer-subtitle {
+    opacity: 0.75;
+}
+
+.main-content {
+    min-height: 100vh;
+    background-color: var(--mud-palette-background);
+}
+
+.content-container {
+    padding: 24px;
+}
+
+@media (max-width: 768px) {
+    .brand-subtitle,
+    .status-chip {
+        display: none;
+    }
+
+    .content-container {
+        padding: 16px;
+    }
+}
+
+.user-menu-header {
+    min-width: 280px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+}
+
+.user-menu-info {
+    min-width: 0;
+}
+
+.user-menu-name {
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.user-menu-info .mud-typography {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

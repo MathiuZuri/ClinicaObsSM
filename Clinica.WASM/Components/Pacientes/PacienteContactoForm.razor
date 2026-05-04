@@ -1,0 +1,91 @@
+﻿<EditForm Model="@Model" OnValidSubmit="GuardarAsync">
+    <DataAnnotationsValidator />
+
+    <MudGrid>
+        <MudItem xs="12" md="4">
+            <MudTextField Value="@Paciente?.DNI"
+                          Label="DNI"
+                          Variant="Variant.Outlined"
+                          Margin="Margin.Dense"
+                          Disabled="true" />
+        </MudItem>
+
+        <MudItem xs="12" md="8">
+            <MudTextField Value="@Paciente?.NombreCompleto"
+                          Label="Paciente"
+                          Variant="Variant.Outlined"
+                          Margin="Margin.Dense"
+                          Disabled="true" />
+        </MudItem>
+
+        <MudItem xs="12" md="4">
+            <MudTextField @bind-Value="Model.Celular"
+                          Label="Celular"
+                          Variant="Variant.Outlined"
+                          Margin="Margin.Dense"
+                          For="@(() => Model.Celular)"
+                          Disabled="@IsProcessing"
+                          Adornment="Adornment.Start"
+                          AdornmentIcon="@Icons.Material.Filled.Phone" />
+        </MudItem>
+
+        <MudItem xs="12" md="4">
+            <MudTextField @bind-Value="Model.Correo"
+                          Label="Correo"
+                          Variant="Variant.Outlined"
+                          Margin="Margin.Dense"
+                          For="@(() => Model.Correo)"
+                          Disabled="@IsProcessing"
+                          Adornment="Adornment.Start"
+                          AdornmentIcon="@Icons.Material.Filled.Email" />
+        </MudItem>
+
+        <MudItem xs="12" md="4">
+            <MudTextField @bind-Value="Model.Direccion"
+                          Label="Dirección"
+                          Variant="Variant.Outlined"
+                          Margin="Margin.Dense"
+                          For="@(() => Model.Direccion)"
+                          Disabled="@IsProcessing"
+                          Adornment="Adornment.Start"
+                          AdornmentIcon="@Icons.Material.Filled.Home" />
+        </MudItem>
+    </MudGrid>
+
+    <div class="form-actions">
+        <MudButton Variant="Variant.Text"
+                   Color="Color.Default"
+                   OnClick="OnCancel"
+                   Disabled="@IsProcessing">
+            Cancelar
+        </MudButton>
+
+        <MudButton ButtonType="ButtonType.Submit"
+                   Variant="Variant.Filled"
+                   Color="Color.Primary"
+                   Disabled="@IsProcessing">
+            @if (IsProcessing)
+            {
+                <MudProgressCircular Size="Size.Small" Indeterminate="true" Class="mr-2" />
+                <span>Actualizando...</span>
+            }
+            else
+            {
+                <span>Actualizar contacto</span>
+            }
+        </MudButton>
+    </div>
+</EditForm>
+
+@code {
+    [Parameter] public PacienteResponseDto? Paciente { get; set; }
+    [Parameter] public ActualizarContactoPacienteDto Model { get; set; } = new();
+    [Parameter] public bool IsProcessing { get; set; }
+    [Parameter] public EventCallback OnSave { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+
+    private async Task GuardarAsync()
+    {
+        await OnSave.InvokeAsync();
+    }
+}

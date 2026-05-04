@@ -1,0 +1,10 @@
+﻿.patient-dialog-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: min(100%, 520px);
+}
+
+.patient-dialog-name {
+    font-weight: 800;
+}

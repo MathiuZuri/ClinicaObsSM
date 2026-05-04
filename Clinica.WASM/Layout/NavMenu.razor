@@ -1,11 +1,57 @@
-﻿<nav class="row grow" style="justify-content: space-between; padding-left: 20px;">
-    <div class="row">
-        <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">Inicio</NavLink>
-        <NavLink class="nav-link" href="/historia-clinica">Historia Clínica</NavLink>
-        <NavLink class="nav-link" href="/panel/citas">Panel Citas</NavLink>
-        <NavLink class="nav-link" href="/panel/pacientes">Panel pacientes</NavLink>
-    </div>
-    <div class="row">
-        <span class="badge ok">🟢 Recepción Activa</span>
-    </div>
-</nav>
+﻿<MudNavMenu Class="nav-menu">
+
+    <MudText Typo="Typo.caption" Class="nav-section-title">
+        Principal
+    </MudText>
+
+    <MudNavLink Href="/dashboard" Icon="@Icons.Material.Filled.Dashboard">
+        Dashboard
+    </MudNavLink>
+
+    <MudText Typo="Typo.caption" Class="nav-section-title">
+        Atención clínica
+    </MudText>
+
+    @if (PuedeVerPacientes)
+    {
+        <MudNavLink Href="/panel/pacientes" Icon="@Icons.Material.Filled.People">
+            Pacientes
+        </MudNavLink>
+    }
+
+    <MudNavLink Href="/historia-clinica" Icon="@Icons.Material.Filled.Assignment">
+        Historia clínica
+    </MudNavLink>
+
+    @if (PuedeVerCitas)
+    {
+        <MudNavLink Href="/panel/citas" Icon="@Icons.Material.Filled.Event">
+            Citas
+        </MudNavLink>
+    }
+
+    <MudNavLink Href="/atenciones" Icon="@Icons.Material.Filled.MedicalServices">
+        Atenciones
+    </MudNavLink>
+
+    <MudText Typo="Typo.caption" Class="nav-section-title">
+        Administración
+    </MudText>
+
+    <MudNavLink Href="/doctores" Icon="@Icons.Material.Filled.Person">
+        Doctores
+    </MudNavLink>
+
+    <MudNavLink Href="/horarios" Icon="@Icons.Material.Filled.Schedule">
+        Horarios
+    </MudNavLink>
+
+    <MudNavLink Href="/finanzas" Icon="@Icons.Material.Filled.Payments">
+        Finanzas
+    </MudNavLink>
+
+    <MudNavLink Href="/comprobantes" Icon="@Icons.Material.Filled.ReceiptLong">
+        Comprobantes
+    </MudNavLink>
+
+</MudNavMenu>

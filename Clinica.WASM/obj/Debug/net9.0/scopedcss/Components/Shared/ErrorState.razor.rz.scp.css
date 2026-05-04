@@ -1,0 +1,36 @@
+.error-state[b-qxwo6wscgt] {
+    width: 100%;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(220, 38, 38, 0.05);
+    border: 1px solid rgba(220, 38, 38, 0.24);
+    border-radius: 18px;
+    padding: 36px 20px;
+    text-align: center;
+}
+
+.error-icon-wrap[b-qxwo6wscgt] {
+    width: 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+    border-radius: 20px;
+    background: rgba(220, 38, 38, 0.12);
+    margin-bottom: 14px;
+}
+
+.error-title[b-qxwo6wscgt] {
+    font-weight: 800;
+}
+
+.error-message[b-qxwo6wscgt] {
+    max-width: 460px;
+    margin-top: 6px;
+}
+
+.error-actions[b-qxwo6wscgt] {
+    margin-top: 18px;
+}

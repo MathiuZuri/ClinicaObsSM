@@ -1,0 +1,39 @@
+﻿<MudPaper Class="empty-state" Elevation="0">
+    <div class="empty-icon-wrap">
+        @if (!string.IsNullOrWhiteSpace(Icon))
+        {
+            <MudIcon Icon="@Icon" Size="Size.Large" Color="@IconColor" />
+        }
+        else if (!string.IsNullOrWhiteSpace(Emoji))
+        {
+            <span class="empty-emoji">@Emoji</span>
+        }
+    </div>
+
+    <MudText Typo="Typo.h6" Class="empty-title">
+        @Title
+    </MudText>
+
+    @if (!string.IsNullOrWhiteSpace(Message))
+    {
+        <MudText Typo="Typo.body2" Color="Color.Secondary" Class="empty-message">
+            @Message
+        </MudText>
+    }
+
+    @if (ActionContent is not null)
+    {
+        <div class="empty-actions">
+            @ActionContent
+        </div>
+    }
+</MudPaper>
+
+@code {
+    [Parameter] public string Title { get; set; } = "Sin información";
+    [Parameter] public string Message { get; set; } = "No hay datos disponibles para mostrar.";
+    [Parameter] public string Icon { get; set; } = Icons.Material.Filled.Inbox;
+    [Parameter] public string Emoji { get; set; } = string.Empty;
+    [Parameter] public Color IconColor { get; set; } = Color.Primary;
+    [Parameter] public RenderFragment? ActionContent { get; set; }
+}

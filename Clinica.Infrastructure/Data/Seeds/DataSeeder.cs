@@ -66,7 +66,13 @@ public static class DataSeeder
 
             new() { Codigo = "PERMISO_VER", Nombre = "Ver permisos", Modulo = "Permisos", Activo = true },
 
-            new() { Codigo = "AUDITORIA_VER", Nombre = "Ver auditoría", Modulo = "Auditoría", Activo = true }
+            new() { Codigo = "AUDITORIA_VER", Nombre = "Ver auditoría", Modulo = "Auditoría", Activo = true },
+            
+            new() { Codigo = "COMPROBANTE_VER", Nombre = "Ver comprobantes", Modulo = "Comprobantes", Activo = true },
+            new() { Codigo = "COMPROBANTE_EMITIR", Nombre = "Emitir comprobantes", Modulo = "Comprobantes", Activo = true },
+            new() { Codigo = "COMPROBANTE_ANULAR", Nombre = "Anular comprobantes", Modulo = "Comprobantes", Activo = true },
+            new() { Codigo = "COMPROBANTE_IMPRIMIR", Nombre = "Imprimir comprobantes", Modulo = "Comprobantes", Activo = true },
+            new() { Codigo = "HISTORIAL_IMPRIMIR", Nombre = "Imprimir historial clínico", Modulo = "Historial Clínico", Activo = true },
         };
 
         var codigosExistentes = await context.Permisos

@@ -1,0 +1,8 @@
+.form-actions[b-j8fltw7x1g] {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--mud-palette-divider);
+}

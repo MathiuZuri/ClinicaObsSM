@@ -3,6 +3,9 @@ build_property.EnableAotAnalyzer =
 build_property.EnableSingleFileAnalyzer = 
 build_property.EnableTrimAnalyzer = false
 build_property.IncludeAllContentForSelfExtract = 
+build_property.MudDebugAnalyzer = 
+build_property.MudAllowedAttributePattern = 
+build_property.MudAllowedAttributeList = 
 build_property.TargetFramework = net9.0
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = 
@@ -28,38 +31,78 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/proyectC\#/ClinicaObst/Clinica.WASM/Layout/MainLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Components/Auth/RequireAuth.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBdXRoXFJlcXVpcmVBdXRoLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/proyectC\#/ClinicaObst/Clinica.WASM/Layout/NavMenu.razor]
-build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Components/Auth/RequirePermission.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBdXRoXFJlcXVpcmVQZXJtaXNzaW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/proyectC\#/ClinicaObst/Clinica.WASM/Pages/HistoriaClinica.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSGlzdG9yaWFDbGluaWNhLnJhem9y
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Layout/EmptyLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XEVtcHR5TGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Pages/Dashboard/DashboardPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFzaGJvYXJkXERhc2hib2FyZFBhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/proyectC\#/ClinicaObst/Clinica.WASM/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/proyectC\#/ClinicaObst/Clinica.WASM/Pages/util/DialogoConfirmacion.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcdXRpbFxEaWFsb2dvQ29uZmlybWFjaW9uLnJhem9y
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Pages/Utils/DialogoConfirmacion.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXRpbHNcRGlhbG9nb0NvbmZpcm1hY2lvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/proyectC\#/ClinicaObst/Clinica.WASM/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/proyectC\#/ClinicaObst/Clinica.WASM/Pages/forms/FormularioPaciente.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcZm9ybXNcRm9ybXVsYXJpb1BhY2llbnRlLnJhem9y
-build_metadata.AdditionalFiles.CssScope = b-snr0fjv4b4
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Components/Pacientes/PacienteContactoForm.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWNpZW50ZXNcUGFjaWVudGVDb250YWN0b0Zvcm0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-j8fltw7x1g
 
-[F:/proyectC\#/ClinicaObst/Clinica.WASM/Pages/pages/Citas.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNccGFnZXNcQ2l0YXMucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-qhkdgmlp8s
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Components/Pacientes/PacienteDetalleDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWNpZW50ZXNcUGFjaWVudGVEZXRhbGxlRGlhbG9nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-6vep3nlrus
 
-[F:/proyectC\#/ClinicaObst/Clinica.WASM/Pages/pages/ListadoPacientes.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNccGFnZXNcTGlzdGFkb1BhY2llbnRlcy5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-1qlgwdhvim
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Components/Pacientes/PacienteForm.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWNpZW50ZXNcUGFjaWVudGVGb3JtLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-j0ax1nd4lt
+
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Components/Pacientes/PacientesTable.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWNpZW50ZXNcUGFjaWVudGVzVGFibGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-pbn0bm8lz3
+
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Components/Shared/EmptyState.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcRW1wdHlTdGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-klsjxla12a
+
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Components/Shared/ErrorState.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcRXJyb3JTdGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-qxwo6wscgt
+
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Components/Shared/LoadingState.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcTG9hZGluZ1N0YXRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-95nkaohzdc
+
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Components/Shared/PageHeader.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcUGFnZUhlYWRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-ucw534g9af
+
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-98p2eraplv
+
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-autxrnx0a8
+
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Pages/Auth/LoginPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxMb2dpblBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-ayif41alvc
+
+[F:/proyectC\#/ClinicaObst/Clinica.WASM/Pages/Pacientes/PacientesPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFjaWVudGVzXFBhY2llbnRlc1BhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-vlo2mefzsw

@@ -1,33 +1,116 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page" style="display: flex; flex-direction: column; min-height: 100vh;">
-    <header class="header">
-        <div class="brand">
-            <div class="logo">SM</div>
-            <div>
-                <div class="brand-title">Clínica Santa Mónica</div>
-                <span class="brand-sub">Centro Materno Perinatal</span>
+<MudThemeProvider Theme="@Theme" IsDarkMode="@IsDarkMode" />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudAppBar Elevation="1" Class="main-appbar">
+        <MudIconButton 
+            Icon="@Icons.Material.Filled.Menu"
+            Color="Color.Inherit"
+            Edge="Edge.Start"
+            OnClick="ToggleDrawer" />
+
+        <div class="brand-area">
+            <div class="brand-logo">SM</div>
+
+            <div class="brand-text">
+                <MudText Typo="Typo.subtitle1" Class="brand-title">
+                    Clínica Santa Mónica
+                </MudText>
+                <MudText Typo="Typo.caption" Class="brand-subtitle">
+                    Centro Materno Perinatal
+                </MudText>
             </div>
         </div>
-        
+
+        <MudSpacer />
+
+        <MudChip T="string"
+                 Color="Color.Success"
+                 Variant="Variant.Outlined"
+                 Size="Size.Small"
+                 Class="status-chip">
+            Recepción activa
+        </MudChip>
+
+        <MudTooltip Text="Cambiar tema">
+            <MudIconButton 
+                Icon="@(IsDarkMode ? Icons.Material.Filled.LightMode : Icons.Material.Filled.DarkMode)"
+                Color="Color.Inherit"
+                OnClick="ToggleDarkMode" />
+        </MudTooltip>
+
+        <MudMenu Icon="@Icons.Material.Filled.AccountCircle"
+                 Color="Color.Inherit"
+                 AnchorOrigin="Origin.BottomRight"
+                 TransformOrigin="Origin.TopRight"
+                 Dense="true">
+
+            <div class="user-menu-header">
+                <MudAvatar Color="Color.Primary" Size="Size.Medium">
+                    @UserInitials
+                </MudAvatar>
+
+                <div class="user-menu-info">
+                    <MudText Typo="Typo.subtitle2" Class="user-menu-name">
+                        @UserName
+                    </MudText>
+
+                    <MudText Typo="Typo.caption" Color="Color.Secondary">
+                        @UserEmail
+                    </MudText>
+                </div>
+            </div>
+
+            <MudDivider />
+
+            <MudMenuItem Icon="@Icons.Material.Filled.Badge">
+                Código: @UserCode
+            </MudMenuItem>
+
+            <MudMenuItem Icon="@Icons.Material.Filled.Security">
+                Rol: @UserRole
+            </MudMenuItem>
+
+            <MudDivider />
+
+            <MudMenuItem Icon="@Icons.Material.Filled.Logout"
+                         OnClick="CerrarSesionAsync">
+                Cerrar sesión
+            </MudMenuItem>
+        </MudMenu>
+    </MudAppBar>
+
+    <MudDrawer 
+        @bind-Open="DrawerOpen"
+        ClipMode="DrawerClipMode.Always"
+        Elevation="1"
+        Variant="DrawerVariant.Responsive"
+        Class="main-drawer">
+
+        <div class="drawer-header">
+            <div class="drawer-logo">SM</div>
+            <div>
+                <MudText Typo="Typo.subtitle2" Class="drawer-title">
+                    Intranet Clínica
+                </MudText>
+                <MudText Typo="Typo.caption" Class="drawer-subtitle">
+                    Gestión asistencial
+                </MudText>
+            </div>
+        </div>
+
+        <MudDivider />
+
         <NavMenu />
+    </MudDrawer>
 
-    </header>
-
-    <main class="container grow" style="padding-top: 24px; padding-bottom: 40px; width: 100%;">
-        @Body
-    </main>
-
-    <footer style="margin-top: auto;">
-        <div class="container foot-grid">
-            <div>
-                <strong>Clínica Santa Mónica</strong><br>
-                <span class="muted">Centro Materno Perinatal · Juliaca – Puno</span>
-            </div>
-            <div style="text-align: right;">
-                <div>© @DateTime.Now.Year Santa Mónica</div>
-                <span class="muted">Todos los derechos reservados</span>
-            </div>
-        </div>
-    </footer>
-</div>
+    <MudMainContent Class="main-content">
+        <MudContainer MaxWidth="MaxWidth.False" Class="content-container">
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>

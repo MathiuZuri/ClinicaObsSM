@@ -1,0 +1,31 @@
+﻿@inject AuthStateService AuthStateService
+@inject NavigationManager NavigationManager
+
+@if (IsChecking)
+{
+    <MudProgressCircular Indeterminate="true" Color="Color.Primary" />
+}
+else if (IsAuthorized)
+{
+    @ChildContent
+}
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    private bool IsChecking { get; set; } = true;
+    private bool IsAuthorized { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        IsAuthorized = await AuthStateService.EstaAutenticadoAsync();
+
+        if (!IsAuthorized)
+        {
+            NavigationManager.NavigateTo("/login", replace: true);
+            return;
+        }
+
+        IsChecking = false;
+    }
+}

@@ -1,0 +1,135 @@
+﻿<MudDialog>
+    <DialogContent>
+        <div class="patient-dialog-header">
+            <MudAvatar Color="Color.Primary" Size="Size.Large">
+                @Iniciales
+            </MudAvatar>
+
+            <div>
+                <MudText Typo="Typo.h6" Class="patient-dialog-name">
+                    @Paciente.NombreCompleto
+                </MudText>
+
+                <MudText Typo="Typo.body2" Color="Color.Secondary">
+                    @Paciente.CodigoPaciente
+                </MudText>
+            </div>
+        </div>
+
+        <MudDivider Class="my-4" />
+
+        <MudGrid>
+            <MudItem xs="12" md="6">
+                <MudText Typo="Typo.caption" Color="Color.Secondary">DNI</MudText>
+                <MudText Typo="Typo.body1">@Paciente.DNI</MudText>
+            </MudItem>
+
+            <MudItem xs="12" md="6">
+                <MudText Typo="Typo.caption" Color="Color.Secondary">Sexo</MudText>
+                <MudText Typo="Typo.body1">@MostrarSexo(Paciente.Sexo)</MudText>
+            </MudItem>
+
+            <MudItem xs="12" md="6">
+                <MudText Typo="Typo.caption" Color="Color.Secondary">Fecha de nacimiento</MudText>
+                <MudText Typo="Typo.body1">@Paciente.FechaNacimiento.ToString("dd/MM/yyyy")</MudText>
+            </MudItem>
+
+            <MudItem xs="12" md="6">
+                <MudText Typo="Typo.caption" Color="Color.Secondary">Estado</MudText>
+                <MudChip T="string"
+                         Size="Size.Small"
+                         Color="@ObtenerColorEstado(Paciente.Estado)"
+                         Variant="Variant.Outlined">
+                    @Paciente.Estado
+                </MudChip>
+            </MudItem>
+
+            <MudItem xs="12" md="6">
+                <MudText Typo="Typo.caption" Color="Color.Secondary">Celular</MudText>
+                <MudText Typo="Typo.body1">@MostrarDato(Paciente.Celular)</MudText>
+            </MudItem>
+
+            <MudItem xs="12" md="6">
+                <MudText Typo="Typo.caption" Color="Color.Secondary">Correo</MudText>
+                <MudText Typo="Typo.body1">@MostrarDato(Paciente.Correo)</MudText>
+            </MudItem>
+
+            <MudItem xs="12">
+                <MudText Typo="Typo.caption" Color="Color.Secondary">Dirección</MudText>
+                <MudText Typo="Typo.body1">@MostrarDato(Paciente.Direccion)</MudText>
+            </MudItem>
+
+            <MudItem xs="12" md="6">
+                <MudText Typo="Typo.caption" Color="Color.Secondary">Código de historial</MudText>
+                <MudText Typo="Typo.body1">@MostrarDato(Paciente.CodigoHistorial)</MudText>
+            </MudItem>
+
+            <MudItem xs="12" md="6">
+                <MudText Typo="Typo.caption" Color="Color.Secondary">Fecha de registro</MudText>
+                <MudText Typo="Typo.body1">@Paciente.FechaRegistro.ToString("dd/MM/yyyy HH:mm")</MudText>
+            </MudItem>
+        </MudGrid>
+    </DialogContent>
+
+    <DialogActions>
+        <MudButton Variant="Variant.Text"
+                   Color="Color.Default"
+                   OnClick="Cerrar">
+            Cerrar
+        </MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] private IMudDialogInstance MudDialog { get; set; } = default!;
+
+    [Parameter] public PacienteResponseDto Paciente { get; set; } = new();
+
+    private string Iniciales => ObtenerIniciales(Paciente.NombreCompleto);
+
+    private void Cerrar()
+    {
+        MudDialog.Close();
+    }
+
+    private static string MostrarDato(string? valor)
+    {
+        return string.IsNullOrWhiteSpace(valor) ? "No registrado" : valor;
+    }
+
+    private static string MostrarSexo(string sexo)
+    {
+        return sexo switch
+        {
+            "F" => "Femenino",
+            "M" => "Masculino",
+            _ => "No especificado"
+        };
+    }
+
+    private static string ObtenerIniciales(string nombreCompleto)
+    {
+        if (string.IsNullOrWhiteSpace(nombreCompleto))
+            return "P";
+
+        var partes = nombreCompleto.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+        if (partes.Length == 1)
+            return partes[0][0].ToString().ToUpperInvariant();
+
+        return $"{partes[0][0]}{partes[^1][0]}".ToUpperInvariant();
+    }
+
+    private static Color ObtenerColorEstado(EstadoPaciente estado)
+    {
+        return estado switch
+        {
+            EstadoPaciente.Activo => Color.Success,
+            EstadoPaciente.Inactivo => Color.Warning,
+            EstadoPaciente.Bloqueado => Color.Error,
+            EstadoPaciente.Fallecido => Color.Dark,
+            EstadoPaciente.Eliminado => Color.Error,
+            _ => Color.Default
+        };
+    }
+}

@@ -1,0 +1,115 @@
+﻿@if (IsLoading)
+{
+    <LoadingState Message="Cargando pacientes..." />
+}
+else if (!Pacientes.Any())
+{
+    <EmptyState Icon="@Icons.Material.Filled.People"
+                Title="No hay pacientes registrados"
+                Message="Registra el primer paciente para comenzar.">
+        <ActionContent>
+            @ActionContent
+        </ActionContent>
+    </EmptyState>
+}
+else
+{
+    <MudPaper Elevation="1" Class="patients-table-card">
+        <MudTable Items="@PacientesFiltrados"
+                  Dense="true"
+                  Hover="true"
+                  Bordered="false"
+                  Striped="true">
+
+            <HeaderContent>
+                <MudTh>Paciente</MudTh>
+                <MudTh>DNI</MudTh>
+                <MudTh>Celular</MudTh>
+                <MudTh>Historial</MudTh>
+                <MudTh>Estado</MudTh>
+                <MudTh>Registro</MudTh>
+                <MudTh Align="Align.Right">Acciones</MudTh>
+            </HeaderContent>
+
+            <RowTemplate>
+                <MudTd DataLabel="Paciente">
+                    <MudText Typo="Typo.body2" Class="patient-name">
+                        @context.NombreCompleto
+                    </MudText>
+                    <MudText Typo="Typo.caption" Color="Color.Secondary">
+                        @context.CodigoPaciente
+                    </MudText>
+                </MudTd>
+
+                <MudTd DataLabel="DNI">@context.DNI</MudTd>
+
+                <MudTd DataLabel="Celular">
+                    @(string.IsNullOrWhiteSpace(context.Celular) ? "Sin celular" : context.Celular)
+                </MudTd>
+
+                <MudTd DataLabel="Historial">
+                    @(string.IsNullOrWhiteSpace(context.CodigoHistorial) ? "Sin historial" : context.CodigoHistorial)
+                </MudTd>
+
+                <MudTd DataLabel="Estado">
+                    <MudChip T="string"
+                             Size="Size.Small"
+                             Color="@ObtenerColorEstado(context.Estado)"
+                             Variant="Variant.Outlined">
+                        @context.Estado
+                    </MudChip>
+                </MudTd>
+
+                <MudTd DataLabel="Registro">
+                    @context.FechaRegistro.ToString("dd/MM/yyyy")
+                </MudTd>
+
+                <MudTd DataLabel="Acciones" Align="Align.Right">
+                    <MudIconButton Icon="@Icons.Material.Filled.Visibility"
+                                   Color="Color.Primary"
+                                   Size="Size.Small"
+                                   OnClick="() => OnView.InvokeAsync(context)" />
+
+                    <MudIconButton Icon="@Icons.Material.Filled.Edit"
+                                   Color="Color.Warning"
+                                   Size="Size.Small"
+                                   OnClick="() => OnEditContact.InvokeAsync(context)" />
+                </MudTd>
+            </RowTemplate>
+
+            <PagerContent>
+                <MudTablePager PageSizeOptions="new[] { 5, 10, 20, 50 }" />
+            </PagerContent>
+        </MudTable>
+    </MudPaper>
+}
+
+@code {
+    [Parameter] public List<PacienteResponseDto> Pacientes { get; set; } = new();
+    [Parameter] public string SearchText { get; set; } = string.Empty;
+    [Parameter] public bool IsLoading { get; set; }
+    [Parameter] public EventCallback<PacienteResponseDto> OnView { get; set; }
+    [Parameter] public EventCallback<PacienteResponseDto> OnEditContact { get; set; }
+    [Parameter] public RenderFragment? ActionContent { get; set; }
+
+    private IEnumerable<PacienteResponseDto> PacientesFiltrados =>
+        string.IsNullOrWhiteSpace(SearchText)
+            ? Pacientes
+            : Pacientes.Where(x =>
+                x.NombreCompleto.Contains(SearchText, StringComparison.OrdinalIgnoreCase) ||
+                x.DNI.Contains(SearchText, StringComparison.OrdinalIgnoreCase) ||
+                x.CodigoPaciente.Contains(SearchText, StringComparison.OrdinalIgnoreCase));
+
+    private static Color ObtenerColorEstado(EstadoPaciente estado)
+    {
+        return estado switch
+        {
+            EstadoPaciente.Activo => Color.Success,
+            EstadoPaciente.Inactivo => Color.Warning,
+            EstadoPaciente.Bloqueado => Color.Error,
+            EstadoPaciente.Fallecido => Color.Dark,
+            EstadoPaciente.Eliminado => Color.Error,
+            _ => Color.Default
+        };
+    }
+}

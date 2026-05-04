@@ -1,7 +1,30 @@
 ﻿@page "/"
+@inject NavigationManager NavigationManager
+@inject AuthStateService AuthStateService
 
-<PageTitle>Inicio - Clínica Santa Mónica</PageTitle>
+<PageTitle>Inicio | Clínica Santa Mónica</PageTitle>
 
-<h1>Bienvenidos a Clínica Santa Mónica</h1>
+<MudContainer MaxWidth="MaxWidth.Small" Class="mt-10">
+    <MudPaper Class="pa-6 text-center" Elevation="0">
+        <MudProgressCircular Indeterminate="true" Color="Color.Primary" />
+        <MudText Typo="Typo.body2" Color="Color.Secondary" Class="mt-3">
+            Redirigiendo...
+        </MudText>
+    </MudPaper>
+</MudContainer>
 
-<p>Centro Materno Perinatal.</p>
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        var autenticado = await AuthStateService.EstaAutenticadoAsync();
+
+        if (autenticado)
+        {
+            NavigationManager.NavigateTo("/dashboard", replace: true);
+        }
+        else
+        {
+            NavigationManager.NavigateTo("/login", replace: true);
+        }
+    }
+}

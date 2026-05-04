@@ -1,12 +1,25 @@
 ﻿<Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"/>
-        <FocusOnNavigate RouteData="@routeData" Selector="h1"/>
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
     </Found>
+
     <NotFound>
-        <PageTitle>Not found</PageTitle>
+        <PageTitle>Página no encontrada</PageTitle>
+
         <LayoutView Layout="@typeof(MainLayout)">
-            <p role="alert">Sorry, there's nothing at this address.</p>
+            <MudPaper Class="pa-6 text-center" Elevation="0">
+                <MudIcon Icon="@Icons.Material.Filled.SearchOff" Size="Size.Large" Color="Color.Primary" />
+                <MudText Typo="Typo.h5" Class="mt-3">
+                    Página no encontrada
+                </MudText>
+                <MudText Typo="Typo.body2" Color="Color.Secondary" Class="mt-1">
+                    La ruta solicitada no existe o fue movida.
+                </MudText>
+                <MudButton Href="/" Variant="Variant.Filled" Color="Color.Primary" Class="mt-4">
+                    Volver al inicio
+                </MudButton>
+            </MudPaper>
         </LayoutView>
     </NotFound>
 </Router>

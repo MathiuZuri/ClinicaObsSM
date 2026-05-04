@@ -1,0 +1,126 @@
+﻿<EditForm Model="@Model" OnValidSubmit="GuardarAsync">
+    <DataAnnotationsValidator />
+
+    <MudGrid>
+        <MudItem xs="12" md="4">
+            <MudTextField @bind-Value="Model.DNI"
+                          Label="DNI"
+                          Variant="Variant.Outlined"
+                          Margin="Margin.Dense"
+                          For="@(() => Model.DNI)"
+                          Disabled="@IsProcessing" />
+        </MudItem>
+
+        <MudItem xs="12" md="4">
+            <MudTextField @bind-Value="Model.Nombres"
+                          Label="Nombres"
+                          Variant="Variant.Outlined"
+                          Margin="Margin.Dense"
+                          For="@(() => Model.Nombres)"
+                          Disabled="@IsProcessing" />
+        </MudItem>
+
+        <MudItem xs="12" md="4">
+            <MudTextField @bind-Value="Model.Apellidos"
+                          Label="Apellidos"
+                          Variant="Variant.Outlined"
+                          Margin="Margin.Dense"
+                          For="@(() => Model.Apellidos)"
+                          Disabled="@IsProcessing" />
+        </MudItem>
+
+        <MudItem xs="12" md="4">
+            <MudDatePicker @bind-Date="FechaNacimiento"
+                           Label="Fecha de nacimiento"
+                           Variant="Variant.Outlined"
+                           Margin="Margin.Dense"
+                           DateFormat="dd/MM/yyyy"
+                           Disabled="@IsProcessing" />
+        </MudItem>
+
+        <MudItem xs="12" md="4">
+            <MudSelect T="string"
+                       @bind-Value="Model.Sexo"
+                       Label="Sexo"
+                       Variant="Variant.Outlined"
+                       Margin="Margin.Dense"
+                       Disabled="@IsProcessing">
+                <MudSelectItem Value="@("F")">Femenino</MudSelectItem>
+                <MudSelectItem Value="@("M")">Masculino</MudSelectItem>
+            </MudSelect>
+        </MudItem>
+
+        <MudItem xs="12" md="4">
+            <MudTextField @bind-Value="Model.Celular"
+                          Label="Celular"
+                          Variant="Variant.Outlined"
+                          Margin="Margin.Dense"
+                          For="@(() => Model.Celular)"
+                          Disabled="@IsProcessing" />
+        </MudItem>
+
+        <MudItem xs="12" md="6">
+            <MudTextField @bind-Value="Model.Correo"
+                          Label="Correo"
+                          Variant="Variant.Outlined"
+                          Margin="Margin.Dense"
+                          For="@(() => Model.Correo)"
+                          Disabled="@IsProcessing" />
+        </MudItem>
+
+        <MudItem xs="12" md="6">
+            <MudTextField @bind-Value="Model.Direccion"
+                          Label="Dirección"
+                          Variant="Variant.Outlined"
+                          Margin="Margin.Dense"
+                          For="@(() => Model.Direccion)"
+                          Disabled="@IsProcessing" />
+        </MudItem>
+    </MudGrid>
+
+    <div class="form-actions">
+        <MudButton Variant="Variant.Text"
+                   Color="Color.Default"
+                   OnClick="OnCancel"
+                   Disabled="@IsProcessing">
+            Cancelar
+        </MudButton>
+
+        <MudButton ButtonType="ButtonType.Submit"
+                   Variant="Variant.Filled"
+                   Color="Color.Primary"
+                   Disabled="@IsProcessing">
+            @if (IsProcessing)
+            {
+                <MudProgressCircular Size="Size.Small" Indeterminate="true" Class="mr-2" />
+                <span>Guardando...</span>
+            }
+            else
+            {
+                <span>Guardar paciente</span>
+            }
+        </MudButton>
+    </div>
+</EditForm>
+
+@code {
+    [Parameter] public CrearPacienteDto Model { get; set; } = new();
+    [Parameter] public bool IsProcessing { get; set; }
+    [Parameter] public EventCallback OnSave { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+
+    private DateTime? FechaNacimiento { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        FechaNacimiento = Model.FechaNacimiento == default
+            ? DateTime.Today
+            : Model.FechaNacimiento;
+    }
+
+    private async Task GuardarAsync()
+    {
+        Model.FechaNacimiento = FechaNacimiento ?? DateTime.Today;
+        await OnSave.InvokeAsync();
+    }
+}

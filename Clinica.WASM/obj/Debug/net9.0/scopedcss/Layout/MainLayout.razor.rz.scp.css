@@ -1,0 +1,112 @@
+.main-appbar[b-98p2eraplv] {
+    backdrop-filter: blur(10px);
+}
+
+.brand-area[b-98p2eraplv] {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-logo[b-98p2eraplv] {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #3f65ff, #e4a4bb);
+    color: white;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.brand-text[b-98p2eraplv] {
+    line-height: 1.1;
+}
+
+.brand-title[b-98p2eraplv] {
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.brand-subtitle[b-98p2eraplv] {
+    opacity: 0.75;
+}
+
+.status-chip[b-98p2eraplv] {
+    margin-right: 8px;
+}
+
+.main-drawer[b-98p2eraplv] {
+    border-right: 1px solid var(--mud-palette-divider);
+}
+
+.drawer-header[b-98p2eraplv] {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+}
+
+.drawer-logo[b-98p2eraplv] {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #3f65ff, #e4a4bb);
+    color: white;
+    font-weight: 800;
+}
+
+.drawer-title[b-98p2eraplv] {
+    font-weight: 700;
+}
+
+.drawer-subtitle[b-98p2eraplv] {
+    opacity: 0.75;
+}
+
+.main-content[b-98p2eraplv] {
+    min-height: 100vh;
+    background-color: var(--mud-palette-background);
+}
+
+.content-container[b-98p2eraplv] {
+    padding: 24px;
+}
+
+@media (max-width: 768px) {
+    .brand-subtitle[b-98p2eraplv],
+    .status-chip[b-98p2eraplv] {
+        display: none;
+    }
+
+    .content-container[b-98p2eraplv] {
+        padding: 16px;
+    }
+}
+
+.user-menu-header[b-98p2eraplv] {
+    min-width: 280px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+}
+
+.user-menu-info[b-98p2eraplv] {
+    min-width: 0;
+}
+
+.user-menu-name[b-98p2eraplv] {
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.user-menu-info .mud-typography[b-98p2eraplv] {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

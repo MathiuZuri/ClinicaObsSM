@@ -1,0 +1,102 @@
+﻿@page "/login"
+@layout EmptyLayout
+
+<PageTitle>Iniciar sesión | Clínica Santa Mónica</PageTitle>
+
+<MudThemeProvider Theme="@Theme" IsDarkMode="@IsDarkMode" />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<div class="login-page">
+    <div class="login-shell">
+
+        <section class="login-brand-panel">
+            <div class="brand-badge">SM</div>
+
+            <div>
+                <h1>Clínica Santa Mónica</h1>
+                <p>Centro Materno Perinatal</p>
+            </div>
+
+            <div class="brand-message">
+                <h2>Gestión clínica integral</h2>
+                <p>
+                    Acceso interno para recepción, doctores, caja y administración.
+                </p>
+            </div>
+        </section>
+
+        <MudPaper Class="login-card" Elevation="3">
+            <MudText Typo="Typo.h5" Class="login-title">
+                Iniciar sesión
+            </MudText>
+
+            <MudText Typo="Typo.body2" Color="Color.Secondary" Class="login-subtitle">
+                Ingresa tus credenciales para acceder a la intranet.
+            </MudText>
+
+            @if (!string.IsNullOrWhiteSpace(MensajeError))
+            {
+                <MudAlert Severity="Severity.Error" Dense="true" Class="mt-4">
+                    @MensajeError
+                </MudAlert>
+            }
+
+            <EditForm Model="@LoginModel" OnValidSubmit="IniciarSesionAsync" class="mt-5">
+                <DataAnnotationsValidator />
+
+                <MudTextField @bind-Value="LoginModel.UsuarioOCorreo"
+                              Label="Usuario o correo"
+                              Variant="Variant.Outlined"
+                              Margin="Margin.Dense"
+                              Required="true"
+                              For="@(() => LoginModel.UsuarioOCorreo)"
+                              Adornment="Adornment.Start"
+                              AdornmentIcon="@Icons.Material.Filled.Person" />
+
+                <MudTextField @bind-Value="LoginModel.Password"
+                              Label="Contraseña"
+                              Variant="Variant.Outlined"
+                              Margin="Margin.Dense"
+                              Required="true"
+                              For="@(() => LoginModel.Password)"
+                              InputType="@(MostrarPassword ? InputType.Text : InputType.Password)"
+                              Adornment="Adornment.End"
+                              AdornmentIcon="@(MostrarPassword ? Icons.Material.Filled.VisibilityOff : Icons.Material.Filled.Visibility)"
+                              OnAdornmentClick="ToggleMostrarPassword"
+                              Class="mt-3" />
+
+                <div class="login-actions">
+                    <MudSwitch T="bool"
+                               @bind-Value="IsDarkMode"
+                               Color="Color.Primary"
+                               Label="Modo oscuro" />
+                </div>
+
+                <MudButton ButtonType="ButtonType.Submit"
+                           Variant="Variant.Filled"
+                           Color="Color.Primary"
+                           FullWidth="true"
+                           Disabled="@EstaProcesando"
+                           Class="mt-4 login-button">
+                    @if (EstaProcesando)
+                    {
+                        <MudProgressCircular Size="Size.Small" Indeterminate="true" Class="mr-2" />
+                        <span>Validando...</span>
+                    }
+                    else
+                    {
+                        <span>Ingresar</span>
+                    }
+                </MudButton>
+            </EditForm>
+
+            <MudDivider Class="my-5" />
+
+            <MudText Typo="Typo.caption" Color="Color.Secondary">
+                Usuario inicial de desarrollo: <strong>admin</strong>
+            </MudText>
+        </MudPaper>
+    </div>
+</div>
